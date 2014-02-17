@@ -6,8 +6,10 @@ public class GameHandlerScript : MonoBehaviour
 
 		public int ballCount;
 		public int diamondCount;
+		public GUISkin guiSkin;
 		private int collectedDiamondCount;
 		private bool isGameOver;
+		private GUIConstants guiConstants;
 
 		// Use this for initialization
 		void Start ()
@@ -15,13 +17,15 @@ public class GameHandlerScript : MonoBehaviour
 				collectedDiamondCount = 0;
 				isGameOver = false;
 
+				guiConstants = gameObject.GetComponent<GUIConstants> ();
+
 				Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		}
 
 		void Update ()
 		{
 				if (Input.GetKeyDown (KeyCode.Escape))
-						Application.Quit (); 
+						Application.LoadLevel (0); 
 
 		}
 	
@@ -31,13 +35,19 @@ public class GameHandlerScript : MonoBehaviour
 				GUI.Box (new Rect (200, 10, 500, 30), "Collected Diamonds:" + collectedDiamondCount + "/" + diamondCount);
 				if (isGameOver) {
 						if (collectedDiamondCount == diamondCount) {
-								GUI.Box (new Rect (200, 150, 100, 60), "Your winner!!!!4");
-								if (GUI.Button (new Rect (200, 180, 100, 60), "Restart")) {
+								GUI.Box (guiConstants.getRectInTheMiddle (guiConstants.getSmallWindowWidht (), guiConstants.getSmallWindowHeight ()), "Your winner!!!!4");
+								if (GUI.Button (guiConstants.getRectInTeTopMiddle (guiConstants.getButtonWidth (), guiConstants.getButtonHeight (), Screen.height / 2.0f - guiConstants.getLineSize ()), "Restart")) {
+										Application.LoadLevel (1);
+								}
+								if (GUI.Button (guiConstants.getRectInTeTopMiddle (guiConstants.getButtonWidth (), guiConstants.getButtonHeight (), Screen.height / 2.0f), "Back to Main Menu")) {
 										Application.LoadLevel (0);
 								}
 						} else {
-								GUI.Box (new Rect (200, 150, 100, 60), "Lose!!!!4");
-								if (GUI.Button (new Rect (200, 180, 100, 60), "Restart")) {
+								GUI.Box (guiConstants.getRectInTheMiddle (guiConstants.getSmallWindowWidht (), guiConstants.getSmallWindowHeight ()), "Lose!!!!4");
+								if (GUI.Button (guiConstants.getRectInTeTopMiddle (guiConstants.getButtonWidth (), guiConstants.getButtonHeight (), Screen.height / 2.0f - guiConstants.getLineSize ()), "Restart")) {
+										Application.LoadLevel (1);
+								}
+								if (GUI.Button (guiConstants.getRectInTeTopMiddle (guiConstants.getButtonWidth (), guiConstants.getButtonHeight (), Screen.height / 2.0f), "Back to Main Menu")) {
 										Application.LoadLevel (0);
 								}
 						}
