@@ -4,89 +4,117 @@ using System.Collections.Generic;
 
 public class MainMenuScript : MonoBehaviour
 {
-		public List<string> levelList;
-		public GUISkin guiSkin;
-		private bool isSinglePlayerSelected;
-		private bool isMultiplayerSelected;
-		private GUIConstants guiConstants;
+    public List<string> levelList;
+    public GUISkin guiSkin;
+    private bool isSinglePlayerSelected;
+    private bool isMultiplayerSelected;
+    private GUIHelper guiHelper;
 
-		void Start ()
-		{
-				isSinglePlayerSelected = false;
-				isMultiplayerSelected = false;
-				guiConstants = gameObject.GetComponent<GUIConstants> ();
-		}
+    void Start()
+    {
+        isSinglePlayerSelected = false;
+        isMultiplayerSelected = false;
+        guiHelper = gameObject.GetComponent<GUIHelper>();
 
-		void Update ()
-		{
-				if (Input.GetKeyDown (KeyCode.Escape))
-						Application.Quit (); 
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+    }
 
-		}
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isSinglePlayerSelected || isMultiplayerSelected)
+            {
+                isSinglePlayerSelected = false;
+                isMultiplayerSelected = false;
+            } else
+            {
 
-		void OnGUI ()
-		{
-				GUI.skin = guiSkin;
-				
-				GUI.Box (guiConstants.getRectInTheMiddle (guiConstants.getBigWindowWidht (), guiConstants.getBigWindowHeight ()), "Main Menu");
-				if (!isSinglePlayerSelected && !isMultiplayerSelected) {
-						showMainMenu ();
-			
-				} else if (isSinglePlayerSelected) {
-
-						showSinglePlayerMenu ();
-
-				} else if (isMultiplayerSelected) {
-						showMultiplayerMenu ();
-				}
-
-		}
-
-		private void showMainMenu ()
-		{
-				if (GUI.Button (guiConstants.getRectInTeTopMiddle (guiConstants.getButtonWidth (), guiConstants.getButtonHeight (), 90), "Single Player")) {
-						isSinglePlayerSelected = true;
-				}
-				if (GUI.Button (guiConstants.getRectInTeTopMiddle (guiConstants.getButtonWidth (), guiConstants.getButtonHeight (), 90 + guiConstants.getLineSize ()), "Multi Player")) {
-						isMultiplayerSelected = true;
-				}
+                Application.Quit(); 
+            }
 
 
-		}
+        }
+                        
 
-		private void showSinglePlayerMenu ()
-		{
+    }
 
-				GUILayout.BeginArea (guiConstants.getRectInTheMiddle (guiConstants.getSmallWindowWidht (), guiConstants.getSmallWindowHeight ()));
-				for (int i = 1; i < levelList.Count; i++) {
-						if (GUILayout.Button (levelList [i])) {
+    void OnGUI()
+    {
+        guiHelper.adjustGUIMatrix();
 
-								Application.LoadLevel (i);
-						}
-		       	
-				}
-		        	
-			
-				GUILayout.EndArea ();	
-		      
+        GUI.skin = guiSkin;
+                
+        GUI.Box(guiHelper.getRectInTheMiddle(guiHelper.getBigWindowWidht(), guiHelper.getBigWindowHeight()), "Main Menu");
+        if (!isSinglePlayerSelected && !isMultiplayerSelected)
+        {
+            showMainMenu();
+            
+        } else if (isSinglePlayerSelected)
+        {
 
-				
-				if (GUI.Button (guiConstants.getRectInTeBottomMiddle (guiConstants.getButtonWidth (), guiConstants.getButtonHeight (), 80), "Back")) {
-						isSinglePlayerSelected = false;
-				}
+            showSinglePlayerMenu();
 
-		}
+        } else if (isMultiplayerSelected)
+        {
+            showMultiplayerMenu();
+        }
 
-		private void showMultiplayerMenu ()
-		{
-				if (GUI.Button (new Rect (200, 50, guiConstants.getButtonWidth (), guiConstants.getButtonHeight ()), "MultiTestMap")) {
-						isMultiplayerSelected = false;
-						//Application.LoadLevel (0);
-				}
-				if (GUI.Button (new Rect (200, 70, guiConstants.getButtonWidth (), guiConstants.getButtonHeight ()), "Back")) {
-						isMultiplayerSelected = false;
-				}
+        guiHelper.restoreGUIMatrix();
+
+    }
+
+    private void showMainMenu()
+    {
+        if (GUI.Button(guiHelper.getRectInTeTopMiddle(guiHelper.getButtonWidth(), guiHelper.getButtonHeight(), 90), "Single Player"))
+        {
+            isSinglePlayerSelected = true;
+        }
+        if (GUI.Button(guiHelper.getRectInTeTopMiddle(guiHelper.getButtonWidth(), guiHelper.getButtonHeight(), 90 + guiHelper.getLineSize()), "Multi Player"))
+        {
+            isMultiplayerSelected = true;
+        }
 
 
-		}
+    }
+
+    private void showSinglePlayerMenu()
+    {
+
+        GUILayout.BeginArea(guiHelper.getRectInTheMiddle(guiHelper.getSmallWindowWidht(), guiHelper.getSmallWindowHeight()));
+        for (int i = 1; i < levelList.Count; i++)
+        {
+            if (GUILayout.Button(levelList [i]))
+            {
+
+                Application.LoadLevel(i);
+            }
+                
+        }
+                    
+            
+        GUILayout.EndArea();    
+              
+
+                
+        if (GUI.Button(guiHelper.getRectInTeBottomMiddle(guiHelper.getButtonWidth(), guiHelper.getButtonHeight(), 80), "Back"))
+        {
+            isSinglePlayerSelected = false;
+        }
+
+    }
+
+    private void showMultiplayerMenu()
+    {
+        if (GUI.Button(new Rect(200, 50, guiHelper.getButtonWidth(), guiHelper.getButtonHeight()), "MultiTestMap"))
+        {
+            Application.LoadLevel(2);
+        }
+        if (GUI.Button(new Rect(200, 100, guiHelper.getButtonWidth(), guiHelper.getButtonHeight()), "Back"))
+        {
+            isMultiplayerSelected = false;
+        }
+
+
+    }
 }

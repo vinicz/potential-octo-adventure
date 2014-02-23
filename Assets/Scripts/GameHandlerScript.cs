@@ -9,7 +9,7 @@ public class GameHandlerScript : MonoBehaviour
 		public GUISkin guiSkin;
 		private int collectedDiamondCount;
 		private bool isGameOver;
-		private GUIConstants guiConstants;
+		private GUIHelper guiConstants;
 
 		// Use this for initialization
 		void Start ()
@@ -17,7 +17,7 @@ public class GameHandlerScript : MonoBehaviour
 				collectedDiamondCount = 0;
 				isGameOver = false;
 
-				guiConstants = gameObject.GetComponent<GUIConstants> ();
+				guiConstants = gameObject.GetComponent<GUIHelper> ();
 
 				Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		}
