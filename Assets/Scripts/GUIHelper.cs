@@ -17,55 +17,44 @@ public class GUIHelper : MonoBehaviour
     private Vector3 scale;
     private Matrix4x4 originalGUIMatrix;
     
-    public float getButtonWidth()
-    {
-        return Screen.width * buttonWidth;
-    }
 
-    public float getButtonHeight()
-    {
-        return Screen.height * buttonHeight;
-    }
-
-    public float getBigWindowWidht()
-    {
-        return Screen.width * bigWindowWidht;
-    }
-
-    public float getBigWindowHeight()
-    {
-        return Screen.height * bigWindowHeight;
-    }
-
-    public float getSmallWindowWidht()
-    {
-        return Screen.width * smallWindowWidht;
-    }
-
-    public float getSmallWindowHeight()
-    {
-        return Screen.height * smallWindowHeight;
-    }
 
     public float getLineSize()
     {
-        return getButtonHeight() * 1.1f;
+        return buttonHeight * 1.1f;
     }
+
+    public Rect getRectForNormalButton(float posx, float posy)
+    {
+        return new Rect(posx, posy, buttonWidth, buttonHeight);
+    }
+
+
+    public Rect getRectForSmallWindow(float posx, float posy)
+    {
+        return new Rect(posx, posy, smallWindowWidht, smallWindowHeight);
+    }
+
+    public Rect getRectForigWindow(float posx, float posy)
+    {
+        return new Rect(posx, posy, bigWindowWidht, bigWindowHeight);
+    }
+
 
     public Rect getRectInTheMiddle(float width, float height)
     {
-        return new Rect(Screen.width / 2.0f - width / 2.0f, Screen.height / 2.0f - height / 2.0f, width, height);
+        return new Rect(originalWidth/ 2.0f - width / 2.0f, originalHeight / 2.0f - height / 2.0f, width, height);
     }
 
     public Rect getRectInTeTopMiddle(float width, float height, float margin)
     {
-        return new Rect(Screen.width / 2.0f - width / 2.0f, margin, width, height);
+        return new Rect(originalWidth / 2.0f - width / 2.0f, margin, width, height);
 
     }
 
     public Rect getRectInTeBottomMiddle(float width, float height, float margin)
     {
-        return new Rect(Screen.width / 2.0f - width / 2.0f, Screen.height - margin, width, height);
+        return new Rect(originalWidth / 2.0f - width / 2.0f, originalHeight - margin, width, height);
         
     }
 

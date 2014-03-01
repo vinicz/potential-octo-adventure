@@ -45,7 +45,7 @@ public class MainMenuScript : MonoBehaviour
 
         GUI.skin = guiSkin;
                 
-        GUI.Box(guiHelper.getRectInTheMiddle(guiHelper.getBigWindowWidht(), guiHelper.getBigWindowHeight()), "Main Menu");
+        GUI.Box(guiHelper.getRectInTheMiddle(guiHelper.bigWindowWidht, guiHelper.bigWindowHeight), "Main Menu");
         if (!isSinglePlayerSelected && !isMultiplayerSelected)
         {
             showMainMenu();
@@ -66,11 +66,11 @@ public class MainMenuScript : MonoBehaviour
 
     private void showMainMenu()
     {
-        if (GUI.Button(guiHelper.getRectInTeTopMiddle(guiHelper.getButtonWidth(), guiHelper.getButtonHeight(), 90), "Single Player"))
+        if (GUI.Button(guiHelper.getRectInTeTopMiddle(guiHelper.buttonWidth, guiHelper.buttonHeight, 90), "Single Player"))
         {
             isSinglePlayerSelected = true;
         }
-        if (GUI.Button(guiHelper.getRectInTeTopMiddle(guiHelper.getButtonWidth(), guiHelper.getButtonHeight(), 90 + guiHelper.getLineSize()), "Multi Player"))
+        if (GUI.Button(guiHelper.getRectInTeTopMiddle(guiHelper.buttonWidth, guiHelper.buttonHeight, 90 + guiHelper.getLineSize()), "Multi Player"))
         {
             isMultiplayerSelected = true;
         }
@@ -81,7 +81,7 @@ public class MainMenuScript : MonoBehaviour
     private void showSinglePlayerMenu()
     {
 
-        GUILayout.BeginArea(guiHelper.getRectInTheMiddle(guiHelper.getSmallWindowWidht(), guiHelper.getSmallWindowHeight()));
+        GUILayout.BeginArea(guiHelper.getRectInTheMiddle(guiHelper.smallWindowWidht, guiHelper.smallWindowHeight));
         for (int i = 1; i < levelList.Count; i++)
         {
             if (GUILayout.Button(levelList [i]))
@@ -97,7 +97,7 @@ public class MainMenuScript : MonoBehaviour
               
 
                 
-        if (GUI.Button(guiHelper.getRectInTeBottomMiddle(guiHelper.getButtonWidth(), guiHelper.getButtonHeight(), 80), "Back"))
+        if (GUI.Button(guiHelper.getRectInTeBottomMiddle(guiHelper.buttonWidth, guiHelper.buttonHeight, 80), "Back"))
         {
             isSinglePlayerSelected = false;
         }
@@ -106,11 +106,11 @@ public class MainMenuScript : MonoBehaviour
 
     private void showMultiplayerMenu()
     {
-        if (GUI.Button(new Rect(200, 50, guiHelper.getButtonWidth(), guiHelper.getButtonHeight()), "MultiTestMap"))
+        if (GUI.Button(guiHelper.getRectForNormalButton(200,50), "MultiTestMap"))
         {
-            Application.LoadLevel(2);
+            Application.LoadLevel(3);
         }
-        if (GUI.Button(new Rect(200, 100, guiHelper.getButtonWidth(), guiHelper.getButtonHeight()), "Back"))
+        if (GUI.Button(guiHelper.getRectForNormalButton(200,100), "Back"))
         {
             isMultiplayerSelected = false;
         }
