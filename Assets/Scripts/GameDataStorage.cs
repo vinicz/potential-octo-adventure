@@ -69,7 +69,7 @@ public class GameDataStorage : MonoBehaviour
 
     public IEnumerable<LevelRecord> getLevelsInGroup(string levelGroup)
     {
-        return (from level in levelList where level.levelGroup == levelGroup select level);   
+        return (from level in levelList where level.levelGroup == levelGroup orderby level.levelOrder ascending select level );   
     }
 
     public void save()
@@ -132,6 +132,7 @@ public class GameDataStorage : MonoBehaviour
 public class LevelRecord
 {
     public int levelIndex;
+    public int levelOrder;
     public string levelName;
     public string levelGroup;
     public bool isMultiplayer;

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class PlatformMover : MonoBehaviour {
 
     public List<GameObject> targetList;
-    public int speed;
+    public float speed=0.5f;
     private int targetIndex=0;
    
 
@@ -24,7 +24,16 @@ public class PlatformMover : MonoBehaviour {
 
 
 
-        //Vector3.Lerp(transform.position, 
+        transform.position = Vector3.Lerp(transform.position, targetList[targetIndex].transform.position, Time.deltaTime*speed);
+
+        if ((transform.position - targetList [targetIndex].transform.position).magnitude < 0.2)
+        {
+            targetIndex++;
+            if(targetIndex>=targetList.Count)
+            {
+                targetIndex=0;
+            }
+        }
 	
 	}
 }
