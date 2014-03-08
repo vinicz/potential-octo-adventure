@@ -5,13 +5,13 @@ public class AccelometerController : MonoBehaviour
 {
 
 		public bool printAccelometerInfo;
-
+        public float speed = 30;
 
 		// Update is called once per frame
 		void Update ()
 		{
 
-				Vector3 mulitpliedAcceleration = Input.acceleration * 10;
+                Vector3 mulitpliedAcceleration = Input.acceleration * speed;
 
 				rigidbody.AddForce (mulitpliedAcceleration.x, mulitpliedAcceleration.z, mulitpliedAcceleration.y);
 				

@@ -81,19 +81,27 @@ public class MainMenuScript : MonoBehaviour
     private void showSinglePlayerMenu()
     {
 
-        GUILayout.BeginArea(guiHelper.getRectInTheMiddle(guiHelper.smallWindowWidht, guiHelper.smallWindowHeight));
-        for (int i = 1; i < levelList.Count; i++)
+
+        int row = 0;
+        foreach (string levelGroup in GameDataStorage.storage.getLevelGroups())
         {
-            if (GUILayout.Button(levelList [i]))
+            GUI.Label(guiHelper.getRectForNormalButton(100,50+row*guiHelper.getLineSize()),levelGroup);
+
+            int column = 0;
+            foreach (LevelRecord level in GameDataStorage.storage.getLevelsInGroup(levelGroup))
             {
 
-                Application.LoadLevel(i);
+                string levelName = (level.isLevelCompleted? "*":"") + level.levelName;
+                   
+                if (GUI.Button(guiHelper.getRectForNormalButton(150+column*guiHelper.buttonWidth,50+row*guiHelper.getLineSize()), levelName))
+                {
+                    Application.LoadLevel(level.levelIndex);
+                }
+                column++;
             }
-                
+            row++;
         }
                     
-            
-        GUILayout.EndArea();    
               
 
                 
@@ -106,10 +114,15 @@ public class MainMenuScript : MonoBehaviour
 
     private void showMultiplayerMenu()
     {
-        if (GUI.Button(guiHelper.getRectForNormalButton(200,50), "MultiTestMap"))
+      
+        foreach (LevelRecord level in GameDataStorage.storage.getMultiplayerLevels())
         {
-            Application.LoadLevel(3);
+            if (GUI.Button(guiHelper.getRectForNormalButton(200,50), level.levelName))
+            {
+                Application.LoadLevel(level.levelIndex);
+            }
         }
+
         if (GUI.Button(guiHelper.getRectForNormalButton(200,100), "Back"))
         {
             isMultiplayerSelected = false;

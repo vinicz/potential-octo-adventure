@@ -9,7 +9,13 @@ public class GameHandlerScript : MonoBehaviour
     public int enemyCount;
     public GUISkin guiSkin;
     public float gameTimeLeft;
-    private int collectedDiamondCount;
+
+    public string levelName;
+    public string nextLevelName;
+    public string backToMainMenuLevelName="mainMenu";
+
+    protected int collectedDiamondCount;
+    protected float elapsedTime = 0;
     protected bool isGameOver;
     protected bool isTimeUp;
     protected GUIHelper guiHelper;
@@ -20,7 +26,6 @@ public class GameHandlerScript : MonoBehaviour
         collectedDiamondCount = 0;
 
         initializeGameHandler();
-
 
     }
 
@@ -40,10 +45,11 @@ public class GameHandlerScript : MonoBehaviour
     protected void updateGameHandler()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            Application.LoadLevel(0); 
+            Application.LoadLevel(GameDataStorage.storage.getLevelIndex(backToMainMenuLevelName)); 
 
         if (!isGameOver)
         {
+            elapsedTime+=Time.deltaTime;
 
             if (gameTimeLeft > 0)
             {
@@ -58,28 +64,6 @@ public class GameHandlerScript : MonoBehaviour
        
     }
 
-
-    
-    // Update is called once per frame
-    void OnGUI()
-    {
-        guiHelper.adjustGUIMatrix();
-
-        GUI.Box(new Rect(200, 10, 500, 30), "Collected Diamonds:" + collectedDiamondCount + "/" + diamondCount);
-        if (isGameOver)
-        {
-            if (collectedDiamondCount == diamondCount)
-            {
-                createWinMenu();
-            } else
-            {
-                createLoseMenu();
-            }
-
-        }
-
-        guiHelper.restoreGUIMatrix();
-    }
 
     public virtual void killOneBall(GameObject ball)
     {
@@ -115,27 +99,34 @@ public class GameHandlerScript : MonoBehaviour
 
     public void createWinMenu()
     {
+        GameDataStorage.storage.setLevelRecord(levelName, (int) elapsedTime);
+
         GUI.Box(guiHelper.getRectInTheMiddle(guiHelper.smallWindowWidht, guiHelper.smallWindowHeight), "Your winner!!!!4");
-        if (GUI.Button(guiHelper.getRectInTeTopMiddle(guiHelper.buttonWidth, guiHelper.buttonHeight, guiHelper.originalHeight / 2.0f - guiHelper.getLineSize()), "Restart"))
+
+        if (GUI.Button(guiHelper.getRectInTeTopMiddle(guiHelper.buttonWidth, guiHelper.buttonHeight, guiHelper.originalHeight / 2.0f - guiHelper.getLineSize()*2), "Next level"))
         {
-            Application.LoadLevel(Application.loadedLevel);
+            Application.LoadLevel(GameDataStorage.storage.getLevelIndex(nextLevelName));
         }
-        if (GUI.Button(guiHelper.getRectInTeTopMiddle(guiHelper.buttonWidth, guiHelper.buttonHeight, guiHelper.originalHeight / 2.0f), "Back to Main Menu"))
-        {
-            Application.LoadLevel(0);
-        }
+
+        createEndGameMenu();
     }
 
     public void createLoseMenu()
     {
         GUI.Box(guiHelper.getRectInTheMiddle(guiHelper.smallWindowWidht, guiHelper.smallWindowHeight), "Lose!!!!4");
+        createEndGameMenu();
+
+    }
+
+    void createEndGameMenu()
+    {
         if (GUI.Button(guiHelper.getRectInTeTopMiddle(guiHelper.buttonWidth, guiHelper.buttonHeight, guiHelper.originalHeight / 2.0f - guiHelper.getLineSize()), "Restart"))
         {
             Application.LoadLevel(Application.loadedLevel);
         }
         if (GUI.Button(guiHelper.getRectInTeTopMiddle(guiHelper.buttonWidth, guiHelper.buttonHeight, guiHelper.originalHeight / 2.0f), "Back to Main Menu"))
         {
-            Application.LoadLevel(0);
+            Application.LoadLevel(GameDataStorage.storage.getLevelIndex(backToMainMenuLevelName));
         }
     }
 }
