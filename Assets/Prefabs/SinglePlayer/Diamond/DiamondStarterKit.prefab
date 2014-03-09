@@ -189,22 +189,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &100022
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400022}
-  - 114: {fileID: 11400004}
-  m_Layer: 0
-  m_Name: GameDataStorage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &100024
 GameObject:
   m_ObjectHideFlags: 1
@@ -286,12 +270,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.39687037, y: 4.77748442, z: -13.7689476}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400030}
   - {fileID: 400020}
-  - {fileID: 400022}
   - {fileID: 400018}
   m_Father: {fileID: 0}
 --- !u!4 &400002
@@ -415,17 +398,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400000}
---- !u!4 &400022
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100022}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.1561265, y: 8.77375984, z: -7.80058479}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 400000}
 --- !u!4 &400024
 Transform:
   m_ObjectHideFlags: 1
@@ -466,7 +438,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100030}
   m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106829}
-  m_LocalPosition: {x: -12.3575697, y: -14.3107338, z: 8.54886532}
+  m_LocalPosition: {x: -8.00924873, y: -13.9657545, z: 4.49826384}
   m_LocalScale: {x: 1.71290624, y: 1.71290624, z: 1.71290624}
   m_Children: []
   m_Father: {fileID: 400000}
@@ -905,82 +877,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballCount: 1
-  diamondCount: 4
+  diamondCount: 1
   enemyCount: 0
   guiSkin: {fileID: 0}
   gameTimeLeft: 0
   levelName: Beggining
   nextLevelName: diamondTest
   backToMainMenuLevelName: mainMenu
---- !u!114 &11400004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d83cbcb7d2bfe4341bdc686fffade5ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  file: /ballthazar.dat
-  levelList:
-  - levelIndex: 1
-    levelOrder: 0
-    levelName: mainMenu
-    levelGroup: 
-    isMultiplayer: 0
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-  - levelIndex: 2
-    levelOrder: 2
-    levelName: Gate
-    levelGroup: diamond
-    isMultiplayer: 0
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-  - levelIndex: 3
-    levelOrder: 3
-    levelName: Lift
-    levelGroup: diamond
-    isMultiplayer: 0
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-  - levelIndex: 4
-    levelOrder: 4
-    levelName: diamondTest
-    levelGroup: diamond
-    isMultiplayer: 0
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-  - levelIndex: 5
-    levelOrder: 1
-    levelName: bowlingTest
-    levelGroup: bowling
-    isMultiplayer: 0
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-  - levelIndex: 6
-    levelOrder: 0
-    levelName: Football
-    levelGroup: 
-    isMultiplayer: 1
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-  - levelIndex: 7
-    levelOrder: 1
-    levelName: DiamondHill
-    levelGroup: diamond
-    isMultiplayer: 0
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1

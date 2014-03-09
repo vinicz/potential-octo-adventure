@@ -95,9 +95,16 @@ public class MainMenuScript : MonoBehaviour
                    
                 if (GUI.Button(guiHelper.getRectForNormalButton(150+column*guiHelper.buttonWidth,50+row*guiHelper.getLineSize()), levelName))
                 {
-                    Application.LoadLevel(level.levelIndex);
+                    Application.LoadLevel(level.getLevelIndex());
                 }
                 column++;
+
+                if(column>=5)
+                {
+                    row++;
+                    column=0;
+                }
+
             }
             row++;
         }
@@ -119,7 +126,7 @@ public class MainMenuScript : MonoBehaviour
         {
             if (GUI.Button(guiHelper.getRectForNormalButton(200,50), level.levelName))
             {
-                Application.LoadLevel(level.levelIndex);
+                Application.LoadLevel(level.getLevelIndex());
             }
         }
 

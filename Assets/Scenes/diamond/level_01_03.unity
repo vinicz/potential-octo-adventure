@@ -683,6 +683,14 @@ Prefab:
       propertyPath: diamondCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: b4795ba2847883f45be216e8c33d6f94, type: 2}
+      propertyPath: levelName
+      value: level-03
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: b4795ba2847883f45be216e8c33d6f94, type: 2}
+      propertyPath: nextLevelName
+      value: level-04
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4795ba2847883f45be216e8c33d6f94, type: 2}
   m_RootGameObject: {fileID: 891666095}
@@ -926,6 +934,46 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8, y: 1.00000083, z: 8.00000381}
   m_Center: {x: 0, y: -.499998182, z: 0}
+--- !u!1001 &694852324
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 856bc30960f34204cb172acdb8428a7a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -.759256184
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 856bc30960f34204cb172acdb8428a7a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 13.5512447
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 856bc30960f34204cb172acdb8428a7a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -21.5695324
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 856bc30960f34204cb172acdb8428a7a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 856bc30960f34204cb172acdb8428a7a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 856bc30960f34204cb172acdb8428a7a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 856bc30960f34204cb172acdb8428a7a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 856bc30960f34204cb172acdb8428a7a, type: 2}
+  m_RootGameObject: {fileID: 1250839614}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1001 &704584628
 Prefab:
   m_ObjectHideFlags: 0
@@ -1065,7 +1113,6 @@ Transform:
   m_Children:
   - {fileID: 1367917369}
   - {fileID: 892581101}
-  - {fileID: 1148887324}
   - {fileID: 235596725}
   m_Father: {fileID: 0}
 --- !u!1 &892581100
@@ -1113,8 +1160,8 @@ MonoBehaviour:
   enemyCount: 0
   guiSkin: {fileID: 0}
   gameTimeLeft: 0
-  levelName: Beggining
-  nextLevelName: diamondTest
+  levelName: level-03
+  nextLevelName: level-04
   backToMainMenuLevelName: mainMenu
 --- !u!114 &892581103
 MonoBehaviour:
@@ -1357,15 +1404,15 @@ Transform:
   m_LocalPosition: {x: -3.1369319, y: -13.5407639, z: 5.61427784}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 189894651}
-  - {fileID: 1548515525}
+  - {fileID: 2122615716}
+  - {fileID: 1176006443}
+  - {fileID: 324904105}
+  - {fileID: 2041417049}
   - {fileID: 1574308949}
   - {fileID: 1862182245}
-  - {fileID: 2041417049}
-  - {fileID: 2122615716}
+  - {fileID: 189894651}
   - {fileID: 1057831827}
-  - {fileID: 324904105}
-  - {fileID: 1176006443}
+  - {fileID: 1548515525}
   m_Father: {fileID: 0}
 --- !u!1 &1147910308
 GameObject:
@@ -1439,103 +1486,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 599834149}
   m_GameObject: {fileID: 1147910308}
   m_Mesh: {fileID: 4300000, guid: 879dd62cbfd65314d812354e257fc5cc, type: 3}
---- !u!1 &1148887323
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100022, guid: b4795ba2847883f45be216e8c33d6f94, type: 2}
-  m_PrefabInternal: {fileID: 599834149}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1148887324}
-  - 114: {fileID: 1148887325}
-  m_Layer: 0
-  m_Name: GameDataStorage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1148887324
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400022, guid: b4795ba2847883f45be216e8c33d6f94, type: 2}
-  m_PrefabInternal: {fileID: 599834149}
-  m_GameObject: {fileID: 1148887323}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.1561265, y: 8.77375984, z: -7.80058479}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 891666096}
---- !u!114 &1148887325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400004, guid: b4795ba2847883f45be216e8c33d6f94,
-    type: 2}
-  m_PrefabInternal: {fileID: 599834149}
-  m_GameObject: {fileID: 1148887323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d83cbcb7d2bfe4341bdc686fffade5ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  file: /ballthazar.dat
-  levelList:
-  - levelIndex: 1
-    levelOrder: 0
-    levelName: mainMenu
-    levelGroup: 
-    isMultiplayer: 0
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-  - levelIndex: 2
-    levelOrder: 2
-    levelName: Gate
-    levelGroup: diamond
-    isMultiplayer: 0
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-  - levelIndex: 3
-    levelOrder: 3
-    levelName: Lift
-    levelGroup: diamond
-    isMultiplayer: 0
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-  - levelIndex: 4
-    levelOrder: 4
-    levelName: diamondTest
-    levelGroup: diamond
-    isMultiplayer: 0
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-  - levelIndex: 5
-    levelOrder: 1
-    levelName: bowlingTest
-    levelGroup: bowling
-    isMultiplayer: 0
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-  - levelIndex: 6
-    levelOrder: 0
-    levelName: Football
-    levelGroup: 
-    isMultiplayer: 1
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-  - levelIndex: 7
-    levelOrder: 1
-    levelName: DiamondHill
-    levelGroup: diamond
-    isMultiplayer: 0
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
 --- !u!1 &1176006439
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,6 +1598,125 @@ Prefab:
   m_RootGameObject: {fileID: 1574308945}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1250839614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 856bc30960f34204cb172acdb8428a7a, type: 2}
+  m_PrefabInternal: {fileID: 694852324}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1250839616}
+  - 114: {fileID: 1250839615}
+  m_Layer: 0
+  m_Name: GameDataStorage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1250839615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 856bc30960f34204cb172acdb8428a7a,
+    type: 2}
+  m_PrefabInternal: {fileID: 694852324}
+  m_GameObject: {fileID: 1250839614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83cbcb7d2bfe4341bdc686fffade5ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  file: /ballthazar.dat
+  levelList:
+  - levelName: mainMenu
+    levelGroup: 
+    isMultiplayer: 0
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+  - levelName: level-01
+    levelGroup: diamond
+    isMultiplayer: 0
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+  - levelName: level-02
+    levelGroup: diamond
+    isMultiplayer: 0
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+  - levelName: level-03
+    levelGroup: diamond
+    isMultiplayer: 0
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+  - levelName: level-04
+    levelGroup: diamond
+    isMultiplayer: 0
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+  - levelName: level-06
+    levelGroup: diamond
+    isMultiplayer: 0
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+  - levelName: level-07
+    levelGroup: diamond
+    isMultiplayer: 0
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+  - levelName: DiamondHill
+    levelGroup: diamond
+    isMultiplayer: 0
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+  - levelName: Gate
+    levelGroup: diamond
+    isMultiplayer: 0
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+  - levelName: Lift
+    levelGroup: diamond
+    isMultiplayer: 0
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+  - levelName: diamondTest
+    levelGroup: diamond
+    isMultiplayer: 0
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+  - levelName: bowlingTest
+    levelGroup: bowling
+    isMultiplayer: 0
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+  - levelName: Football
+    levelGroup: 
+    isMultiplayer: 1
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+--- !u!4 &1250839616
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: 856bc30960f34204cb172acdb8428a7a, type: 2}
+  m_PrefabInternal: {fileID: 694852324}
+  m_GameObject: {fileID: 1250839614}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.759256184, y: 13.5512447, z: -21.5695324}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &1253530205
 GameObject:
   m_ObjectHideFlags: 0

@@ -53,7 +53,7 @@ public class GameDataStorage : MonoBehaviour
 
     public int getLevelIndex(string levelName)
     {
-        return levelMap [levelName].levelIndex;
+        return levelMap [levelName].getLevelIndex();
     }
 
     public IEnumerable<LevelRecord> getMultiplayerLevels()
@@ -69,7 +69,7 @@ public class GameDataStorage : MonoBehaviour
 
     public IEnumerable<LevelRecord> getLevelsInGroup(string levelGroup)
     {
-        return (from level in levelList where level.levelGroup == levelGroup orderby level.levelOrder ascending select level );   
+        return (from level in levelList where level.levelGroup == levelGroup select level);   
     }
 
     public void save()
@@ -103,14 +103,19 @@ public class GameDataStorage : MonoBehaviour
         }
         levelMap.Clear();
 
+        int index = 1;
         foreach (var level in levelList)
         {
+            level.setLevelIndex(index);
+
             levelMap.Add(level.levelName, level);
+
+            index++;
         }
 
     }
 
-    void mergeLevelChanges( List<LevelRecord> persistedList)
+    void mergeLevelChanges(List<LevelRecord> persistedList)
     {
         foreach (LevelRecord level in levelList)
         {
@@ -131,13 +136,22 @@ public class GameDataStorage : MonoBehaviour
 [Serializable]
 public class LevelRecord
 {
-    public int levelIndex;
-    public int levelOrder;
+    private int levelIndex;
     public string levelName;
     public string levelGroup;
     public bool isMultiplayer;
     public float bestTime;
     public float timeToAward;
     public bool isLevelCompleted;
+
+    public void setLevelIndex(int index)
+    {
+        levelIndex = index;
+    }
+
+    public int getLevelIndex()
+    {
+        return levelIndex;
+    }
 
 }
