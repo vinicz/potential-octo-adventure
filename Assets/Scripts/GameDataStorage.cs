@@ -11,6 +11,7 @@ public class GameDataStorage : MonoBehaviour
 
     public static GameDataStorage storage;
     public string file = "/ballthazar.dat";
+    public int levelListOffset = 1;
     public List<LevelRecord> levelList;
     private Dictionary<string, LevelRecord> levelMap;
     private string fullFilePath;
@@ -36,9 +37,9 @@ public class GameDataStorage : MonoBehaviour
         load();
     }
 
-    public void setLevelRecord(string levelName, float bestTime)
+    public void setLevelRecord(int levelIndex, float bestTime)
     {
-        LevelRecord level = levelMap [levelName];
+        LevelRecord level = levelList[levelIndex-levelListOffset];
 
         if (level.bestTime > bestTime)
         {
@@ -103,7 +104,7 @@ public class GameDataStorage : MonoBehaviour
         }
         levelMap.Clear();
 
-        int index = 1;
+        int index = levelListOffset;
         foreach (var level in levelList)
         {
             level.setLevelIndex(index);
@@ -131,12 +132,32 @@ public class GameDataStorage : MonoBehaviour
         save();
       
     }
+
+    public int getNextLevel(int currentLevel)
+    {
+        int nextLevelIndex = currentLevel - levelListOffset + 1;
+        LevelRecord nextLevel = levelList[nextLevelIndex];
+
+        if (!nextLevel.isMultiplayer)
+        {
+            return nextLevelIndex +levelListOffset;
+        } else
+        {
+            return levelListOffset;
+        }
+    }
+
+    public int getMainMenuIndex()
+    {
+        return levelListOffset;
+    }
 }
 
 [Serializable]
 public class LevelRecord
 {
     private int levelIndex;
+
     public string levelName;
     public string levelGroup;
     public bool isMultiplayer;

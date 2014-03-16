@@ -11,6 +11,7 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 65: {fileID: 6500000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: Cube 2x2x2
   m_TagString: Untagged
@@ -25,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 8.14603425e-08, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -23.3857613, y: 19.7641544, z: -31.1999893}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -6.02066135, y: -5.20818853, z: -13.0247545}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!23 &2300000
@@ -69,6 +70,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d4d17c53cfd2f04bbf7c47a22920278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 100000, guid: 35545fe7e495fbc44ad9954666c2203c, type: 2}
+  projectileCount: 8
+  fireReloadTime: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

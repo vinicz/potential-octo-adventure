@@ -10,10 +10,6 @@ public class GameHandlerScript : MonoBehaviour
     public GUISkin guiSkin;
     public float gameTimeLeft;
 
-    public string levelName;
-    public string nextLevelName;
-    public string backToMainMenuLevelName="mainMenu";
-
     protected int collectedDiamondCount;
     protected float elapsedTime = 0;
     protected bool isGameOver;
@@ -45,7 +41,7 @@ public class GameHandlerScript : MonoBehaviour
     protected void updateGameHandler()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            Application.LoadLevel(GameDataStorage.storage.getLevelIndex(backToMainMenuLevelName)); 
+            Application.LoadLevel(GameDataStorage.storage.getMainMenuIndex()); 
 
         if (!isGameOver)
         {
@@ -86,7 +82,7 @@ public class GameHandlerScript : MonoBehaviour
         }
     }
 
-    public void collectOneDiamond(GameObject diamond)
+    public virtual void collectOneDiamond(GameObject diamond)
     {
 
         collectedDiamondCount++;
@@ -99,13 +95,13 @@ public class GameHandlerScript : MonoBehaviour
 
     public void createWinMenu()
     {
-        GameDataStorage.storage.setLevelRecord(levelName, (int) elapsedTime);
+        GameDataStorage.storage.setLevelRecord(Application.loadedLevel, (int) elapsedTime);
 
         GUI.Box(guiHelper.getRectInTheMiddle(guiHelper.smallWindowWidht, guiHelper.smallWindowHeight), "Your winner!!!!4");
 
         if (GUI.Button(guiHelper.getRectInTeTopMiddle(guiHelper.buttonWidth, guiHelper.buttonHeight, guiHelper.originalHeight / 2.0f - guiHelper.getLineSize()*2), "Next level"))
         {
-            Application.LoadLevel(GameDataStorage.storage.getLevelIndex(nextLevelName));
+            Application.LoadLevel(GameDataStorage.storage.getNextLevel(Application.loadedLevel));
         }
 
         createEndGameMenu();
@@ -126,7 +122,7 @@ public class GameHandlerScript : MonoBehaviour
         }
         if (GUI.Button(guiHelper.getRectInTeTopMiddle(guiHelper.buttonWidth, guiHelper.buttonHeight, guiHelper.originalHeight / 2.0f), "Back to Main Menu"))
         {
-            Application.LoadLevel(GameDataStorage.storage.getLevelIndex(backToMainMenuLevelName));
+            Application.LoadLevel(GameDataStorage.storage.getMainMenuIndex());
         }
     }
 }

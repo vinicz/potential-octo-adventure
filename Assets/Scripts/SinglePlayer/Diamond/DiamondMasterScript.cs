@@ -3,18 +3,18 @@ using System.Collections;
 
 public class DiamondMasterScript : GameHandlerScript {
 
-    void Start()
+    protected void Start()
     {
         initializeGameHandler();
     }
     
-    void Update()
+    protected void Update()
     {
         updateGameHandler();
         
     }
     
-    void OnGUI()
+    protected void OnGUI()
     {
         guiHelper.adjustGUIMatrix();
         
