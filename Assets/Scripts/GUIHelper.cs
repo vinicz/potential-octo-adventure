@@ -4,6 +4,7 @@ using System.Collections;
 public class GUIHelper : MonoBehaviour
 {
 
+    public static GUIHelper helper;
 
     public float buttonWidth;
     public float buttonHeight;
@@ -17,7 +18,18 @@ public class GUIHelper : MonoBehaviour
     private Vector3 scale;
     private Matrix4x4 originalGUIMatrix;
     
-
+    void Awake()
+    {
+        if (helper == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            helper = this;
+        } else if (helper != this)
+        {
+            Destroy(gameObject);
+        }
+        
+    }
 
     public float getLineSize()
     {

@@ -4,7 +4,8 @@ using System.Collections;
 public class FallDownHandler : MonoBehaviour {
 
     public GameHandlerScript gameHandler;
-
+    public bool killPlayer = true;
+    public bool killEnemy = true;
 
 	// Use this for initialization
 	void Start () {
@@ -19,12 +20,12 @@ public class FallDownHandler : MonoBehaviour {
 
     void OnTriggerEnter (Collider otherCollider)
     {
-        if (otherCollider.gameObject.tag == "Player") {
+        if (otherCollider.gameObject.tag == "Player" && killPlayer) {
             gameHandler.killOneBall (otherCollider.gameObject);
             
         }
         
-        if (otherCollider.gameObject.tag == "Enemy") {
+        if (otherCollider.gameObject.tag == "Enemy" && killEnemy) {
             gameHandler.killOneEnemy(otherCollider.gameObject);
             
         }

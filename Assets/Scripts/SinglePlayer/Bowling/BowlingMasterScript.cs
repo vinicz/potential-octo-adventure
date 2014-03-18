@@ -5,32 +5,23 @@ public class BowlingMasterScript : GameHandlerScript
 {
 
 
-    
-    void Start()
+    protected override void Update()
     {
-        initializeGameHandler();
-    }
-
-    void Update()
-    {
-        updateGameHandler();
+        base.Update();
 
         if (isTimeUp)
         {
-            isGameOver = true;
+            gameState = GameState.POSTGAME;
         }
         
     }
 
-    void OnGUI()
+    public override void createMapSpecificGUI()
     {
-        guiHelper.adjustGUIMatrix();
-
-        GUI.Box(new Rect(400, 10, 150, 30),  "Enemies remaining: " +enemyCount);
-
+        GUI.Box(new Rect(400, 10, 150, 30), "Enemies remaining: " + enemyCount);
         GUI.Box(new Rect(600, 10, 100, 30), ((int)gameTimeLeft).ToString());
-
-        if (isGameOver)
+        
+        if (gameState == GameState.POSTGAME)
         {
             if (enemyCount > 0)
             {
@@ -40,8 +31,6 @@ public class BowlingMasterScript : GameHandlerScript
                 createWinMenu();
             }
         }
-
-        guiHelper.restoreGUIMatrix();
     }
 
     public override void killOneBall(GameObject ball)

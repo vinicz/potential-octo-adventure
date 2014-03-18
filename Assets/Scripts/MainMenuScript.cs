@@ -8,13 +8,11 @@ public class MainMenuScript : MonoBehaviour
     public GUISkin guiSkin;
     private bool isSinglePlayerSelected;
     private bool isMultiplayerSelected;
-    private GUIHelper guiHelper;
 
     void Start()
     {
         isSinglePlayerSelected = false;
         isMultiplayerSelected = false;
-        guiHelper = gameObject.GetComponent<GUIHelper>();
 
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
@@ -41,11 +39,11 @@ public class MainMenuScript : MonoBehaviour
 
     void OnGUI()
     {
-        guiHelper.adjustGUIMatrix();
+        GUIHelper.helper.adjustGUIMatrix();
 
-        GUI.skin = guiSkin;
+        //GUI.skin = guiSkin;
                 
-        GUI.Box(guiHelper.getRectInTheMiddle(guiHelper.bigWindowWidht, guiHelper.bigWindowHeight), "Main Menu");
+        GUI.Box(GUIHelper.helper.getRectInTheMiddle(GUIHelper.helper.bigWindowWidht, GUIHelper.helper.bigWindowHeight), "Main Menu");
         if (!isSinglePlayerSelected && !isMultiplayerSelected)
         {
             showMainMenu();
@@ -60,17 +58,17 @@ public class MainMenuScript : MonoBehaviour
             showMultiplayerMenu();
         }
 
-        guiHelper.restoreGUIMatrix();
+        GUIHelper.helper.restoreGUIMatrix();
 
     }
 
     private void showMainMenu()
     {
-        if (GUI.Button(guiHelper.getRectInTeTopMiddle(guiHelper.buttonWidth, guiHelper.buttonHeight, 90), "Single Player"))
+        if (GUI.Button(GUIHelper.helper.getRectInTeTopMiddle(GUIHelper.helper.buttonWidth, GUIHelper.helper.buttonHeight, 90), "Single Player"))
         {
             isSinglePlayerSelected = true;
         }
-        if (GUI.Button(guiHelper.getRectInTeTopMiddle(guiHelper.buttonWidth, guiHelper.buttonHeight, 90 + guiHelper.getLineSize()), "Multi Player"))
+        if (GUI.Button(GUIHelper.helper.getRectInTeTopMiddle(GUIHelper.helper.buttonWidth, GUIHelper.helper.buttonHeight, 90 + GUIHelper.helper.getLineSize()), "Multi Player"))
         {
             isMultiplayerSelected = true;
         }
@@ -85,7 +83,7 @@ public class MainMenuScript : MonoBehaviour
         int row = 0;
         foreach (string levelGroup in GameDataStorage.storage.getLevelGroups())
         {
-            GUI.Label(guiHelper.getRectForNormalButton(100,50+row*guiHelper.getLineSize()),levelGroup);
+            GUI.Label(GUIHelper.helper.getRectForNormalButton(100,50+row*GUIHelper.helper.getLineSize()),levelGroup);
 
             int column = 0;
             foreach (LevelRecord level in GameDataStorage.storage.getLevelsInGroup(levelGroup))
@@ -93,7 +91,7 @@ public class MainMenuScript : MonoBehaviour
 
                 string levelName = (level.isLevelCompleted? "*":"") + level.levelName;
                    
-                if (GUI.Button(guiHelper.getRectForNormalButton(150+column*guiHelper.buttonWidth,50+row*guiHelper.getLineSize()), levelName))
+                if (GUI.Button(GUIHelper.helper.getRectForNormalButton(150+column*GUIHelper.helper.buttonWidth,50+row*GUIHelper.helper.getLineSize()), levelName))
                 {
                     Application.LoadLevel(level.getLevelIndex());
                 }
@@ -112,7 +110,7 @@ public class MainMenuScript : MonoBehaviour
               
 
                 
-        if (GUI.Button(guiHelper.getRectInTeBottomMiddle(guiHelper.buttonWidth, guiHelper.buttonHeight, 80), "Back"))
+        if (GUI.Button(GUIHelper.helper.getRectInTeBottomMiddle(GUIHelper.helper.buttonWidth, GUIHelper.helper.buttonHeight, 80), "Back"))
         {
             isSinglePlayerSelected = false;
         }
@@ -124,13 +122,13 @@ public class MainMenuScript : MonoBehaviour
       
         foreach (LevelRecord level in GameDataStorage.storage.getMultiplayerLevels())
         {
-            if (GUI.Button(guiHelper.getRectForNormalButton(200,50), level.levelName))
+            if (GUI.Button(GUIHelper.helper.getRectForNormalButton(200,50), level.levelName))
             {
                 Application.LoadLevel(level.getLevelIndex());
             }
         }
 
-        if (GUI.Button(guiHelper.getRectForNormalButton(200,100), "Back"))
+        if (GUI.Button(GUIHelper.helper.getRectForNormalButton(200,100), "Back"))
         {
             isMultiplayerSelected = false;
         }
