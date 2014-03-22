@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class MapGroupButtonsGenerator : MonoBehaviour {
 
-    public ButtonFactory buttonFactory;
+    public LevelButtonTool buttonFactory;
 
 	// Use this for initialization
 	void Start () {

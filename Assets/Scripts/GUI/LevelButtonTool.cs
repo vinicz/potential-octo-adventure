@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ButtonFactory : MonoBehaviour {
+public class LevelButtonTool : MonoBehaviour {
 
     public UILabel buttonLabel;
+    public GameObject loadingWindow;
     public int levelIndex;
 
 	public GameObject createButton(GameObject parent,string label, int level)
@@ -18,6 +19,9 @@ public class ButtonFactory : MonoBehaviour {
 
     public void OnClick()
     {
+        this.transform.parent.gameObject.SetActive(false);
+        NGUITools.AddChild(this.transform.parent.parent.gameObject, loadingWindow);
+        loadingWindow.SetActive(true);
         Application.LoadLevel(levelIndex);
     }
 
