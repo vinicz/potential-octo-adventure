@@ -5,9 +5,8 @@ public class AccelometerController : MonoBehaviour
 {
 
     public bool printAccelometerInfo;
-    public float speed = 30;
+    public Vector3 speed = new Vector3(30, 30, 30);
     public float rotateAngle = 20;
-    public bool addRelativeChange = false;
     private Vector3 lastAcceleration;
 
     void Start()
@@ -18,27 +17,16 @@ public class AccelometerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 mulitpliedAcceleration = Vector3.zero;
-
         if (GameHandlerScript.gameState == GameHandlerScript.GameState.GAME)
         {
+            Vector3 mulitpliedAcceleration = Vector3.zero;
 
-
-            mulitpliedAcceleration = Input.acceleration * speed;
+            mulitpliedAcceleration = new Vector3(Input.acceleration.x* speed.x, Input.acceleration.y* speed.z,Input.acceleration.z* speed.y);
             Quaternion rotateQuaternion = Quaternion.AngleAxis(rotateAngle, Vector3.right);
             mulitpliedAcceleration = rotateQuaternion * mulitpliedAcceleration;
 
-            if (addRelativeChange)
-            {
-                mulitpliedAcceleration += (Input.acceleration - lastAcceleration) * speed;
-
-            }  
-           
-        }
-
-        rigidbody.AddForce(mulitpliedAcceleration.x, mulitpliedAcceleration.z, mulitpliedAcceleration.y);
-                
-
+            rigidbody.AddForce(mulitpliedAcceleration.x, mulitpliedAcceleration.z, mulitpliedAcceleration.y);
+        }       
     }
 
     void OnGUI()
