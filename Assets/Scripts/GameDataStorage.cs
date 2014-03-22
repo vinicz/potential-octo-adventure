@@ -27,15 +27,12 @@ public class GameDataStorage : MonoBehaviour
             Destroy(gameObject);
         }
         fullFilePath = Application.persistentDataPath + file;
-        
-    }
-    
-    void Start()
-    {
-        
+
         levelMap = new Dictionary<string,LevelRecord>();
         load();
+        
     }
+
 
 
     public void setLevelRecord(int levelIndex, float bestTime)
