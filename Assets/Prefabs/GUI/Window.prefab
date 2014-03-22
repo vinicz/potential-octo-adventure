@@ -30,7 +30,7 @@ GameObject:
   - 114: {fileID: 11400012}
   - 114: {fileID: 11400004}
   m_Layer: 0
-  m_Name: Button
+  m_Name: ShopButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ GameObject:
   - 114: {fileID: 11400008}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: Button
+  m_Name: OptionsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,7 +134,7 @@ GameObject:
   - 114: {fileID: 11400010}
   - 114: {fileID: 11400002}
   m_Layer: 0
-  m_Name: Button
+  m_Name: MultiButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,6 +280,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400032}
+  - 114: {fileID: 11400056}
   m_Layer: 0
   m_Name: Window
   m_TagString: Untagged
@@ -340,7 +341,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
   m_LocalRotation: {x: 0, y: -5.7206563e-07, z: 0, w: 1}
-  m_LocalPosition: {x: 8.46283245, y: -86.2705307, z: 20.8886147}
+  m_LocalPosition: {x: 8.43145561, y: -86.2705307, z: 20.8830833}
   m_LocalScale: {x: 2.04200006, y: 2.04199958, z: 2.04200006}
   m_Children:
   - {fileID: 400006}
@@ -550,7 +551,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextWindow: {fileID: 0}
-  currentWindow: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -563,7 +563,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextWindow: {fileID: 0}
-  currentWindow: {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -576,7 +575,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextWindow: {fileID: 0}
-  currentWindow: {fileID: 0}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -589,7 +587,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextWindow: {fileID: 0}
-  currentWindow: {fileID: 0}
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -602,8 +599,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 100010}
-  hover: {r: .600000024, g: 1, b: .200000003, a: 1}
-  pressed: {r: .600000024, g: 1, b: .200000003, a: .858823538}
+  hover: {r: .898012042, g: .992647052, b: .153276414, a: 1}
+  pressed: {r: .898012042, g: .992647052, b: .153276414, a: 1}
   duration: .200000003
   disabledColor: {r: .5, g: .5, b: .5, a: 1}
 --- !u!114 &11400010
@@ -618,8 +615,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 100012}
-  hover: {r: .600000024, g: 1, b: .200000003, a: 1}
-  pressed: {r: .600000024, g: 1, b: .200000003, a: .858823538}
+  hover: {r: .898012042, g: .992647052, b: .153276414, a: 1}
+  pressed: {r: .898012042, g: .992647052, b: .153276414, a: 1}
   duration: .200000003
   disabledColor: {r: .5, g: .5, b: .5, a: 1}
 --- !u!114 &11400012
@@ -650,8 +647,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 100026}
-  hover: {r: .600000024, g: 1, b: .200000003, a: 1}
-  pressed: {r: .600000024, g: 1, b: .200000003, a: .858823538}
+  hover: {r: .889705896, g: .832407236, b: .0588775985, a: 1}
+  pressed: {r: .889705896, g: .832407236, b: .0588775985, a: 1}
   duration: .200000003
   disabledColor: {r: .5, g: .5, b: .5, a: 1}
 --- !u!114 &11400016
@@ -749,7 +746,7 @@ MonoBehaviour:
   mPivot: 4
   mDepth: 6
   mFont: {fileID: 11400000, guid: 7a48ea22e80d1ac4b97fdd87f9009546, type: 2}
-  mText: Otpions
+  mText: Options
   mMaxLineWidth: 0
   mMaxLineHeight: 0
   mEncoding: 1
@@ -1010,7 +1007,7 @@ MonoBehaviour:
   mPivot: 4
   mDepth: 5
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: Button
+  mSpriteName: Highlight
   mFillCenter: 1
   mType: 0
   mFillDirection: 4
@@ -1066,6 +1063,18 @@ MonoBehaviour:
   mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
+--- !u!114 &11400056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1db39dcfe6f2d134a87ff41e25d3e1db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWindow: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
