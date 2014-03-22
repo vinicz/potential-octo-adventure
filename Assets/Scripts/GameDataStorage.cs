@@ -37,7 +37,7 @@ public class GameDataStorage : MonoBehaviour
 
     public void setLevelRecord(int levelIndex, float bestTime)
     {
-        LevelRecord level = levelList [levelIndex - levelListOffset];
+        LevelRecord level = getLevelRecordForLevel(levelIndex);
         
         if (level.bestTime > bestTime)
         {
@@ -149,7 +149,17 @@ public class GameDataStorage : MonoBehaviour
 
     public LevelRecord getLevelRecordForLevel(int levelIndex)
     {
-        return levelList [levelIndex - levelListOffset];
+        LevelRecord level;
+        if (levelIndex>0 && levelIndex < levelList.Count())
+        {
+            level =levelList [levelIndex - levelListOffset];
+        }
+        else
+        {
+            level = new LevelRecord();
+        }
+
+        return level;
     }
 
 
