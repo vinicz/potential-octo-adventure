@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class DiamondFirstBossMasterScript : DiamondMasterScript {
@@ -38,7 +38,7 @@ public class DiamondFirstBossMasterScript : DiamondMasterScript {
         GameObject newDiamond = (GameObject)Instantiate(spawnItem);
         newDiamond.transform.position = spawnPosition.transform.position;
 
-        if (collectedDiamondCount==diamondCount)
+        if (collectedDiamondCount==requiredDiamondCount)
         {
             newDiamond.rigidbody.mass=1000;
         }

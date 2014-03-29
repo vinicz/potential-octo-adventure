@@ -35,17 +35,18 @@ public class GameDataStorage : MonoBehaviour
 
 
 
-    public void setLevelRecord(int levelIndex, float bestTime)
+    public void setLevelRecord(LevelRecord newLevelRecord)
     {
-        LevelRecord level = getLevelRecordForLevel(levelIndex);
+        LevelRecord level = getLevelRecordForLevel(newLevelRecord.getLevelIndex());
         
-        if (level.bestTime > bestTime)
+        if (level.bestTime > newLevelRecord.bestTime)
         {
-            level.bestTime = bestTime;
+            level.bestTime = newLevelRecord.bestTime;
             
         }
         
         level.isLevelCompleted = true;
+        level.collectedDiamonds = newLevelRecord.collectedDiamonds;
         
         save();
     }
@@ -121,6 +122,7 @@ public class GameDataStorage : MonoBehaviour
                 {
                     level.bestTime = persistedLevel.bestTime;
                     level.isLevelCompleted = persistedLevel.isLevelCompleted;
+                    level.collectedDiamonds = persistedLevel.collectedDiamonds;
                 }
             }
         }
@@ -171,10 +173,15 @@ public class LevelRecord
     private int levelIndex;
     public string levelName;
     public string levelGroup;
-    public bool isMultiplayer;
+   
+    public int collectedDiamonds;
+    public int allDiamonds;
+    public int requiredDiamonds;
+
     public float bestTime;
     public float timeToAward;
     public bool isLevelCompleted;
+    public bool isMultiplayer;
 
     public void setLevelIndex(int index)
     {

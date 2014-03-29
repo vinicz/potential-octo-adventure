@@ -5,7 +5,8 @@ public class GameHandlerScript : MonoBehaviour
 {
 
     public int ballCount;
-    public int diamondCount;
+    public int requiredDiamondCount;
+    public int allDiamondCount;
     public int enemyCount;
     public GUISkin guiSkin;
     public float gameTimeLeft;
@@ -23,6 +24,7 @@ public class GameHandlerScript : MonoBehaviour
     protected float elapsedTime = 0;
     protected bool isTimeUp;
     public static GameState gameState = GameState.PREGAME;
+    protected LevelRecord levelRecord;
 
     // Use this for initialization
     protected virtual void Start()
@@ -30,6 +32,13 @@ public class GameHandlerScript : MonoBehaviour
         collectedDiamondCount = 0;
         gameState = GameState.PREGAME;
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+        levelRecord = GameDataStorage.storage.getLevelRecordForLevel(Application.loadedLevel);
+        if (levelRecord.requiredDiamonds != 0)
+        {
+            requiredDiamondCount = levelRecord.requiredDiamonds;
+            allDiamondCount = levelRecord.allDiamonds;
+        }
     }
  
 
@@ -51,7 +60,7 @@ public class GameHandlerScript : MonoBehaviour
                 isTimeUp = true;
             }
             
-            if (enemyCount <= 0 && collectedDiamondCount >= diamondCount)
+            if (enemyCount <= 0 && collectedDiamondCount >= requiredDiamondCount)
             {
                 gameState = GameState.POSTGAME;
             }
@@ -104,7 +113,9 @@ public class GameHandlerScript : MonoBehaviour
 
     public void createWinMenu()
     {
-        GameDataStorage.storage.setLevelRecord(Application.loadedLevel, (int)elapsedTime);
+        levelRecord.collectedDiamonds = collectedDiamondCount;
+        levelRecord.bestTime = elapsedTime;
+        GameDataStorage.storage.setLevelRecord(levelRecord);
 
         GUI.Box(GUIHelper.helper.getRectInTheMiddle(GUIHelper.helper.smallWindowWidht, GUIHelper.helper.smallWindowHeight), "Your winner!!!!4");
 
@@ -142,7 +153,6 @@ public class GameHandlerScript : MonoBehaviour
 
     void createPreGameMenu()
     {
-        LevelRecord levelRecord = GameDataStorage.storage.getLevelRecordForLevel(Application.loadedLevel);
 
         GUI.Box(GUIHelper.helper.getRectInTeTopMiddle(
             GUIHelper.helper.bigWindowWidht, GUIHelper.helper.bigWindowHeight,40), levelRecord.levelName);
