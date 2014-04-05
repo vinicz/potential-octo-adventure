@@ -45,7 +45,7 @@ public class CameraAccelometerController : MonoBehaviour
             zRotation = 360 - maxRotationAngle;
         }
         Quaternion fixedYRotation = Quaternion.Euler(xRotation, 0, zRotation);
-        this.transform.rotation = Quaternion.Lerp(this.transform.rotation, fixedYRotation * initialCameraOrientation, Time.deltaTime);
+        this.transform.rotation = Quaternion.Lerp(this.transform.rotation, fixedYRotation * initialCameraOrientation, Time.deltaTime*10);
        
     }
 }
