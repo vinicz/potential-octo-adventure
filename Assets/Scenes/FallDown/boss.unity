@@ -363,7 +363,7 @@ Transform:
   m_PrefabInternal: {fileID: 1253901939}
   m_GameObject: {fileID: 33233571}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.1485786, y: 5.17124844, z: -3.12281227}
+  m_LocalPosition: {x: 22.5226059, y: 3.98492336, z: -5.45098734}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 514640118}
@@ -1456,6 +1456,24 @@ MonoBehaviour:
     timeToAward: 0
     isLevelCompleted: 0
     isMultiplayer: 0
+  - levelName: level-20
+    levelGroup: diamond
+    collectedDiamonds: 0
+    allDiamonds: 4
+    requiredDiamonds: 4
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+    isMultiplayer: 0
+  - levelName: level-30
+    levelGroup: diamond
+    collectedDiamonds: 0
+    allDiamonds: 6
+    requiredDiamonds: 6
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+    isMultiplayer: 0
   - levelName: DiamondHill
     levelGroup: diamond
     collectedDiamonds: 0
@@ -1947,6 +1965,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1773622313}
+  - {fileID: 692188582}
   m_Father: {fileID: 1212153030}
 --- !u!114 &218784682
 MonoBehaviour:
@@ -3935,9 +3954,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdcc3e21f231e614bb6a6eb76b53ba4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameHandler: {fileID: 0}
+  gameHandler: {fileID: 747339113}
   killPlayer: 1
-  killEnemy: 1
+  killEnemy: 0
 --- !u!65 &614423597
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4737,6 +4756,32 @@ Prefab:
   m_RootGameObject: {fileID: 1980160206}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &692188581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100014, guid: 8b51198cf03caae498dadc846903bf1b, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 692188582}
+  m_Layer: 0
+  m_Name: FinalCameraPosition
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &692188582
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400014, guid: 8b51198cf03caae498dadc846903bf1b, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 692188581}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: -25.913969}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 218784681}
 --- !u!1 &694667757
 GameObject:
   m_ObjectHideFlags: 0
@@ -10090,7 +10135,7 @@ Transform:
   m_PrefabInternal: {fileID: 1574028970}
   m_GameObject: {fileID: 1220135479}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.0146599, y: 5.17124844, z: 1.83995819}
+  m_LocalPosition: {x: 22.0393066, y: 4.09523296, z: 3.49414253}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 514640118}
@@ -10387,15 +10432,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 799310f6aeb5cc3469cbc9d41736bc51, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 21.1485786
+      value: 22.5226059
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 799310f6aeb5cc3469cbc9d41736bc51, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 5.17124844
+      value: 3.98492336
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 799310f6aeb5cc3469cbc9d41736bc51, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -3.12281227
+      value: -5.45098734
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 799310f6aeb5cc3469cbc9d41736bc51, type: 2}
       propertyPath: m_LocalRotation.x
@@ -13791,15 +13836,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 799310f6aeb5cc3469cbc9d41736bc51, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 21.0146599
+      value: 22.0393066
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 799310f6aeb5cc3469cbc9d41736bc51, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 5.17124844
+      value: 4.09523296
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 799310f6aeb5cc3469cbc9d41736bc51, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 1.83995819
+      value: 3.49414253
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 799310f6aeb5cc3469cbc9d41736bc51, type: 2}
       propertyPath: m_LocalRotation.x
@@ -16060,6 +16105,7 @@ GameObject:
   - 92: {fileID: 1773622316}
   - 124: {fileID: 1773622315}
   - 81: {fileID: 1773622314}
+  - 114: {fileID: 1773622318}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -16073,8 +16119,8 @@ Transform:
   m_PrefabParentObject: {fileID: 400014, guid: 8b51198cf03caae498dadc846903bf1b, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1773622312}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 7.25513246e-07, z: -25.9139614}
+  m_LocalRotation: {x: .441025674, y: -.441025645, z: .552717328, w: -.552717328}
+  m_LocalPosition: {x: -9.43352127, y: 1.7731229e-06, z: -17.1259727}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 218784681}
@@ -16132,6 +16178,21 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_HDR: 0
   m_OcclusionCulling: 1
+--- !u!114 &1773622318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1773622312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 686bb6cc06f36724a8b1bd6245a81cfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finalTransform: {fileID: 692188582}
+  followTarget: {fileID: 760459483}
+  folllowTargetOffset: 7
+  changeCameraTime: 4
 --- !u!1001 &1782053304
 Prefab:
   m_ObjectHideFlags: 0
@@ -17404,7 +17465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   printAccelometerInfo: 0
-  speed: {x: 30, y: 30, z: 30}
+  speed: {x: 300, y: 300, z: 300}
   initialAcceleration: {x: 0, y: 0, z: -1}
   accelerationStrength: 2
 --- !u!114 &1910376241
@@ -18368,7 +18429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdcc3e21f231e614bb6a6eb76b53ba4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameHandler: {fileID: 0}
+  gameHandler: {fileID: 747339113}
   killPlayer: 1
   killEnemy: 1
 --- !u!65 &1980360158

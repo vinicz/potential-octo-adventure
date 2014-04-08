@@ -15,12 +15,15 @@ public class TargetTransformAnimator : MonoBehaviour {
         {
             this.transform.position = new Vector3(this.transform.position.x,followTarget.transform.position.y+folllowTargetOffset,this.transform.position.z);
             this.transform.LookAt(followTarget.transform.position);
+
+            changeCameraTime -= Time.deltaTime;
+
         } else
         {
             this.transform.position = Vector3.Lerp(this.transform.position, finalTransform.position, Time.deltaTime);
             this.transform.rotation = Quaternion.Lerp(this.transform.rotation, finalTransform.rotation, Time.deltaTime);
         }
 
-        changeCameraTime -= Time.deltaTime;
+      
 	}
 }
