@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -81,12 +81,12 @@ public class MainMenuScript : MonoBehaviour
 
 
         int row = 0;
-        foreach (string levelGroup in GameDataStorage.storage.getLevelGroups())
+        foreach (string levelGroup in FileLevelDataStorage.storage.getLevelGroups())
         {
             GUI.Label(GUIHelper.helper.getRectForNormalButton(100,50+row*GUIHelper.helper.getLineSize()),levelGroup);
 
             int column = 0;
-            foreach (LevelRecord level in GameDataStorage.storage.getLevelsInGroup(levelGroup))
+            foreach (LevelRecord level in FileLevelDataStorage.storage.getLevelsInGroup(levelGroup))
             {
 
                 string levelName = (level.isLevelCompleted? "*":"") + level.levelName;
@@ -120,7 +120,7 @@ public class MainMenuScript : MonoBehaviour
     private void showMultiplayerMenu()
     {
       
-        foreach (LevelRecord level in GameDataStorage.storage.getMultiplayerLevels())
+        foreach (LevelRecord level in FileLevelDataStorage.storage.getMultiplayerLevels())
         {
             if (GUI.Button(GUIHelper.helper.getRectForNormalButton(200,50), level.levelName))
             {

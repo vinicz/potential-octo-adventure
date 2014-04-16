@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class WorldWindow : MonoBehaviour
@@ -17,7 +17,7 @@ public class WorldWindow : MonoBehaviour
         int collectedDiamonds = 0;
         int allDiamonds = 0;
 
-        foreach (LevelRecord level in GameDataStorage.storage.getLevelsInGroup(wordName))
+        foreach (LevelRecord level in FileLevelDataStorage.storage.getLevelsInGroup(wordName))
         {
             levelItem.createLevelItem(parentGrid.gameObject, level, this.gameObject);
             collectedDiamonds += level.collectedDiamonds;
