@@ -16,7 +16,8 @@ public class LevelServiceTest
     public void setUp()
     {
         setupLevelDataStorage();
-        itemService = new ItemService();
+        setupItemsService();
+
 
         setupLevelService();
         wireAndStartLevelService();
@@ -257,6 +258,14 @@ public class LevelServiceTest
         levelRecordList.AddRange(generateCompleteWorld(1, 1234));
         
         levelStorage.levelList = levelRecordList;
+    }
+
+    void setupItemsService()
+    {
+        itemService = new ItemService();
+        itemService.diamondsToTokenCount = 50;
+        itemService.itemStorage = new MemoryItemStorage();
+        itemService.Start();
     }
 
     void wireAndStartLevelService()
