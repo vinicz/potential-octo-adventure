@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class LevelItem : MonoBehaviour {
@@ -12,7 +12,7 @@ public class LevelItem : MonoBehaviour {
     {
         levelName.text = level.levelName;
         levelInfo.text = "Best time: "+level.bestTime.ToString("0.00");
-        levelInfo.text += "\nDiamonds: "+level.collectedDiamonds+"/"+level.allDiamonds;
+        levelInfo.text += "\nDiamonds: " + level.collectedRewards + "/3";
 
         createLevelButton(level, currentWindow);
 

@@ -3,23 +3,29 @@ using System.Collections;
 
 public class MemoryItemStorage : ItemStorage {
 
-    int diamondCount = 0;
+    int rewardCount = 0;
     int tokenCount = 0;
 
-    public override void addDiamonds(int diamonds)
+    public override void addRewards(int rewards)
     {
-        diamondCount += diamonds;
+        rewardCount += rewards;
     }
 
-    public override int getDiamondCount()
+    public override int getRewardCount()
     {
-        return diamondCount;
+        return rewardCount;
     }
 
     public override void addTokens(int tokens)
     {
         tokenCount += tokens;
     }
+
+    public override void removeTokens(int tokens)
+    {
+        tokenCount -= tokens;
+    }
+
 
     public override int getTokenCount()
     {

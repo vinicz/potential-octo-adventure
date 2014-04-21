@@ -32,7 +32,7 @@ public class LevelingRulesGenerator
             
             foreach (LevelRecord level in levelsInWorld)
             {
-                if(levelTypeCounter==1)
+                if(levelTypeCounter==1 || level.isMultiplayer)
                 {
                     level.setRequiredDiamonds(0);
                 }

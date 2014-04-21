@@ -1,39 +1,81 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ItemService : MonoBehaviour
 {
-
     public ItemStorage itemStorage;
-    public int diamondsToTokenCount = 50;
-    private int diamondCount;
+    public IAPService iapService;
+    public int rewardsToTokenCount = 50;
+    private int rewardCount;
     private int tokenCount;
 
     public void Start()
     {  
-        diamondCount = itemStorage.getDiamondCount();
-        tokenCount = itemStorage.getTokenCount();
+        refreshItems();
+        iapService.PurchaseCompletedSuccesfully += purchaseCompletedSuccesfully;
+        iapService.PurchaseFailed += purchaseFailed;;
     }
 
-    public void addDiamonds(int diamonds)
+    public void addRewards(int rewards)
     {
-        int newDiamondCount = diamondCount + diamonds;
-        int addedTokenCount = newDiamondCount / diamondsToTokenCount - diamondCount / diamondsToTokenCount;
+        int newRewardCount = rewardCount + rewards;
+        int addedTokenCount = newRewardCount / rewardsToTokenCount - rewardCount / rewardsToTokenCount;
 
         tokenCount += addedTokenCount;
-        diamondCount = newDiamondCount;
+        rewardCount = newRewardCount;
 
-        itemStorage.addDiamonds(diamonds);
+        itemStorage.addRewards(rewards);
         itemStorage.addTokens(addedTokenCount);
     }
 
-    public int getDiamondCount()
+    public int getRewardCount()
     {
-        return diamondCount;
+        return rewardCount;
     }
 
     public int getTokenCount()
     {
         return tokenCount;
+    }
+
+    public void spendTokens(int spentTokenCount)
+    {
+        if (tokenCount >= spentTokenCount)
+        {
+            itemStorage.removeTokens(spentTokenCount);
+            refreshItems();
+
+        } else
+        {
+            throw new NotEnoughTokensException();
+        }
+    }
+
+    public void buyIAPProduct(string productId)
+    {
+        iapService.buyProduct(productId);
+    }
+
+    public List<IAPProduct> getIAPProducts()
+    {
+        return iapService.getProducts();
+    }
+
+    void purchaseCompletedSuccesfully()
+    {
+        refreshItems();
+    }
+
+    void purchaseFailed()
+    {
+        refreshItems();
+        throw new NotEnoughTokensException();
+    }
+
+    void refreshItems()
+    {
+        rewardCount = itemStorage.getRewardCount();
+        tokenCount = itemStorage.getTokenCount();
     }
 }

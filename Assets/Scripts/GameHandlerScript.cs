@@ -5,8 +5,7 @@ public class GameHandlerScript : MonoBehaviour
 {
 
     public int ballCount;
-    public int requiredDiamondCount;
-    public int allDiamondCount;
+   
     public int enemyCount;
     public GUISkin guiSkin;
     public float gameTimeLeft;
@@ -20,6 +19,9 @@ public class GameHandlerScript : MonoBehaviour
         POSTGAME}
     ;
 
+    const string DIAMOND_TAG_NAME = "Diamond";
+
+    protected int requiredDiamondCount;
     protected int collectedDiamondCount;
     protected float elapsedTime = 0;
     protected bool isTimeUp;
@@ -34,11 +36,7 @@ public class GameHandlerScript : MonoBehaviour
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
         levelRecord = GameServiceLayer.serviceLayer.levelService.getLevelRecordForScene(Application.loadedLevel);
-        if (levelRecord.allDiamonds != 0)
-        {
-            requiredDiamondCount = levelRecord.allDiamonds;
-            allDiamondCount = levelRecord.allDiamonds;
-        }
+        requiredDiamondCount = GameObject.FindGameObjectsWithTag(DIAMOND_TAG_NAME).Length;
     }
 
     protected virtual void Update()
@@ -122,7 +120,7 @@ public class GameHandlerScript : MonoBehaviour
             GUIHelper.helper.buttonWidth, GUIHelper.helper.buttonHeight, GUIHelper.helper.originalHeight / 2.0f - GUIHelper.helper.getLineSize() * 2),
             "Next level"))
         {
-            //Application.LoadLevel(GameServiceLayer.serviceLayer.levelService.getNextLevel(Application.loadedLevel));
+            Application.LoadLevel(GameServiceLayer.serviceLayer.levelService.getNextLevelSceneIndex(Application.loadedLevel));
         }
 
         createEndGameMenu();

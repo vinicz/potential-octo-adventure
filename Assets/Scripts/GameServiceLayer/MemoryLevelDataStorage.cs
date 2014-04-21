@@ -15,9 +15,8 @@ public class MemoryLevelDataStorage : LevelDataStorage
         {
             LevelRecord newLevelRecord = new LevelRecord(level.getLevelIndex(), level.levelName, level.levelGroup, 
                                                          level.timeToAward, level.isMultiplayer);
-            newLevelRecord.allDiamonds = level.allDiamonds;
             newLevelRecord.bestTime = level.bestTime;
-            newLevelRecord.collectedDiamonds = level.collectedDiamonds;
+            newLevelRecord.collectedRewards = level.collectedRewards;
             newLevelRecord.isLevelCompleted = level.isLevelCompleted;
             levelList.Add(newLevelRecord);
         }

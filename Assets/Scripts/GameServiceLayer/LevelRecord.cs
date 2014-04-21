@@ -14,13 +14,12 @@ public class LevelRecord
 
 
     private int levelIndex;
-    private int requiredDiamonds;
+    private int requiredRewards;
     public string levelName;
     public string levelGroup;
     public LevelType levelType = LevelType.NORMAL;
     public bool isMultiplayer;
-    public int collectedDiamonds;
-    public int allDiamonds;
+    public int collectedRewards;
     public float bestTime;
     public Vector2 timeToAward;
     public bool isLevelCompleted = false;
@@ -50,11 +49,11 @@ public class LevelRecord
 
     public int getRequiredDiamonds()
     {
-        return requiredDiamonds;
+        return requiredRewards;
     }
   
     public void setRequiredDiamonds(int reqDiamonds)
     {
-        requiredDiamonds = reqDiamonds;
+        requiredRewards = reqDiamonds;
     }
 }

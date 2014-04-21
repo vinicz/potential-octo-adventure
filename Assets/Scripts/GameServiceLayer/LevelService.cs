@@ -35,6 +35,11 @@ public class LevelService : MonoBehaviour
         return (from level in levelList where level.levelGroup != "" select level.levelGroup).Distinct();  
     }
 
+    public IEnumerable<LevelRecord> getMultiplayerLevels()
+    {
+        return (from level in levelList where level.isMultiplayer == true select level);
+    }
+
     public IEnumerable<LevelRecord> getLevelsInWorld(string worldName)
     {
         return (from level in levelList where level.levelGroup == worldName select level);
@@ -57,22 +62,22 @@ public class LevelService : MonoBehaviour
     public void setLevelResult(int sceneIndex, float elapsedTime)
     {
         LevelRecord currentLevel = getLevelRecordForScene(sceneIndex);
-        float twoDiamondTreshold = currentLevel.timeToAward.x;
-        float threeDiamondTreshold = currentLevel.timeToAward.y;
-        int collectedDiamonds = 1;
+        float twoRewardTreshold = currentLevel.timeToAward.x;
+        float threeRewardTreshold = currentLevel.timeToAward.y;
+        int collectedRewards = 1;
 
-        if (elapsedTime <= twoDiamondTreshold)
+        if (elapsedTime <= twoRewardTreshold)
         {
-            collectedDiamonds++;
+            collectedRewards++;
         }
-        if (elapsedTime <= threeDiamondTreshold)
+        if (elapsedTime <= threeRewardTreshold)
         {
-            collectedDiamonds++;
+            collectedRewards++;
         }
 
-        if (collectedDiamonds > currentLevel.collectedDiamonds)
+        if (collectedRewards > currentLevel.collectedRewards)
         {
-            int newDiamonds = collectedDiamonds - currentLevel.collectedDiamonds;
+            int newDiamonds = collectedRewards - currentLevel.collectedRewards;
             int rewardMultiplier = 1;
 
             switch (currentLevel.levelType)
@@ -85,10 +90,10 @@ public class LevelService : MonoBehaviour
                     break;
             }
 
-            itemService.addDiamonds(newDiamonds*rewardMultiplier);
+            itemService.addRewards(newDiamonds * rewardMultiplier);
         }
 
-        currentLevel.collectedDiamonds = collectedDiamonds;
+        currentLevel.collectedRewards = collectedRewards;
 
         levelStorage.saveLevelList(levelList);
     }
@@ -96,6 +101,25 @@ public class LevelService : MonoBehaviour
     public int getMainMenuIndex()
     {
         return levelListOffset;
+    }
+
+    public int getNextLevelSceneIndex(int currentSceneIndex)
+    {
+        int nextLevelIndex = currentSceneIndex - levelListOffset + 1;
+        int nextLevelSceneIndex = getMainMenuIndex();
+
+        if (levelList.Count > nextLevelIndex)
+        {
+            LevelRecord nextLevel = levelList [nextLevelIndex];
+            nextLevelSceneIndex = nextLevel.getLevelIndex();
+            
+            if (nextLevel.isMultiplayer)
+            {
+                nextLevelSceneIndex = getMainMenuIndex();
+            }
+        }
+
+        return nextLevelSceneIndex;
     }
 
     private void mergeLevelChanges(List<LevelRecord> persistedList)
@@ -108,7 +132,7 @@ public class LevelService : MonoBehaviour
                 {
                     level.bestTime = persistedLevel.bestTime;
                     level.isLevelCompleted = persistedLevel.isLevelCompleted;
-                    level.collectedDiamonds = persistedLevel.collectedDiamonds;
+                    level.collectedRewards = persistedLevel.collectedRewards;
                 }
             }
         } 
