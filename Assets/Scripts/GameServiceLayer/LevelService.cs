@@ -93,6 +93,11 @@ public class LevelService : MonoBehaviour
         levelStorage.saveLevelList(levelList);
     }
 
+    public int getMainMenuIndex()
+    {
+        return levelListOffset;
+    }
+
     private void mergeLevelChanges(List<LevelRecord> persistedList)
     {
         foreach (LevelRecord level in levelList)

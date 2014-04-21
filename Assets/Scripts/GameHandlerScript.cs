@@ -33,7 +33,7 @@ public class GameHandlerScript : MonoBehaviour
         gameState = GameState.PREGAME;
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-        levelRecord = FileLevelDataStorage.storage.getLevelRecordForLevel(Application.loadedLevel);
+        levelRecord = GameServiceLayer.serviceLayer.levelService.getLevelRecordForScene(Application.loadedLevel);
         if (levelRecord.allDiamonds != 0)
         {
             requiredDiamondCount = levelRecord.allDiamonds;
@@ -44,7 +44,7 @@ public class GameHandlerScript : MonoBehaviour
     protected virtual void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            Application.LoadLevel(FileLevelDataStorage.storage.getMainMenuIndex()); 
+            Application.LoadLevel(GameServiceLayer.serviceLayer.levelService.getMainMenuIndex()); 
         
         if (gameState == GameState.GAME)
         {
@@ -112,9 +112,9 @@ public class GameHandlerScript : MonoBehaviour
 
     public void createWinMenu()
     {
-        levelRecord.collectedDiamonds = collectedDiamondCount;
-        levelRecord.bestTime = elapsedTime;
-        FileLevelDataStorage.storage.setLevelRecord(levelRecord);
+        //levelRecord.collectedDiamonds = collectedDiamondCount;
+        //levelRecord.bestTime = elapsedTime;
+        GameServiceLayer.serviceLayer.levelService.setLevelResult(Application.loadedLevel,elapsedTime);
 
         GUI.Box(GUIHelper.helper.getRectInTheMiddle(GUIHelper.helper.smallWindowWidht, GUIHelper.helper.smallWindowHeight), "Your winner!!!!4");
 
@@ -122,7 +122,7 @@ public class GameHandlerScript : MonoBehaviour
             GUIHelper.helper.buttonWidth, GUIHelper.helper.buttonHeight, GUIHelper.helper.originalHeight / 2.0f - GUIHelper.helper.getLineSize() * 2),
             "Next level"))
         {
-            Application.LoadLevel(FileLevelDataStorage.storage.getNextLevel(Application.loadedLevel));
+            //Application.LoadLevel(GameServiceLayer.serviceLayer.levelService.getNextLevel(Application.loadedLevel));
         }
 
         createEndGameMenu();
@@ -146,7 +146,7 @@ public class GameHandlerScript : MonoBehaviour
         if (GUI.Button(GUIHelper.helper.getRectInTeTopMiddle(
             GUIHelper.helper.buttonWidth, GUIHelper.helper.buttonHeight, GUIHelper.helper.originalHeight / 2.0f), "Back to Main Menu"))
         {
-            Application.LoadLevel(FileLevelDataStorage.storage.getMainMenuIndex());
+            Application.LoadLevel(GameServiceLayer.serviceLayer.levelService.getMainMenuIndex());
         }
     }
 
