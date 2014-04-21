@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class WorldListWindow : MonoBehaviour
@@ -11,7 +11,7 @@ public class WorldListWindow : MonoBehaviour
     void Start()
     {
         
-        foreach (string world in GameDataStorage.storage.getLevelGroups())
+        foreach (string world in GameServiceLayer.serviceLayer.levelService.getSinglePlayerWorldNames())
         {
             worldItem.createWorldItem(parentGrid.gameObject, world, this.gameObject);
         }

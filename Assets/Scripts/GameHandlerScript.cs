@@ -1,12 +1,11 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class GameHandlerScript : MonoBehaviour
 {
 
     public int ballCount;
-    public int requiredDiamondCount;
-    public int allDiamondCount;
+   
     public int enemyCount;
     public GUISkin guiSkin;
     public float gameTimeLeft;
@@ -20,6 +19,9 @@ public class GameHandlerScript : MonoBehaviour
         POSTGAME}
     ;
 
+    const string DIAMOND_TAG_NAME = "Diamond";
+
+    protected int requiredDiamondCount;
     protected int collectedDiamondCount;
     protected float elapsedTime = 0;
     protected bool isTimeUp;
@@ -33,19 +35,14 @@ public class GameHandlerScript : MonoBehaviour
         gameState = GameState.PREGAME;
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-        levelRecord = GameDataStorage.storage.getLevelRecordForLevel(Application.loadedLevel);
-        if (levelRecord.requiredDiamonds != 0)
-        {
-            requiredDiamondCount = levelRecord.requiredDiamonds;
-            allDiamondCount = levelRecord.allDiamonds;
-        }
+        levelRecord = GameServiceLayer.serviceLayer.levelService.getLevelRecordForScene(Application.loadedLevel);
+        requiredDiamondCount = GameObject.FindGameObjectsWithTag(DIAMOND_TAG_NAME).Length;
     }
- 
 
     protected virtual void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            Application.LoadLevel(GameDataStorage.storage.getMainMenuIndex()); 
+            Application.LoadLevel(GameServiceLayer.serviceLayer.levelService.getMainMenuIndex()); 
         
         if (gameState == GameState.GAME)
         {
@@ -113,9 +110,9 @@ public class GameHandlerScript : MonoBehaviour
 
     public void createWinMenu()
     {
-        levelRecord.collectedDiamonds = collectedDiamondCount;
-        levelRecord.bestTime = elapsedTime;
-        GameDataStorage.storage.setLevelRecord(levelRecord);
+        //levelRecord.collectedDiamonds = collectedDiamondCount;
+        //levelRecord.bestTime = elapsedTime;
+        GameServiceLayer.serviceLayer.levelService.setLevelResult(Application.loadedLevel,elapsedTime);
 
         GUI.Box(GUIHelper.helper.getRectInTheMiddle(GUIHelper.helper.smallWindowWidht, GUIHelper.helper.smallWindowHeight), "Your winner!!!!4");
 
@@ -123,7 +120,7 @@ public class GameHandlerScript : MonoBehaviour
             GUIHelper.helper.buttonWidth, GUIHelper.helper.buttonHeight, GUIHelper.helper.originalHeight / 2.0f - GUIHelper.helper.getLineSize() * 2),
             "Next level"))
         {
-            Application.LoadLevel(GameDataStorage.storage.getNextLevel(Application.loadedLevel));
+            Application.LoadLevel(GameServiceLayer.serviceLayer.levelService.getNextLevelSceneIndex(Application.loadedLevel));
         }
 
         createEndGameMenu();
@@ -147,7 +144,7 @@ public class GameHandlerScript : MonoBehaviour
         if (GUI.Button(GUIHelper.helper.getRectInTeTopMiddle(
             GUIHelper.helper.buttonWidth, GUIHelper.helper.buttonHeight, GUIHelper.helper.originalHeight / 2.0f), "Back to Main Menu"))
         {
-            Application.LoadLevel(GameDataStorage.storage.getMainMenuIndex());
+            Application.LoadLevel(GameServiceLayer.serviceLayer.levelService.getMainMenuIndex());
         }
     }
 
@@ -155,9 +152,9 @@ public class GameHandlerScript : MonoBehaviour
     {
 
         GUI.Box(GUIHelper.helper.getRectInTeTopMiddle(
-            GUIHelper.helper.bigWindowWidht, GUIHelper.helper.bigWindowHeight,40), levelRecord.levelName);
+            GUIHelper.helper.bigWindowWidht, GUIHelper.helper.bigWindowHeight, 40), levelRecord.levelName);
         GUI.Label(new Rect(200, 70, 600, 30), 
-            "Completed: " + levelRecord.isLevelCompleted + " Best time: " + levelRecord.bestTime + " Time to award: " + levelRecord.timeToAward);
+            "Completed: " + levelRecord.isLevelCompleted + " Best time: " + levelRecord.bestTime );
         GUI.Label(new Rect(200, 110, 600, 300), preGameString);
         if (GUI.Button(GUIHelper.helper.getRectInTeBottomMiddle(
             GUIHelper.helper.buttonWidth, GUIHelper.helper.buttonHeight, 70), "Start"))

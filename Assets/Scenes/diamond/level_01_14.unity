@@ -375,6 +375,46 @@ Prefab:
   m_RootGameObject: {fileID: 614866240}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1001 &70732791
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400008, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -8.95287418
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.76329851
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 23.5048637
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+  m_RootGameObject: {fileID: 527923429}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &72627854
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,6 +749,46 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1514011930}
   m_GameObject: {fileID: 251781887}
   m_Mesh: {fileID: 4300000, guid: 879dd62cbfd65314d812354e257fc5cc, type: 3}
+--- !u!1 &303221471
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+  m_PrefabInternal: {fileID: 70732791}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 303221473}
+  - 114: {fileID: 303221472}
+  m_Layer: 0
+  m_Name: LevelStorage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &303221472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: bb7bc9d97cee2fa4eb940a54aa98d920,
+    type: 2}
+  m_PrefabInternal: {fileID: 70732791}
+  m_GameObject: {fileID: 303221471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74e7a099565242a4091a7da34645dcc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelList: []
+--- !u!4 &303221473
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+  m_PrefabInternal: {fileID: 70732791}
+  m_GameObject: {fileID: 303221471}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 527923431}
 --- !u!1 &310945084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,6 +1205,52 @@ Prefab:
   m_RootGameObject: {fileID: 1340261778}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &527923429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100008, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+  m_PrefabInternal: {fileID: 70732791}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 527923431}
+  - 114: {fileID: 527923430}
+  m_Layer: 0
+  m_Name: GameServiceLayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &527923430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: bb7bc9d97cee2fa4eb940a54aa98d920,
+    type: 2}
+  m_PrefabInternal: {fileID: 70732791}
+  m_GameObject: {fileID: 527923429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c7350002089da843b9dec6cdf1f4c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameMaster: {fileID: 0}
+  levelService: {fileID: 1631192811}
+  itemService: {fileID: 2079881874}
+--- !u!4 &527923431
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400008, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+  m_PrefabInternal: {fileID: 70732791}
+  m_GameObject: {fileID: 527923429}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.95287418, y: 2.76329851, z: 23.5048637}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 303221473}
+  - {fileID: 1631192812}
+  - {fileID: 2079881875}
+  - {fileID: 1600950731}
+  m_Father: {fileID: 0}
 --- !u!1 &528539612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1757,354 +1883,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1514011930}
   m_GameObject: {fileID: 673013190}
   m_Mesh: {fileID: 4300000, guid: 879dd62cbfd65314d812354e257fc5cc, type: 3}
---- !u!1 &676939653
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100000, guid: 856bc30960f34204cb172acdb8428a7a, type: 2}
-  m_PrefabInternal: {fileID: 875446381}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 676939655}
-  - 114: {fileID: 676939654}
-  m_Layer: 0
-  m_Name: GameDataStorage
-  m_TagString: Untagged
-  m_Icon: {fileID: -2065832391, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &676939654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: 856bc30960f34204cb172acdb8428a7a,
-    type: 2}
-  m_PrefabInternal: {fileID: 875446381}
-  m_GameObject: {fileID: 676939653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d83cbcb7d2bfe4341bdc686fffade5ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  file: /ballthazar.dat
-  levelListOffset: 1
-  levelList:
-  - levelName: mainMenu
-    levelGroup: 
-    collectedDiamonds: 0
-    allDiamonds: 0
-    requiredDiamonds: 0
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: level-01
-    levelGroup: diamond
-    collectedDiamonds: 0
-    allDiamonds: 1
-    requiredDiamonds: 1
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: level-02
-    levelGroup: diamond
-    collectedDiamonds: 0
-    allDiamonds: 1
-    requiredDiamonds: 1
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: level-03
-    levelGroup: diamond
-    collectedDiamonds: 0
-    allDiamonds: 1
-    requiredDiamonds: 1
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: level-04
-    levelGroup: diamond
-    collectedDiamonds: 0
-    allDiamonds: 1
-    requiredDiamonds: 1
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: level-05
-    levelGroup: diamond
-    collectedDiamonds: 0
-    allDiamonds: 4
-    requiredDiamonds: 4
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: level-06
-    levelGroup: diamond
-    collectedDiamonds: 0
-    allDiamonds: 2
-    requiredDiamonds: 2
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: level-07
-    levelGroup: diamond
-    collectedDiamonds: 0
-    allDiamonds: 2
-    requiredDiamonds: 2
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: level-08
-    levelGroup: diamond
-    collectedDiamonds: 0
-    allDiamonds: 4
-    requiredDiamonds: 4
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: level-09
-    levelGroup: diamond
-    collectedDiamonds: 0
-    allDiamonds: 5
-    requiredDiamonds: 5
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: level-10
-    levelGroup: diamond
-    collectedDiamonds: 0
-    allDiamonds: 3
-    requiredDiamonds: 3
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: level-11
-    levelGroup: diamond
-    collectedDiamonds: 0
-    allDiamonds: 3
-    requiredDiamonds: 3
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: level-12
-    levelGroup: diamond
-    collectedDiamonds: 0
-    allDiamonds: 2
-    requiredDiamonds: 2
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: level-13
-    levelGroup: diamond
-    collectedDiamonds: 0
-    allDiamonds: 4
-    requiredDiamonds: 4
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: level-14
-    levelGroup: diamond
-    collectedDiamonds: 0
-    allDiamonds: 4
-    requiredDiamonds: 4
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: DiamondHill
-    levelGroup: diamond
-    collectedDiamonds: 0
-    allDiamonds: 4
-    requiredDiamonds: 4
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: Gate
-    levelGroup: diamond
-    collectedDiamonds: 0
-    allDiamonds: 3
-    requiredDiamonds: 3
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: Lift
-    levelGroup: diamond
-    collectedDiamonds: 0
-    allDiamonds: 2
-    requiredDiamonds: 2
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: diamondTest
-    levelGroup: diamond
-    collectedDiamonds: 0
-    allDiamonds: 4
-    requiredDiamonds: 4
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: FallDown
-    levelGroup: falldown
-    collectedDiamonds: 0
-    allDiamonds: 2
-    requiredDiamonds: 2
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: FallDown2
-    levelGroup: falldown
-    collectedDiamonds: 0
-    allDiamonds: 2
-    requiredDiamonds: 2
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: FallDown3
-    levelGroup: falldown
-    collectedDiamonds: 0
-    allDiamonds: 3
-    requiredDiamonds: 3
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: FallDown4
-    levelGroup: falldown
-    collectedDiamonds: 0
-    allDiamonds: 4
-    requiredDiamonds: 4
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: FallDown5
-    levelGroup: falldown
-    collectedDiamonds: 0
-    allDiamonds: 2
-    requiredDiamonds: 2
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: FirstBoss
-    levelGroup: falldown
-    collectedDiamonds: 0
-    allDiamonds: 5
-    requiredDiamonds: 5
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: Dark1
-    levelGroup: dark
-    collectedDiamonds: 0
-    allDiamonds: 1
-    requiredDiamonds: 1
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: Dark2
-    levelGroup: dark
-    collectedDiamonds: 0
-    allDiamonds: 2
-    requiredDiamonds: 2
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: Dark3
-    levelGroup: dark
-    collectedDiamonds: 0
-    allDiamonds: 1
-    requiredDiamonds: 1
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: Dark4
-    levelGroup: dark
-    collectedDiamonds: 0
-    allDiamonds: 1
-    requiredDiamonds: 1
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: Dark6
-    levelGroup: dark
-    collectedDiamonds: 0
-    allDiamonds: 2
-    requiredDiamonds: 2
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: Dark8
-    levelGroup: dark
-    collectedDiamonds: 0
-    allDiamonds: 1
-    requiredDiamonds: 1
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: Dark10
-    levelGroup: dark
-    collectedDiamonds: 0
-    allDiamonds: 1
-    requiredDiamonds: 1
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: bowlingTest
-    levelGroup: bowling
-    collectedDiamonds: 0
-    allDiamonds: 0
-    requiredDiamonds: 0
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 0
-  - levelName: Football
-    levelGroup: 
-    collectedDiamonds: 0
-    allDiamonds: 0
-    requiredDiamonds: 0
-    bestTime: 9999
-    timeToAward: 0
-    isLevelCompleted: 0
-    isMultiplayer: 1
---- !u!4 &676939655
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400000, guid: 856bc30960f34204cb172acdb8428a7a, type: 2}
-  m_PrefabInternal: {fileID: 875446381}
-  m_GameObject: {fileID: 676939653}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.759256184, y: 13.5512447, z: -21.5695324}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
 --- !u!1 &677775876
 GameObject:
   m_ObjectHideFlags: 0
@@ -2569,46 +2347,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82b1e882a75582147952f278d70354ba, type: 2}
   m_RootGameObject: {fileID: 141599306}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
---- !u!1001 &875446381
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 856bc30960f34204cb172acdb8428a7a, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -.759256184
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 856bc30960f34204cb172acdb8428a7a, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 13.5512447
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 856bc30960f34204cb172acdb8428a7a, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -21.5695324
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 856bc30960f34204cb172acdb8428a7a, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 856bc30960f34204cb172acdb8428a7a, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 856bc30960f34204cb172acdb8428a7a, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 856bc30960f34204cb172acdb8428a7a, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 856bc30960f34204cb172acdb8428a7a, type: 2}
-  m_RootGameObject: {fileID: 676939653}
   m_IsPrefabParent: 0
   m_IsExploded: 1
 --- !u!1 &891666095
@@ -4501,8 +4239,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   printAccelometerInfo: 0
   speed: {x: 300, y: 300, z: 300}
-  initialAcceleration: {x: 0, y: -.300000012, z: -.699999988}
-  accelerationStrength: 2
+  initialAcceleration: {x: 0, y: -0, z: -1}
+  accelerationStrength: 1.5
 --- !u!114 &1367917373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4707,7 +4445,7 @@ Transform:
   m_PrefabInternal: {fileID: 1514011930}
   m_GameObject: {fileID: 1411550877}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .780021667, y: 1.0797348, z: .0298461914}
+  m_LocalPosition: {x: .780021667, y: 2.21340942, z: .0298461914}
   m_LocalScale: {x: 3.30545306, y: 1, z: 1.81574965}
   m_Children: []
   m_Father: {fileID: 1253530206}
@@ -5218,6 +4956,45 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1514011930}
   m_GameObject: {fileID: 1593338780}
   m_Mesh: {fileID: 4300000, guid: 879dd62cbfd65314d812354e257fc5cc, type: 3}
+--- !u!1 &1600950729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100004, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+  m_PrefabInternal: {fileID: 70732791}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1600950731}
+  - 114: {fileID: 1600950730}
+  m_Layer: 0
+  m_Name: ItemStorage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1600950730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: bb7bc9d97cee2fa4eb940a54aa98d920,
+    type: 2}
+  m_PrefabInternal: {fileID: 70732791}
+  m_GameObject: {fileID: 1600950729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cbb97ff9c91db142805513eda9c5ec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1600950731
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400004, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+  m_PrefabInternal: {fileID: 70732791}
+  m_GameObject: {fileID: 1600950729}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 527923431}
 --- !u!1001 &1601792528
 Prefab:
   m_ObjectHideFlags: 0
@@ -5298,8 +5075,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ed744274b13c04a8218b4200d79801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialAcceleration: {x: 0, y: -.300000012, z: -.699999988}
+  initialAcceleration: {x: 0, y: -0, z: -1}
   maxRotationAngle: 10
+--- !u!1 &1631192810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100002, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+  m_PrefabInternal: {fileID: 70732791}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1631192812}
+  - 114: {fileID: 1631192811}
+  m_Layer: 0
+  m_Name: LevelService
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1631192811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: bb7bc9d97cee2fa4eb940a54aa98d920,
+    type: 2}
+  m_PrefabInternal: {fileID: 70732791}
+  m_GameObject: {fileID: 1631192810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b7023e97a778c5498f78fbbf850aa27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelStorage: {fileID: 303221472}
+  itemService: {fileID: 2079881874}
+  levelList: []
+  levelListOffset: 1
+  worldPartSize: 15
+  stressLevelFrequency: 5
+  normalMapReward: 1
+  stressMapReward: 2
+  bossMapReward: 3
+  firstBossStepOffset: 0
+  bossStepOffset: 19
+--- !u!4 &1631192812
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400002, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+  m_PrefabInternal: {fileID: 70732791}
+  m_GameObject: {fileID: 1631192810}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 527923431}
 --- !u!1001 &1633062927
 Prefab:
   m_ObjectHideFlags: 0
@@ -6797,6 +6624,47 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1176162939}
+--- !u!1 &2079881873
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100006, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+  m_PrefabInternal: {fileID: 70732791}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2079881875}
+  - 114: {fileID: 2079881874}
+  m_Layer: 0
+  m_Name: ItemService
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2079881874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: bb7bc9d97cee2fa4eb940a54aa98d920,
+    type: 2}
+  m_PrefabInternal: {fileID: 70732791}
+  m_GameObject: {fileID: 2079881873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01efa4eeda13ef4aafb53ce7bdd53e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemStorage: {fileID: 1600950730}
+  diamondsToTokenCount: 50
+--- !u!4 &2079881875
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400006, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+  m_PrefabInternal: {fileID: 70732791}
+  m_GameObject: {fileID: 2079881873}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 527923431}
 --- !u!1 &2111903589
 GameObject:
   m_ObjectHideFlags: 0

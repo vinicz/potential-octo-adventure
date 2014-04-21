@@ -439,7 +439,7 @@ Transform:
   m_PrefabInternal: {fileID: 863196745}
   m_GameObject: {fileID: 400195527}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .780021667, y: 1.0797348, z: .0298461914}
+  m_LocalPosition: {x: .780021667, y: 2.21340942, z: .0298461914}
   m_LocalScale: {x: 3.30545306, y: 1, z: 1.81574965}
   m_Children: []
   m_Father: {fileID: 97896785}
@@ -977,6 +977,46 @@ Prefab:
   m_RootGameObject: {fileID: 1423175950}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &870630431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 870630433}
+  - 114: {fileID: 870630432}
+  m_Layer: 0
+  m_Name: GameServiceRegistry
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &870630432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 870630431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 921fd8330255a8c41811c71691fcde0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameMaster: {fileID: 0}
+  dataStorage: {fileID: 0}
+--- !u!4 &870630433
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 870630431}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.8329706, y: -26.6726036, z: 27.1733418}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &945931522
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,6 +1439,69 @@ MonoBehaviour:
     timeToAward: 0
     isLevelCompleted: 0
     isMultiplayer: 0
+  - levelName: level-15
+    levelGroup: diamond
+    collectedDiamonds: 0
+    allDiamonds: 5
+    requiredDiamonds: 5
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+    isMultiplayer: 0
+  - levelName: level-16
+    levelGroup: diamond
+    collectedDiamonds: 0
+    allDiamonds: 4
+    requiredDiamonds: 4
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+    isMultiplayer: 0
+  - levelName: level-17
+    levelGroup: diamond
+    collectedDiamonds: 0
+    allDiamonds: 4
+    requiredDiamonds: 4
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+    isMultiplayer: 0
+  - levelName: level-18
+    levelGroup: diamond
+    collectedDiamonds: 0
+    allDiamonds: 3
+    requiredDiamonds: 3
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+    isMultiplayer: 0
+  - levelName: level-19
+    levelGroup: diamond
+    collectedDiamonds: 0
+    allDiamonds: 3
+    requiredDiamonds: 3
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+    isMultiplayer: 0
+  - levelName: level-20
+    levelGroup: diamond
+    collectedDiamonds: 0
+    allDiamonds: 4
+    requiredDiamonds: 4
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+    isMultiplayer: 0
+  - levelName: level-30
+    levelGroup: diamond
+    collectedDiamonds: 0
+    allDiamonds: 6
+    requiredDiamonds: 6
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+    isMultiplayer: 0
   - levelName: DiamondHill
     levelGroup: diamond
     collectedDiamonds: 0
@@ -1480,6 +1583,24 @@ MonoBehaviour:
     timeToAward: 0
     isLevelCompleted: 0
     isMultiplayer: 0
+  - levelName: FallDown6
+    levelGroup: falldown
+    collectedDiamonds: 0
+    allDiamonds: 1
+    requiredDiamonds: 1
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+    isMultiplayer: 0
+  - levelName: FallDown7
+    levelGroup: falldown
+    collectedDiamonds: 0
+    allDiamonds: 4
+    requiredDiamonds: 4
+    bestTime: 9999
+    timeToAward: 0
+    isLevelCompleted: 0
+    isMultiplayer: 0
   - levelName: FirstBoss
     levelGroup: falldown
     collectedDiamonds: 0
@@ -1528,8 +1649,8 @@ MonoBehaviour:
   - levelName: Dark5
     levelGroup: dark
     collectedDiamonds: 0
-    allDiamonds: 2
-    requiredDiamonds: 2
+    allDiamonds: 3
+    requiredDiamonds: 3
     bestTime: 9999
     timeToAward: 0
     isLevelCompleted: 0
@@ -1914,7 +2035,7 @@ Transform:
   m_PrefabInternal: {fileID: 863196745}
   m_GameObject: {fileID: 1784380277}
   m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106829}
-  m_LocalPosition: {x: -11.184123, y: -13.9060278, z: 4.50170422}
+  m_LocalPosition: {x: -11.184123, y: -11.7392006, z: 8.22618961}
   m_LocalScale: {x: 1.71290624, y: 1.71290624, z: 1.71290624}
   m_Children: []
   m_Father: {fileID: 1423175951}
