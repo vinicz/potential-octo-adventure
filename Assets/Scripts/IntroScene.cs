@@ -24,15 +24,18 @@ public class IntroScene : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();
 
+		if (Input.touchCount > 0)
+			animationsOver = true;
+
 		if (animationsOver)
 		{
-			Application.LoadLevel(1);
+			Application.LoadLevel(2);
 		}
     }
 
 	public IEnumerator PlayAnimations()
 	{
-		yield return new WaitForSeconds(1.5f);
+		yield return new WaitForSeconds(0.5f);
 		spotlight1.SetActive (true);
 
 		yield return new WaitForSeconds(1f);
@@ -48,9 +51,9 @@ public class IntroScene : MonoBehaviour
 		muddictiveLogo.SetActive (true);
 		logoSound.SetActive (true);
 
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(2.5f);
 
-		Debug.Log ("switch off lights");
+		Debug.Log ("switching off lights");
 		logoSound.SetActive (false);
 		logoSound.SetActive (true);
 
@@ -60,7 +63,7 @@ public class IntroScene : MonoBehaviour
 		spotlight4.SetActive (false);
 		muddictiveLogo.SetActive (false);
 		
-		yield return new WaitForSeconds(0.5f);
+		//yield return new WaitForSeconds(0.5f);
 
 		animationsOver = true;
 	}
