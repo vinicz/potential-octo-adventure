@@ -10,7 +10,7 @@ public class ItemService : MonoBehaviour
     private int rewardCount;
     private int tokenCount;
 
-    public void Start()
+    public void Awake()
     {  
         refreshItems();
         iapService.PurchaseCompletedSuccesfully += purchaseCompletedSuccesfully;

@@ -161,7 +161,7 @@ public class ItemServiceTest
         testSubject.rewardsToTokenCount = 50;
         testSubject.itemStorage = itemStorage;
         testSubject.iapService = mockIAPService;
-        testSubject.Start();
+        testSubject.Awake();
     }
 
     void setupItemStorage()

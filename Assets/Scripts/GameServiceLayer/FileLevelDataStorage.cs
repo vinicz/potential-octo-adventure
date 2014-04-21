@@ -63,7 +63,7 @@ public class FileLevelDataStorage : LevelDataStorage
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(fullFilePath, FileMode.Open);
             
-            List<LevelRecord> persistedList = (List<LevelRecord>)bf.Deserialize(file);
+            levelList = (List<LevelRecord>)bf.Deserialize(file);
             file.Close();
             
         } else

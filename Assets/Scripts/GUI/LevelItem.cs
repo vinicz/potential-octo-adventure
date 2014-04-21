@@ -12,7 +12,8 @@ public class LevelItem : MonoBehaviour {
     {
         levelName.text = level.levelName;
         levelInfo.text = "Best time: "+level.bestTime.ToString("0.00");
-        levelInfo.text += "\nDiamonds: " + level.collectedRewards + "/3";
+        levelInfo.text += "\nExplosives: " + level.collectedRewards + "/3";
+        levelInfo.text += "\nRequirement: " + level.getRequiredRewards();
 
         createLevelButton(level, currentWindow);
 

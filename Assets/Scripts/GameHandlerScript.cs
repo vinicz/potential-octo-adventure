@@ -154,7 +154,7 @@ public class GameHandlerScript : MonoBehaviour
         GUI.Box(GUIHelper.helper.getRectInTeTopMiddle(
             GUIHelper.helper.bigWindowWidht, GUIHelper.helper.bigWindowHeight, 40), levelRecord.levelName);
         GUI.Label(new Rect(200, 70, 600, 30), 
-            "Completed: " + levelRecord.isLevelCompleted + " Best time: " + levelRecord.bestTime + " Time to award: " + levelRecord.timeToAward);
+            "Completed: " + levelRecord.isLevelCompleted + " Best time: " + levelRecord.bestTime );
         GUI.Label(new Rect(200, 110, 600, 300), preGameString);
         if (GUI.Button(GUIHelper.helper.getRectInTeBottomMiddle(
             GUIHelper.helper.buttonWidth, GUIHelper.helper.buttonHeight, 70), "Start"))

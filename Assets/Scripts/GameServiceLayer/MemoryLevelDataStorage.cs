@@ -14,7 +14,7 @@ public class MemoryLevelDataStorage : LevelDataStorage
         foreach (var level in levels)
         {
             LevelRecord newLevelRecord = new LevelRecord(level.getLevelIndex(), level.levelName, level.levelGroup, 
-                                                         level.timeToAward, level.isMultiplayer);
+                                                         level.timeToFirstReward,level.timeToSecondReward, level.isMultiplayer);
             newLevelRecord.bestTime = level.bestTime;
             newLevelRecord.collectedRewards = level.collectedRewards;
             newLevelRecord.isLevelCompleted = level.isLevelCompleted;

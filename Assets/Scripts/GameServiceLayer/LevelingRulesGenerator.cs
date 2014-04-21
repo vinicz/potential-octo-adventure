@@ -34,11 +34,11 @@ public class LevelingRulesGenerator
             {
                 if(levelTypeCounter==1 || level.isMultiplayer)
                 {
-                    level.setRequiredDiamonds(0);
+                    level.setRequiredRewards(0);
                 }
                 else
                 {
-                    level.setRequiredDiamonds(levelRequirement);
+                    level.setRequiredRewards(levelRequirement);
                 }
                 
                 if (levelTypeCounter == worldPartSize)
@@ -61,7 +61,7 @@ public class LevelingRulesGenerator
 
     private void generateRulesForBossLevel(LevelRecord level)
     {
-        level.levelType = LevelRecord.LevelType.BOSS;
+        level.setLevelType(LevelRecord.LevelType.BOSS);
         levelTypeCounter = 1;
         mediumLevelResults += 2 * bossMapReward;
 
@@ -80,7 +80,7 @@ public class LevelingRulesGenerator
 
     private void generateRulesForStressLevel(LevelRecord level)
     {
-        level.levelType = LevelRecord.LevelType.STRESS;
+        level.setLevelType(LevelRecord.LevelType.STRESS);
         levelTypeCounter++;
         levelRequirement += 2 * stressMapReward;
         mediumLevelResults += 2 * stressMapReward;

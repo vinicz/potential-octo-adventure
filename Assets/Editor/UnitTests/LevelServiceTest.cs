@@ -45,7 +45,7 @@ public class LevelServiceTest
         foreach (var level in levelsInTestWorld)
         {
             Assert.AreEqual(1234, level.collectedRewards);
-            Assert.AreEqual(new Vector2(30f, 20f), level.timeToAward);
+            Assert.AreEqual(30f, level.timeToFirstReward);
         }
     }
 
@@ -156,19 +156,19 @@ public class LevelServiceTest
                     LevelRecord currentLevel = testSubject.getLevelRecordForScene(sceneIndex);
                     bossLevelCounter = 1;
 
-                    Assert.AreEqual(LevelRecord.LevelType.BOSS, currentLevel.levelType);
+                    Assert.AreEqual(LevelRecord.LevelType.BOSS, currentLevel.getLevelType());
                 } else
                 {
                     LevelRecord currentLevel = testSubject.getLevelRecordForScene(sceneIndex);
 
-                    Assert.AreEqual(LevelRecord.LevelType.STRESS, currentLevel.levelType);
+                    Assert.AreEqual(LevelRecord.LevelType.STRESS, currentLevel.getLevelType());
                     bossLevelCounter++;
                 }
             } else
             {
                 LevelRecord currentLevel = testSubject.getLevelRecordForScene(sceneIndex);
 
-                Assert.AreEqual(LevelRecord.LevelType.NORMAL, currentLevel.levelType);
+                Assert.AreEqual(LevelRecord.LevelType.NORMAL, currentLevel.getLevelType());
             }
         }
     }
@@ -326,14 +326,14 @@ public class LevelServiceTest
         itemService.rewardsToTokenCount = 50;
         itemService.itemStorage = new MemoryItemStorage();
         itemService.iapService = new MockIAPService();
-        itemService.Start();
+        itemService.Awake();
     }
 
     void wireAndStartLevelService()
     {
         testSubject.levelStorage = levelStorage;
         testSubject.itemService = itemService;
-        testSubject.Start();
+        testSubject.Awake();
     }
 
     void setResultCheckCollectedDiamonds(int sceneIndex, float elapsedTime, int expectedDiamondCount)
@@ -341,6 +341,7 @@ public class LevelServiceTest
         testSubject.setLevelResult(sceneIndex, elapsedTime);
         LevelRecord testLevel = testSubject.getLevelRecordForScene(sceneIndex);
         Assert.AreEqual(expectedDiamondCount, testLevel.collectedRewards);
+        Assert.AreEqual(elapsedTime, testLevel.bestTime);
     }
 
     List<LevelRecord>  generateCompleteWorld(int worldId, int collectedDiamonds, bool isMultiplayer)
@@ -349,7 +350,8 @@ public class LevelServiceTest
 
         for (int i = 0; i < 90; i++)
         {
-            LevelRecord testLevelRecordWorld = new LevelRecord(Random.Range(0, 120), "test" + worldId + i, "world" + worldId, new Vector2(30f, 20f), isMultiplayer);
+            LevelRecord testLevelRecordWorld = new LevelRecord(Random.Range(0, 120), "test" + worldId + i, "world" + worldId,
+                                                               30f, 20f, isMultiplayer);
             testLevelRecordWorld.collectedRewards = collectedDiamonds;
             levelRecordList.Add(testLevelRecordWorld);
         }
@@ -359,7 +361,7 @@ public class LevelServiceTest
     void checkLevelReqirement(int sceneIndex, int expectedRequirement)
     {
         LevelRecord currentLevel = testSubject.getLevelRecordForScene(sceneIndex);
-        Assert.AreEqual(expectedRequirement, currentLevel.getRequiredDiamonds());
+        Assert.AreEqual(expectedRequirement, currentLevel.getRequiredRewards());
     }
 
     void checkLevelReward(int scheneIndex, int gameResult, int expectedDiamondReward)

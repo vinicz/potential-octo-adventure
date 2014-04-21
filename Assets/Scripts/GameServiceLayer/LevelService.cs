@@ -8,7 +8,6 @@ public class LevelService : MonoBehaviour
 
     public LevelDataStorage levelStorage;
     public ItemService itemService;
-    public List<LevelRecord> levelList;
     public int levelListOffset = 1;
     public int worldPartSize = 15;
     public int stressLevelFrequency = 5;
@@ -17,8 +16,9 @@ public class LevelService : MonoBehaviour
     public int bossMapReward = 3;
     public int firstBossStepOffset = 0;
     public int bossStepOffset = 19;
+    public List<LevelRecord> levelList;
 
-    public void Start()
+    public void Awake()
     {
         List<LevelRecord> persistedList = levelStorage.loadLevelList();
         mergeLevelChanges(persistedList);
@@ -62,8 +62,8 @@ public class LevelService : MonoBehaviour
     public void setLevelResult(int sceneIndex, float elapsedTime)
     {
         LevelRecord currentLevel = getLevelRecordForScene(sceneIndex);
-        float twoRewardTreshold = currentLevel.timeToAward.x;
-        float threeRewardTreshold = currentLevel.timeToAward.y;
+        float twoRewardTreshold = currentLevel.timeToFirstReward;
+        float threeRewardTreshold = currentLevel.timeToSecondReward;
         int collectedRewards = 1;
 
         if (elapsedTime <= twoRewardTreshold)
@@ -77,23 +77,16 @@ public class LevelService : MonoBehaviour
 
         if (collectedRewards > currentLevel.collectedRewards)
         {
-            int newDiamonds = collectedRewards - currentLevel.collectedRewards;
-            int rewardMultiplier = 1;
+            addNewRewardsToStorage(currentLevel,collectedRewards);
+        }
 
-            switch (currentLevel.levelType)
-            {
-                case LevelRecord.LevelType.STRESS:
-                    rewardMultiplier = 2;
-                    break;
-                case LevelRecord.LevelType.BOSS:
-                    rewardMultiplier = 3;
-                    break;
-            }
-
-            itemService.addRewards(newDiamonds * rewardMultiplier);
+        if (elapsedTime < currentLevel.bestTime || currentLevel.bestTime ==0)
+        {
+            currentLevel.bestTime = elapsedTime;
         }
 
         currentLevel.collectedRewards = collectedRewards;
+
 
         levelStorage.saveLevelList(levelList);
     }
@@ -120,6 +113,22 @@ public class LevelService : MonoBehaviour
         }
 
         return nextLevelSceneIndex;
+    }
+
+    private void addNewRewardsToStorage(LevelRecord currentLevel, int newCollectedRewards)
+    {
+        int newDiamonds = newCollectedRewards - currentLevel.collectedRewards;
+        int rewardMultiplier = 1;
+        switch (currentLevel.getLevelType())
+        {
+            case LevelRecord.LevelType.STRESS:
+                rewardMultiplier = 2;
+                break;
+            case LevelRecord.LevelType.BOSS:
+                rewardMultiplier = 3;
+                break;
+        }
+        itemService.addRewards(newDiamonds * rewardMultiplier);
     }
 
     private void mergeLevelChanges(List<LevelRecord> persistedList)
