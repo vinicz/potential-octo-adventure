@@ -18,7 +18,7 @@ public class LevelService : MonoBehaviour
     public int bossStepOffset = 19;
     public List<LevelRecord> levelList;
 
-    public void Awake()
+    public void Start()
     {
         List<LevelRecord> persistedList = levelStorage.loadLevelList();
         mergeLevelChanges(persistedList);

@@ -282,11 +282,6 @@ public class LevelServiceTest
 
 
 
-
-
-
-
-
     void setupLevelService()
     {
         testSubject = new LevelService();
@@ -333,7 +328,7 @@ public class LevelServiceTest
     {
         testSubject.levelStorage = levelStorage;
         testSubject.itemService = itemService;
-        testSubject.Awake();
+        testSubject.Start();
     }
 
     void setResultCheckCollectedDiamonds(int sceneIndex, float elapsedTime, int expectedDiamondCount)

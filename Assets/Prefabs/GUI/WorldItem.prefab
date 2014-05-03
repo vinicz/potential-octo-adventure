@@ -117,6 +117,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &100014
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400014}
+  - 114: {fileID: 11400022}
+  m_Layer: 0
+  m_Name: MapIcon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -124,7 +140,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: -5.6471896e-07, z: 0, w: 1}
-  m_LocalPosition: {x: -18.8266716, y: -30.7398491, z: -2.75417399}
+  m_LocalPosition: {x: 238.228836, y: -68.2958984, z: -2.7539072}
   m_LocalScale: {x: 27.9999714, y: 27.9999771, z: 1.00007641}
   m_Children: []
   m_Father: {fileID: 400002}
@@ -143,6 +159,7 @@ Transform:
   - {fileID: 400010}
   - {fileID: 400006}
   - {fileID: 400000}
+  - {fileID: 400014}
   m_Father: {fileID: 400012}
 --- !u!4 &400004
 Transform:
@@ -151,7 +168,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.42470551, y: 38.152092, z: -2.75439835}
+  m_LocalPosition: {x: -18.5733833, y: 76.1162949, z: -2.75399184}
   m_LocalScale: {x: 28.0000019, y: 27.9999981, z: 1}
   m_Children: []
   m_Father: {fileID: 400002}
@@ -162,7 +179,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.0902367, y: -31.3480358, z: -.000149129526}
+  m_LocalPosition: {x: 237.965179, y: -68.904068, z: .00027632594}
   m_LocalScale: {x: 70, y: 50, z: 1}
   m_Children: []
   m_Father: {fileID: 400002}
@@ -174,7 +191,7 @@ Transform:
   m_GameObject: {fileID: 100008}
   m_LocalRotation: {x: 0, y: 7.34667882e-09, z: 0, w: 1}
   m_LocalPosition: {x: 91.1426163, y: -6.53786483e-05, z: 8.02993309e-05}
-  m_LocalScale: {x: 333.865387, y: 130, z: 1}
+  m_LocalScale: {x: 379.791626, y: 192.795715, z: 1}
   m_Children: []
   m_Father: {fileID: 400002}
 --- !u!4 &400010
@@ -184,8 +201,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
   m_LocalRotation: {x: 0, y: -5.6471896e-07, z: 0, w: 1}
-  m_LocalPosition: {x: 140.179749, y: -16.0977268, z: -3.00008607}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalPosition: {x: 53.396965, y: -71.3519821, z: -2.99982214}
+  m_LocalScale: {x: 16, y: 16, z: 1}
   m_Children: []
   m_Father: {fileID: 400002}
 --- !u!4 &400012
@@ -200,6 +217,17 @@ Transform:
   m_Children:
   - {fileID: 400002}
   m_Father: {fileID: 0}
+--- !u!4 &400014
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100014}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 94, y: 11, z: 0}
+  m_LocalScale: {x: 357, y: 101, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400002}
 --- !u!65 &6500000
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -210,8 +238,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 67.3000031, y: 50, z: 0}
-  m_Center: {x: -20.3999996, y: -33.2999992, z: 0}
+  m_Size: {x: 76.6999969, y: 55, z: 0}
+  m_Center: {x: 238, y: -68.8000031, z: -64.5999985}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -359,7 +387,7 @@ MonoBehaviour:
   mPivot: 4
   mDepth: 20
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: Highlight
+  mSpriteName: Button
   mFillCenter: 1
   mType: 0
   mFillDirection: 4
@@ -401,11 +429,9 @@ MonoBehaviour:
   mPivot: 4
   mDepth: 30
   mFont: {fileID: 11400000, guid: 7a48ea22e80d1ac4b97fdd87f9009546, type: 2}
-  mText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '
-  mMaxLineWidth: 220
-  mMaxLineHeight: 80
+  mText: 'Lorem ipsum dolor sit amet, consectetur adipisicing '
+  mMaxLineWidth: 270
+  mMaxLineHeight: 40
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -430,6 +456,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   draggablePanel: {fileID: 0}
   panel: {fileID: 0}
+--- !u!114 &11400022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mColor: {r: 1, g: 1, b: 1, a: 1}
+  mPivot: 4
+  mDepth: 31
+  mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
+  mSpriteName: diamond_icon
+  mFillCenter: 0
+  mType: 1
+  mFillDirection: 0
+  mFillAmount: 1
+  mInvert: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
