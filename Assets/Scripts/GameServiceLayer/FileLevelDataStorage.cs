@@ -11,7 +11,6 @@ public class FileLevelDataStorage : LevelDataStorage
 
     public static FileLevelDataStorage storage;
     public string file = "/ballthazar.dat";
-    public int levelListOffset = 1;
     public List<LevelRecord> levelList;
     private Dictionary<string, LevelRecord> levelMap;
     private string fullFilePath;

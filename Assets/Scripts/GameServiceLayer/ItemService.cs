@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class ItemService : MonoBehaviour
 {
+    public delegate void ItemCountChangedHandler();
+    public event ItemCountChangedHandler ItemCountChanged;
+
     public ItemStorage itemStorage;
     public IAPService iapService;
     public int rewardsToTokenCount = 50;
@@ -77,5 +80,10 @@ public class ItemService : MonoBehaviour
     {
         rewardCount = itemStorage.getRewardCount();
         tokenCount = itemStorage.getTokenCount();
+
+        if (ItemCountChanged != null)
+        {
+            ItemCountChanged();
+        }
     }
 }

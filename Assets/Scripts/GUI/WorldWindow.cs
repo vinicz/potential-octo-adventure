@@ -35,10 +35,12 @@ public class WorldWindow : MonoBehaviour
                 rowCounter = 0;
             }
 
-            GameObject newLevelItem = levelItem.createLevelItem(currentParentElement, level, this.gameObject);
-            newLevelItem.transform.position = new Vector3(newLevelItem.transform.position.x+columnCounter*0.25f,
+            GameObject newLevelItemObject = createLevelViewItem(currentParentElement);
+            LevelItem newLevelItem = newLevelItemObject.GetComponent<LevelItem>();
+            newLevelItem.setupLevelItem(currentParentElement, level, this.gameObject);
+            newLevelItem.transform.position = new Vector3(newLevelItem.transform.position.x+columnCounter*0.42f,
                                                           newLevelItem.transform.position.y,
-                                                          newLevelItem.transform.position.z-rowCounter*0.15f+0.25f);
+                                                          newLevelItem.transform.position.z-rowCounter*0.27f);
 
             levelCounter++;
             columnCounter++;
@@ -58,5 +60,14 @@ public class WorldWindow : MonoBehaviour
         backKeyHandler.targetWindow = lastWindow;
 
         return NGUITools.AddChild(parent, this.gameObject);
+    }
+
+    GameObject createLevelViewItem(GameObject parent)
+    {
+        GameObject newLevelItem = NGUITools.AddChild(parent, levelItem.gameObject);
+        newLevelItem.transform.localPosition = levelItem.transform.position;
+        newLevelItem.transform.localRotation = levelItem.transform.rotation;
+        newLevelItem.transform.localScale = levelItem.transform.localScale;
+        return newLevelItem;
     }
 }

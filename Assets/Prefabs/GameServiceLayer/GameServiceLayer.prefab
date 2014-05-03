@@ -179,7 +179,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   file: /ballthazar.dat
-  levelListOffset: 1
   levelList: []
 --- !u!114 &11400002
 MonoBehaviour:
@@ -194,7 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelStorage: {fileID: 11400000}
   itemService: {fileID: 11400006}
-  levelListOffset: 2
+  levelListOffset: 3
   worldPartSize: 15
   stressLevelFrequency: 5
   normalMapReward: 1
@@ -203,14 +202,6 @@ MonoBehaviour:
   firstBossStepOffset: 0
   bossStepOffset: 19
   levelList:
-  - levelName: main_menu
-    levelGroup: 
-    isMultiplayer: 0
-    collectedRewards: 0
-    bestTime: 0
-    timeToFirstReward: 40
-    timeToSecondReward: 20
-    isLevelCompleted: 0
   - levelName: level_01
     levelGroup: diamond
     isMultiplayer: 0
@@ -631,7 +622,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemStorage: {fileID: 11400004}
-  productList: []
+  productList:
+  - name: Explosion
+    description: Explosion
+    item_id: explosion_20
+    amount: 20
+    price: 1.99000001
+    payingCurrency: 0
+    productItemTye: 2
+  - name: Explosion
+    description: Explosion
+    item_id: explosion_50
+    amount: 50
+    price: 3.99000001
+    payingCurrency: 0
+    productItemTye: 2
+  - name: Explosive
+    description: Explosive
+    item_id: explosive
+    amount: 20
+    price: 10
+    payingCurrency: 2
+    productItemTye: 1
+  - name: Premium
+    description: Premium
+    item_id: premium
+    amount: 1
+    price: 1.99000001
+    payingCurrency: 0
+    productItemTye: 3
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -252,7 +252,7 @@ public class LevelServiceTest
     [Test]
     public void shouldReturnMainMenuIndex()
     {
-        Assert.AreEqual(levelListOffset, testSubject.getMainMenuIndex());
+        Assert.AreEqual(levelListOffset-1, testSubject.getMainMenuIndex());
     }
 
     [Test]

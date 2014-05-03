@@ -9,9 +9,15 @@ public class RewardWindow : MonoBehaviour {
 	
 	void Start () {
 
-        explosiveLabel.text = GameServiceLayer.serviceLayer.itemService.getRewardCount().ToString();
-        explosionLabel.text = GameServiceLayer.serviceLayer.itemService.getTokenCount().ToString();
+        refreshAllItemCount();
+        GameServiceLayer.serviceLayer.itemService.ItemCountChanged += refreshAllItemCount;
+
 	}
 	
 	
+    void refreshAllItemCount()
+    {
+        explosiveLabel.text = GameServiceLayer.serviceLayer.itemService.getRewardCount().ToString();
+        explosionLabel.text = GameServiceLayer.serviceLayer.itemService.getTokenCount().ToString();
+    }
 }

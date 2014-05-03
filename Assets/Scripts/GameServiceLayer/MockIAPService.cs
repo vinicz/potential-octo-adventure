@@ -33,7 +33,7 @@ public class MockIAPService : IAPService
         {
             if (product.price <= itemStorage.getTokenCount())
             {
-                itemStorage.removeTokens(product.price);
+                itemStorage.removeTokens((int)product.price);
                 itemStorage.addRewards(product.amount);
                 purchaseSuccesfull = true;
             }

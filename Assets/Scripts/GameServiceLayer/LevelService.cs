@@ -93,7 +93,7 @@ public class LevelService : MonoBehaviour
 
     public int getMainMenuIndex()
     {
-        return levelListOffset;
+        return levelListOffset-1;
     }
 
     public int getNextLevelSceneIndex(int currentSceneIndex)

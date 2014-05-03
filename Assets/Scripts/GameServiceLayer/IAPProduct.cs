@@ -15,7 +15,7 @@ public class IAPProduct
     public string description;
     public string item_id;
     public int amount;
-    public int price;
+    public float price;
     public ProductType payingCurrency;
     public ProductType productItemTye;
 
