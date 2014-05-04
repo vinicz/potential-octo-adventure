@@ -13,7 +13,7 @@ public class AccelometerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameHandlerScript.gameState == GameHandlerScript.GameState.GAME)
+        if (GameServiceLayer.serviceLayer.gameMaster.getGameState() == GameHandlerScript.GameState.GAME)
         {
 
      

@@ -11,7 +11,7 @@ public class DiamondFirstBossMasterScript : DiamondMasterScript {
     {
         base.Start();
 
-        gameState = GameState.INTRO;
+        setGameState(GameState.INTRO);
     }
 
     protected override void Update()
@@ -23,7 +23,7 @@ public class DiamondFirstBossMasterScript : DiamondMasterScript {
        
             if (startGameTime <= 0)
             {
-                gameState = GameState.PREGAME;
+                setGameState(GameState.PREGAME);
             } else
             {
                 startGameTime -= Time.deltaTime;
