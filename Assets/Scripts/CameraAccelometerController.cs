@@ -17,7 +17,7 @@ public class CameraAccelometerController : MonoBehaviour
 
     void Update()
     {
-        if (GameHandlerScript.gameState == GameHandlerScript.GameState.GAME)
+        if (GameServiceLayer.serviceLayer.gameMaster.getGameState() == GameHandlerScript.GameState.GAME)
         {
 
             Vector3 fixedAcceleration = new Vector3(

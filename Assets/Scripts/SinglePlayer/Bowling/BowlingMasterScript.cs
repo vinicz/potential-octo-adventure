@@ -11,7 +11,7 @@ public class BowlingMasterScript : GameHandlerScript
 
         if (isTimeUp)
         {
-            gameState = GameState.POSTGAME;
+            setGameState(GameState.POSTGAME);
         }
         
     }
