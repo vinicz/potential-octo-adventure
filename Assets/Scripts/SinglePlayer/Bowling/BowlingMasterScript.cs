@@ -16,7 +16,7 @@ public class BowlingMasterScript : GameHandlerScript
         
     }
 
-    public override void createMapSpecificGUI()
+    public override void levelSpecificGameLogic()
     {
         GUI.Box(new Rect(400, 10, 150, 30), "Enemies remaining: " + enemyCount);
         GUI.Box(new Rect(600, 10, 100, 30), ((int)gameTimeLeft).ToString());
@@ -25,10 +25,10 @@ public class BowlingMasterScript : GameHandlerScript
         {
             if (enemyCount > 0)
             {
-                createLoseMenu();
+                levelFailed();
             } else
             {
-                createWinMenu();
+                levelPassed();
             }
         }
     }

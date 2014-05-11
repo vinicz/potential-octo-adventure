@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PreGameWindow : MonoBehaviour {
+public class PreGameWindow : UIWindow {
 
     private bool inited = false;
 
@@ -10,12 +10,7 @@ public class PreGameWindow : MonoBehaviour {
 
         if (!inited)
         {
-            if(GameServiceLayer.serviceLayer.gameMaster.getGameState()!=GameHandlerScript.GameState.PREGAME)
-            {
-                GameServiceLayer.serviceLayer.gameMaster.GameStateChanged+=onGameStateChanged;
-                this.gameObject.SetActive(false);
-                inited = true;
-            }
+            initWindow();
         }
 	
         if (Input.anyKeyDown)
@@ -24,6 +19,20 @@ public class PreGameWindow : MonoBehaviour {
             this.gameObject.SetActive(false);
         }
 	}
+
+    public override void initWindow()
+    {
+        if (GameServiceLayer.serviceLayer.gameMaster.getGameState() != GameHandlerScript.GameState.PREGAME)
+        {
+            GameServiceLayer.serviceLayer.gameMaster.GameStateChanged += onGameStateChanged;
+            this.gameObject.SetActive(false);    
+        } else
+        {
+            this.gameObject.SetActive(true);   
+        }
+
+        inited = true;
+    }
 
 
     void onGameStateChanged()

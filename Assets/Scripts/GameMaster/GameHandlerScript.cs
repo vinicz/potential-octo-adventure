@@ -1,19 +1,18 @@
 using UnityEngine;
 using System.Collections;
 
-public class GameHandlerScript : MonoBehaviour
+public abstract class GameHandlerScript : MonoBehaviour
 {
     public delegate void CollectedDiamondCountChangedHandler();
-
     public event CollectedDiamondCountChangedHandler CollectedDiamondCountChanged;
+
     public delegate void LevelPassedHandler();
-
     public event LevelPassedHandler LevelPassed;
+  
     public delegate void LevelFailedHandler();
-
     public event LevelPassedHandler LevelFailed;
-    public delegate void GameStateChangedHandler();
 
+    public delegate void GameStateChangedHandler();
     public event GameStateChangedHandler GameStateChanged;
 
     public int ballCount;
@@ -38,6 +37,7 @@ public class GameHandlerScript : MonoBehaviour
     protected bool isTimeUp;
     protected LevelRecord levelRecord;
     protected GameState gameState = GameState.PREGAME;
+    protected GameModeLogic gameModeLogic;
 
 
     // Use this for initialization
@@ -51,6 +51,8 @@ public class GameHandlerScript : MonoBehaviour
 
         levelRecord = GameServiceLayer.serviceLayer.levelService.getLevelRecordForScene(Application.loadedLevel);
         requiredDiamondCount = GameObject.FindGameObjectsWithTag(DIAMOND_TAG_NAME).Length;
+        gameModeLogic = GameModeLogicFactory.createGameModeLogic(this, levelRecord);
+
     }
 
     protected virtual void Update()
@@ -70,32 +72,15 @@ public class GameHandlerScript : MonoBehaviour
                 gameTimeLeft = 0;
                 isTimeUp = true;
             }
-            
-            if (enemyCount <= 0 && collectedDiamondCount >= requiredDiamondCount)
-            {
-                setGameState(GameState.POSTGAME);
-
-            }
         }
 
-        createMapSpecificGUI();
+        levelSpecificGameLogic();
+        gameModeLogic.update();
     }
 
-    void OnGUI()
-    {
-        GUIHelper.helper.adjustGUIMatrix();
 
-
-        //createMapSpecificGUI();
-        
-        GUIHelper.helper.restoreGUIMatrix();
-
-    }
-
-    public virtual void createMapSpecificGUI()
-    {
-      
-    }
+    public abstract void levelSpecificGameLogic();
+  
 
     public virtual void killOneBall(GameObject ball)
     {
@@ -112,6 +97,8 @@ public class GameHandlerScript : MonoBehaviour
     {
         enemy.SetActive(false);
         enemyCount--;
+
+        gameModeLogic.onEnemyKilled();
     }
 
     public virtual void collectOneDiamond(GameObject diamond)
@@ -124,6 +111,8 @@ public class GameHandlerScript : MonoBehaviour
         {
             CollectedDiamondCountChanged();
         }
+
+        gameModeLogic.onDiamondCollected();
     }
 
     public void loadNextLevel()
@@ -139,6 +128,30 @@ public class GameHandlerScript : MonoBehaviour
     public void restartLevel()
     {
         Application.LoadLevel(Application.loadedLevel);
+    }
+
+
+    public void levelPassed()
+    {
+        int collectedRewardCount = gameModeLogic.calculateReward();
+
+        GameServiceLayer.serviceLayer.levelService.setLevelResult(Application.loadedLevel, collectedRewardCount, elapsedTime);
+        
+        if (LevelPassed != null)
+        {
+            LevelPassed();
+        }
+        
+    }
+    
+    public void levelFailed()
+    {
+        
+        if (LevelFailed != null)
+        {
+            LevelFailed();
+        }
+        
     }
 
     public int getCollectedDiamonds()
@@ -176,57 +189,25 @@ public class GameHandlerScript : MonoBehaviour
         return levelRecord;
     }
 
-    public void createWinMenu()
+    public int getEnemyCount()
     {
-//        //levelRecord.collectedDiamonds = collectedDiamondCount;
-//        //levelRecord.bestTime = elapsedTime;
-//        GameServiceLayer.serviceLayer.levelService.setLevelResult(Application.loadedLevel,elapsedTime);
-//
-//        GUI.Box(GUIHelper.helper.getRectInTheMiddle(GUIHelper.helper.smallWindowWidht, GUIHelper.helper.smallWindowHeight), "Your winner!!!!4");
-//
-//        if (GUI.Button(GUIHelper.helper.getRectInTeTopMiddle(
-//            GUIHelper.helper.buttonWidth, GUIHelper.helper.buttonHeight, GUIHelper.helper.originalHeight / 2.0f - GUIHelper.helper.getLineSize() * 2),
-//            "Next level"))
-//        {
-//            Application.LoadLevel(GameServiceLayer.serviceLayer.levelService.getNextLevelSceneIndex(Application.loadedLevel));
-//        }
-//
-//        createEndGameMenu();
-
-        GameServiceLayer.serviceLayer.levelService.setLevelResult(Application.loadedLevel,elapsedTime);
-
-        if (LevelPassed != null)
-        {
-            LevelPassed();
-        }
-
+        return enemyCount;
     }
 
-    public void createLoseMenu()
+    public float getGameTimeLeft()
     {
-//        GUI.Box(GUIHelper.helper.getRectInTheMiddle(GUIHelper.helper.smallWindowWidht, GUIHelper.helper.smallWindowHeight), "Lose!!!!4");
-//        createEndGameMenu();
-
-        if (LevelFailed != null)
-        {
-            LevelFailed();
-        }
-
+        return gameTimeLeft;
     }
 
-    void createEndGameMenu()
+    public void setGameTimeLeft(float time)
     {
-        if (GUI.Button(GUIHelper.helper.getRectInTeTopMiddle(
-            GUIHelper.helper.buttonWidth, GUIHelper.helper.buttonHeight, GUIHelper.helper.originalHeight / 2.0f - GUIHelper.helper.getLineSize()), 
-            "Restart"))
-        {
-            Application.LoadLevel(Application.loadedLevel);
-        }
-        if (GUI.Button(GUIHelper.helper.getRectInTeTopMiddle(
-            GUIHelper.helper.buttonWidth, GUIHelper.helper.buttonHeight, GUIHelper.helper.originalHeight / 2.0f), "Back to Main Menu"))
-        {
-            Application.LoadLevel(GameServiceLayer.serviceLayer.levelService.getMainMenuIndex());
-        }
+        gameTimeLeft = time;
     }
-   
+
+    public int getBallCount()
+    {
+        return ballCount;
+    }
+
+
 }

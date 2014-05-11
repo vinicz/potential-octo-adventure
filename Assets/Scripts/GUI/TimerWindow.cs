@@ -8,8 +8,8 @@ public class TimerWindow : MonoBehaviour {
 
 	void Update () {
 	
-        float elapsedTime = GameServiceLayer.serviceLayer.gameMaster.getElapsedTime();
-        TimeSpan timeSpan = TimeSpan.FromSeconds(elapsedTime);
+        float gameTimeLeft = GameServiceLayer.serviceLayer.gameMaster.getGameTimeLeft();
+        TimeSpan timeSpan = TimeSpan.FromSeconds(gameTimeLeft);
         string timeText = string.Format("{0:D2}:{1:D2}", timeSpan.Minutes, timeSpan.Seconds);
 
         timeLabel.text = timeText;

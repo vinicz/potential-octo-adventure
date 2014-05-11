@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WinWindow : MonoBehaviour {
+public class WinWindow : UIWindow {
 
     public UIButton nextUIButton;
     public UILabel nextButtonLabel;
@@ -19,12 +19,16 @@ public class WinWindow : MonoBehaviour {
     {
         if (!inited)
         {
-            GameServiceLayer.serviceLayer.gameMaster.LevelPassed  += onLevelPassed;
-            this.gameObject.SetActive(false);
-            inited = true;
-
+            initWindow();
         }
 	}
+
+    public override void initWindow()
+    {
+        GameServiceLayer.serviceLayer.gameMaster.LevelPassed  += onLevelPassed;
+        this.gameObject.SetActive(false);
+        inited = true;
+    }
 
     void onLevelPassed()
     {

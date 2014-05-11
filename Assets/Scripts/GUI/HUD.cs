@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HUD : MonoBehaviour {
+public class HUD : UIWindow {
 
     private bool inited = false;
 
@@ -10,11 +10,16 @@ public class HUD : MonoBehaviour {
 	    
         if (!inited)
         {
-            GameServiceLayer.serviceLayer.gameMaster.GameStateChanged += onGameStateChanged;
-            onGameStateChanged();
-            inited = true;
+            initWindow();
         }
 	}
+
+    public override void initWindow()
+    {
+        GameServiceLayer.serviceLayer.gameMaster.GameStateChanged += onGameStateChanged;
+        onGameStateChanged();
+        inited = true;
+    }
 	
     public void onGameStateChanged()
     {
