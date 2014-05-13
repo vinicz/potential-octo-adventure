@@ -10,6 +10,7 @@ public class InGameGUI : MonoBehaviour {
 	    if (!inited)
         {
             GameServiceLayer.serviceLayer.gameMaster.GameStateChanged += onGameStateChanged;
+            onGameStateChanged();
             inited = true;
         }
 	}

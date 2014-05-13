@@ -28,30 +28,21 @@ public class NormalGameModeLogic : GameModeLogic
             gameMaster.setGameTimeLeft(level.timeToFirstReward-gameMaster.getElapsedTime());
             twoRewardsAvailable = false;
         }
+       
+    }
 
-        if(gameMaster.getGameState() == GameHandlerScript.GameState.POSTGAME)
+    public void determineGameResult()
+    {
+        if (gameMaster.getCollectedDiamonds() == gameMaster.getRequiredDiamondCount())
         {
-            if (gameMaster.getCollectedDiamonds() == gameMaster.getRequiredDiamondCount())
-            {
-                gameMaster.levelPassed();
-                
-            } else
-            {
-                gameMaster.levelFailed();
-            }
+            gameMaster.levelPassed();
+            
+        } else
+        {
+            gameMaster.levelFailed();
         }
-
     }
 
-    public void onDiamondCollected()
-    {
-
-    }
-
-    public void onEnemyKilled()
-    {
-
-    }
 
     public int calculateReward()
     {

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class WorldWindow : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class WorldWindow : MonoBehaviour
     public string wordName;
     public WindowOpenerScript backButton;
     public UILabel windowTitle;
+    private List<LevelItem> levelItemList =  new List<LevelItem>();
 
     // Use this for initialization
     void Start()
@@ -19,16 +21,16 @@ public class WorldWindow : MonoBehaviour
         GameObject currentParentElement = null;
         int rowCounter = 0;
         int columnCounter = 0;
-
+ 
         foreach (LevelRecord level in GameServiceLayer.serviceLayer.levelService.getLevelsInWorld(wordName))
         {
-            if(columnCounter==5)
+            if (columnCounter == 5)
             {
                 columnCounter = 0;
                 rowCounter++;
             }
 
-            if(levelCounter==15)
+            if (levelCounter == 15)
             {
                 currentParentElement = NGUITools.AddChild(parentGrid.gameObject, new GameObject());
                 levelCounter = 0;
@@ -37,10 +39,11 @@ public class WorldWindow : MonoBehaviour
 
             GameObject newLevelItemObject = createLevelViewItem(currentParentElement);
             LevelItem newLevelItem = newLevelItemObject.GetComponent<LevelItem>();
+            levelItemList.Add(newLevelItem);
             newLevelItem.setupLevelItem(currentParentElement, level, this.gameObject);
-            newLevelItem.transform.position = new Vector3(newLevelItem.transform.position.x+columnCounter*0.42f,
+            newLevelItem.transform.position = new Vector3(newLevelItem.transform.position.x + columnCounter * 0.42f,
                                                           newLevelItem.transform.position.y,
-                                                          newLevelItem.transform.position.z-rowCounter*0.27f);
+                                                          newLevelItem.transform.position.z - rowCounter * 0.27f);
 
             levelCounter++;
             columnCounter++;
@@ -50,6 +53,14 @@ public class WorldWindow : MonoBehaviour
 
         windowTitle.text = wordName;
 
+    }
+
+    void OnDestroy()
+    {
+        foreach (LevelItem levelItem in levelItemList)
+        {
+            levelItem.destroyLevel();
+        }
     }
 
     public GameObject createWorldWindow(GameObject parent, string name, GameObject lastWindow)

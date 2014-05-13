@@ -12,6 +12,7 @@ public class StressGameModeLogic : GameModeLogic
         this.level = gameMaster.getCurrentLevelRecord();
 
         gameMaster.setGameTimeLeft(level.timeToSecondReward);
+        gameMaster.CollectedDiamondCountChanged += onDiamondCollected;
     }
 
     public void update()
@@ -21,29 +22,27 @@ public class StressGameModeLogic : GameModeLogic
             gameMaster.setGameState(GameHandlerScript.GameState.POSTGAME);
         }
 
-        if(gameMaster.getGameState() == GameHandlerScript.GameState.POSTGAME)
-        {
-            if (gameMaster.getBallCount()<=0 || gameMaster.getCollectedDiamonds()<=0)
-            {
-                gameMaster.levelFailed();
-                
-            } else
-            {
-                gameMaster.levelPassed();
-            }
-        }
     }
     
-    public void onDiamondCollected()
+    void onDiamondCollected()
     {
         float currentGameTimeLeft = gameMaster.getGameTimeLeft();
         gameMaster.setGameTimeLeft(currentGameTimeLeft+level.timeToSecondReward);
     }
-    
-    public void onEnemyKilled()
+
+
+    public void determineGameResult()
     {
-        
+        if (gameMaster.getBallCount()<=0 || gameMaster.getCollectedDiamonds()<=0)
+        {
+            gameMaster.levelFailed();
+            
+        } else
+        {
+            gameMaster.levelPassed();
+        }
     }
+
 
     public int calculateReward()
     {

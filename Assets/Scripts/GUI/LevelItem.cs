@@ -34,6 +34,11 @@ public class LevelItem : MonoBehaviour
 
     }
 
+    public void destroyLevel()
+    {
+        GameServiceLayer.serviceLayer.itemService.ItemCountChanged -= refreshLevelIcons;
+    }
+
     public void refreshLevelIcons()
     {
         setupLevelRewardIcons(levelRecord);
@@ -50,29 +55,25 @@ public class LevelItem : MonoBehaviour
             if (level.collectedRewards >= 1)
             {
                 reward1Icon.color = Color.white;
-            }
-            else
+            } else
             {
                 reward1Icon.color = Color.black;
             }
             if (level.collectedRewards >= 2)
             {
                 reward2Icon.color = Color.white;
-            }
-            else
+            } else
             {
                 reward2Icon.color = Color.black;
             }
             if (level.collectedRewards >= 3)
             {
                 reward3Icon.color = Color.white;
-            }
-            else
+            } else
             {
                 reward3Icon.color = Color.black;
             }
-        }
-        else
+        } else
         {
             lockObject.SetActive(true);
             rewardObject.SetActive(false);

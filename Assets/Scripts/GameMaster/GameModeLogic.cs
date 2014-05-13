@@ -3,8 +3,7 @@
 public interface GameModeLogic
 {
     void update();
-    void onDiamondCollected();
-    void onEnemyKilled();
+    void determineGameResult();
     int calculateReward();
 
 }

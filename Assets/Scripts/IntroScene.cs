@@ -16,6 +16,7 @@ public class IntroScene : MonoBehaviour
     void Start()
     {
 		//guiTexture.color = new Color(guiTexture.color.r, guiTexture.color.g, guiTexture.color.b, 0);
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		StartCoroutine (PlayAnimations ());
 	}
 	

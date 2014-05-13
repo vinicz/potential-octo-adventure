@@ -6,6 +6,9 @@ public abstract class GameHandlerScript : MonoBehaviour
     public delegate void CollectedDiamondCountChangedHandler();
     public event CollectedDiamondCountChangedHandler CollectedDiamondCountChanged;
 
+    public delegate void KilledEnemyCountChangedHandler();
+    public event KilledEnemyCountChangedHandler KilledEnemyCountChanged;
+
     public delegate void LevelPassedHandler();
     public event LevelPassedHandler LevelPassed;
   
@@ -15,18 +18,23 @@ public abstract class GameHandlerScript : MonoBehaviour
     public delegate void GameStateChangedHandler();
     public event GameStateChangedHandler GameStateChanged;
 
+    public delegate void GamePausedHandler();
+    public event GamePausedHandler GamePaused;
+
+    public delegate void GameResumedHandler();
+    public event GameResumedHandler GameResumed;
+
     public int ballCount;
     public int enemyCount;
-    public GUISkin guiSkin;
     public float gameTimeLeft;
     public string preGameString;
-
 
     public enum GameState
     {
         INTRO,
         PREGAME,
         GAME,
+        PAUSE,
         POSTGAME}
     ;
 
@@ -40,6 +48,7 @@ public abstract class GameHandlerScript : MonoBehaviour
     protected GameModeLogic gameModeLogic;
 
 
+
     // Use this for initialization
     protected virtual void Start()
     {
@@ -48,6 +57,7 @@ public abstract class GameHandlerScript : MonoBehaviour
         collectedDiamondCount = 0;
         setGameState(GameState.PREGAME);
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        Time.timeScale = 1;
 
         levelRecord = GameServiceLayer.serviceLayer.levelService.getLevelRecordForScene(Application.loadedLevel);
         requiredDiamondCount = GameObject.FindGameObjectsWithTag(DIAMOND_TAG_NAME).Length;
@@ -72,10 +82,13 @@ public abstract class GameHandlerScript : MonoBehaviour
                 gameTimeLeft = 0;
                 isTimeUp = true;
             }
+
+            gameModeLogic.update();
         }
 
         levelSpecificGameLogic();
-        gameModeLogic.update();
+
+      
     }
 
 
@@ -98,7 +111,10 @@ public abstract class GameHandlerScript : MonoBehaviour
         enemy.SetActive(false);
         enemyCount--;
 
-        gameModeLogic.onEnemyKilled();
+        if (KilledEnemyCountChanged != null)
+        {
+            KilledEnemyCountChanged();
+        }
     }
 
     public virtual void collectOneDiamond(GameObject diamond)
@@ -112,7 +128,7 @@ public abstract class GameHandlerScript : MonoBehaviour
             CollectedDiamondCountChanged();
         }
 
-        gameModeLogic.onDiamondCollected();
+       
     }
 
     public void loadNextLevel()
@@ -154,6 +170,45 @@ public abstract class GameHandlerScript : MonoBehaviour
         
     }
 
+    public void pauseLevel()
+    {
+        Time.timeScale = 0;
+        setGameState(GameState.PAUSE);
+
+        if (GamePaused != null)
+        {
+            GamePaused();
+        }
+
+    }
+
+    public void resumeLevel()
+    {
+        Time.timeScale = 1;
+        setGameState(GameState.GAME);
+
+        if (GameResumed != null)
+        {
+            GameResumed();
+        }
+    }
+
+
+    void OnApplicationPause(bool pauseStatus) {
+        if (pauseStatus && gameState == GameState.GAME )
+        {
+            pauseLevel();
+        }
+    }
+
+    void OnApplicationFocus(bool focusStatus) {
+        if (!focusStatus && gameState == GameState.GAME )
+        {
+            pauseLevel();
+        } 
+    }
+
+
     public int getCollectedDiamonds()
     {
         return collectedDiamondCount;
@@ -171,6 +226,11 @@ public abstract class GameHandlerScript : MonoBehaviour
 
     public void setGameState(GameState state)
     {
+        if (gameState == GameState.GAME && state == GameState.POSTGAME)
+        {
+            gameModeLogic.determineGameResult();
+        }
+
         gameState = state;
 
         if (GameStateChanged != null)

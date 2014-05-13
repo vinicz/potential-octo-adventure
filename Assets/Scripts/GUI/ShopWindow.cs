@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ShopWindow : MonoBehaviour
+public class ShopWindow : UIWindow
 {
 
     public GameObject productItemViewPrefab;
@@ -38,6 +38,11 @@ public class ShopWindow : MonoBehaviour
                 columnCounter++;
             }
         }
+    }
+
+    public override void initWindow()
+    {
+       
     }
 
 }
