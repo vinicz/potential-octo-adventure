@@ -4,24 +4,31 @@ using System.Collections;
 public abstract class GameHandlerScript : MonoBehaviour
 {
     public delegate void CollectedDiamondCountChangedHandler();
+
     public event CollectedDiamondCountChangedHandler CollectedDiamondCountChanged;
 
     public delegate void KilledEnemyCountChangedHandler();
+
     public event KilledEnemyCountChangedHandler KilledEnemyCountChanged;
 
     public delegate void LevelPassedHandler();
+
     public event LevelPassedHandler LevelPassed;
   
     public delegate void LevelFailedHandler();
+
     public event LevelPassedHandler LevelFailed;
 
     public delegate void GameStateChangedHandler();
+
     public event GameStateChangedHandler GameStateChanged;
 
     public delegate void GamePausedHandler();
+
     public event GamePausedHandler GamePaused;
 
     public delegate void GameResumedHandler();
+
     public event GameResumedHandler GameResumed;
 
     public int ballCount;
@@ -93,9 +100,7 @@ public abstract class GameHandlerScript : MonoBehaviour
       
     }
 
-
     public abstract void levelSpecificGameLogic();
-  
 
     public virtual void killOneBall(GameObject ball)
     {
@@ -148,7 +153,6 @@ public abstract class GameHandlerScript : MonoBehaviour
         Application.LoadLevel(Application.loadedLevel);
     }
 
-
     public void levelPassed()
     {
         int collectedRewardCount = gameModeLogic.calculateReward();
@@ -195,7 +199,6 @@ public abstract class GameHandlerScript : MonoBehaviour
         }
     }
 
-
     public void continueLevel()
     {
         GameServiceLayer.serviceLayer.itemService.spendTokens(continueCost);
@@ -206,23 +209,21 @@ public abstract class GameHandlerScript : MonoBehaviour
         playerSpawner.spawnPlayer();
     }
 
-
-
-
-    void OnApplicationPause(bool pauseStatus) {
-        if (pauseStatus && gameState == GameState.GAME )
+    void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus && gameState == GameState.GAME)
         {
             pauseLevel();
         }
     }
 
-    void OnApplicationFocus(bool focusStatus) {
-        if (!focusStatus && gameState == GameState.GAME )
+    void OnApplicationFocus(bool focusStatus)
+    {
+        if (!focusStatus && gameState == GameState.GAME)
         {
             pauseLevel();
         } 
     }
-
 
     public int getCollectedDiamonds()
     {
