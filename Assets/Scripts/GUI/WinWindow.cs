@@ -77,4 +77,9 @@ public class WinWindow : UIWindow {
             nextButtonLabel.gameObject.SetActive(false);
         }
     }
+
+    void OnDestroy()
+    {
+        GameServiceLayer.serviceLayer.gameMaster.LevelPassed  -= onLevelPassed;
+    }
 }

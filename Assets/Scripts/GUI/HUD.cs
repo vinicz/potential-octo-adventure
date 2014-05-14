@@ -32,4 +32,9 @@ public class HUD : UIWindow {
             this.gameObject.SetActive(false);
         }
     }
+
+    void OnDestroy()
+    {
+        GameServiceLayer.serviceLayer.gameMaster.GameStateChanged -= onGameStateChanged;
+    }
 }

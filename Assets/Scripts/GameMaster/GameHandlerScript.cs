@@ -28,6 +28,8 @@ public abstract class GameHandlerScript : MonoBehaviour
     public int enemyCount;
     public float gameTimeLeft;
     public string preGameString;
+    public PlayerSpawner playerSpawner;
+    public int continueCost;
 
     public enum GameState
     {
@@ -192,6 +194,19 @@ public abstract class GameHandlerScript : MonoBehaviour
             GameResumed();
         }
     }
+
+
+    public void continueLevel()
+    {
+        GameServiceLayer.serviceLayer.itemService.spendTokens(continueCost);
+        ballCount++;
+
+        resumeLevel();
+
+        playerSpawner.spawnPlayer();
+    }
+
+
 
 
     void OnApplicationPause(bool pauseStatus) {

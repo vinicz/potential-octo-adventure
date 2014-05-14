@@ -26,4 +26,9 @@ public class UICenterOnPrevious : MonoBehaviour {
             this.gameObject.SetActive(true);
         }
     }
+
+    void OnDestroy()
+    {
+        centerHandlerObject.CenteredGameObjectChanged -= onCenteredObjectChanged;
+    }
 }

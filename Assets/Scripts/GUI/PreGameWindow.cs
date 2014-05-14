@@ -44,4 +44,10 @@ public class PreGameWindow : UIWindow {
         }
 
     }
+
+    void OnDestroy()
+    {
+        GameServiceLayer.serviceLayer.gameMaster.GameStateChanged -= onGameStateChanged;
+    }
+
 }

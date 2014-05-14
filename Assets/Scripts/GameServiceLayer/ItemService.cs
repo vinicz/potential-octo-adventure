@@ -17,7 +17,18 @@ public class ItemService : MonoBehaviour
     {  
         refreshItems();
         iapService.PurchaseCompletedSuccesfully += purchaseCompletedSuccesfully;
-        iapService.PurchaseFailed += purchaseFailed;;
+        iapService.PurchaseFailed += purchaseFailed;
+    }
+
+    void Start()
+    {
+        refreshItems();
+    }
+
+    void OnDestroy()
+    {
+        iapService.PurchaseCompletedSuccesfully -= purchaseCompletedSuccesfully;
+        iapService.PurchaseFailed -= purchaseFailed;
     }
 
     public void addRewards(int rewards)

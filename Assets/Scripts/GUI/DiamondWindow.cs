@@ -5,7 +5,6 @@ public class DiamondWindow : MonoBehaviour
 {
 
     public UILabel diamondLabel;
-
     private bool inited = false;
 
     void Update()
@@ -18,7 +17,6 @@ public class DiamondWindow : MonoBehaviour
         }
     }
 
-
     void updateDiamondLabel()
     {
         string newDiamondLabel = "";
@@ -27,6 +25,11 @@ public class DiamondWindow : MonoBehaviour
         newDiamondLabel += "/";
         newDiamondLabel += GameServiceLayer.serviceLayer.gameMaster.getRequiredDiamondCount().ToString();
         diamondLabel.text = newDiamondLabel;
+    }
+
+    void OnDestroy()
+    {
+        GameServiceLayer.serviceLayer.gameMaster.CollectedDiamondCountChanged -= updateDiamondLabel;
     }
 
 

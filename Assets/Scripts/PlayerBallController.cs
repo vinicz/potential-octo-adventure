@@ -3,34 +3,21 @@ using System.Collections;
 
 public class PlayerBallController : MonoBehaviour
 {
+ 
 
-		public  GameHandlerScript gameHandler;
+    void OnTriggerEnter(Collider otherCollider)
+    {
+        if (otherCollider.gameObject.tag == "Fire")
+        {
+            GameServiceLayer.serviceLayer.gameMaster.killOneBall(gameObject);
 
+        }
 
-		// Use this for initialization
-		void Start ()
-		{
+        if (otherCollider.gameObject.tag == "Diamond")
+        {
+            GameServiceLayer.serviceLayer.gameMaster.collectOneDiamond(otherCollider.gameObject);
+            
+        }
 
-
-		}
-	
-		// Update is called once per frame
-		void Update ()
-		{
-	
-		}
-
-		void OnTriggerEnter (Collider otherCollider)
-		{
-				if (otherCollider.gameObject.tag == "Fire") {
-						gameHandler.killOneBall (gameObject);
-
-				}
-
-				if (otherCollider.gameObject.tag == "Diamond") {
-						gameHandler.collectOneDiamond (otherCollider.gameObject);
-			
-				}
-
-		}
+    }
 }

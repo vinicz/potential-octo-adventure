@@ -6,6 +6,8 @@ public class RewardWindow : MonoBehaviour {
     public UILabel explosiveLabel;
     public UILabel explosionLabel;
 
+    private bool inited = false;
+
 	
 	void Start () {
 
@@ -13,11 +15,26 @@ public class RewardWindow : MonoBehaviour {
         GameServiceLayer.serviceLayer.itemService.ItemCountChanged += refreshAllItemCount;
 
 	}
+
+
+    void Update()
+    {
+        if (!inited)
+        {
+            refreshAllItemCount();
+            inited  =true;
+        }
+    }
 	
 	
     void refreshAllItemCount()
     {
         explosiveLabel.text = GameServiceLayer.serviceLayer.itemService.getRewardCount().ToString();
         explosionLabel.text = GameServiceLayer.serviceLayer.itemService.getTokenCount().ToString();
+    }
+
+    void OnDestroy()
+    {
+        GameServiceLayer.serviceLayer.itemService.ItemCountChanged -= refreshAllItemCount;
     }
 }

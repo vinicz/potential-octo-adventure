@@ -31,4 +31,10 @@ public class PauseWindow : UIWindow {
     {    
         this.gameObject.SetActive(false);
     }
+
+    void OnDestroy()
+    {
+        GameServiceLayer.serviceLayer.gameMaster.GamePaused  -= onGamePaused;
+        GameServiceLayer.serviceLayer.gameMaster.GameResumed  -= onGameResumed;
+    }
 }

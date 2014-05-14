@@ -27,4 +27,9 @@ public class InGameGUI : MonoBehaviour {
             }
         }
     }
+
+    void OnDestroy()
+    {
+        GameServiceLayer.serviceLayer.gameMaster.GameStateChanged -= onGameStateChanged;
+    }
 }

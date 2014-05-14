@@ -17,6 +17,7 @@ public class LoseWindow : UIWindow {
     public override void initWindow()
     {
         GameServiceLayer.serviceLayer.gameMaster.LevelFailed  += onLevelFailed;
+        GameServiceLayer.serviceLayer.gameMaster.GameResumed += onGameResumed;
         this.gameObject.SetActive(false);
         inited = true;
     }
@@ -24,5 +25,17 @@ public class LoseWindow : UIWindow {
     void onLevelFailed()
     {    
         this.gameObject.SetActive(true);
+    }
+
+    void onGameResumed()
+    {    
+        this.gameObject.SetActive(false);
+    }
+
+
+    void OnDestroy()
+    {
+        GameServiceLayer.serviceLayer.gameMaster.LevelFailed -= onLevelFailed;
+        GameServiceLayer.serviceLayer.gameMaster.GameResumed -= onGameResumed;
     }
 }
