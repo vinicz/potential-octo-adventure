@@ -26,8 +26,9 @@ public class AccelometerController : MonoBehaviour
             Vector3 rotationAxis = Vector3.Cross(initialAcceleration, Input.acceleration);
             float angleBetweenDirections = Vector3.Angle(initialAcceleration, Input.acceleration);
             Quaternion rotationAmplifierQuaternion = Quaternion.AngleAxis(angleBetweenDirections * accelerationStrength, rotationAxis);
-            mulitpliedAcceleration = rotationAmplifierQuaternion * initialAcceleration;
+            mulitpliedAcceleration = rotationAmplifierQuaternion * new Vector3(0f,0f,-1f);
 
+     
 
             mulitpliedAcceleration = new Vector3(
                 mulitpliedAcceleration.x * speed.x, 

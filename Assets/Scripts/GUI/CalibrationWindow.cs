@@ -56,10 +56,12 @@ public class CalibrationWindow : MonoBehaviour
     {
         foreach (Transform window in this.transform.parent)
         {
-            if (window != this.transform)
+            if (window != this.transform && window.gameObject.activeInHierarchy)
             {
+
                 activeWindows.Add(window.gameObject);
                 window.gameObject.SetActive(false);
+
             }
         }
     }
