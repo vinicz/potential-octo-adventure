@@ -14,7 +14,7 @@ public class OptionsService : MonoBehaviour
     public OrientationCalibrationService orientationCalibrationService;
     private bool soundEnabled;
     private bool vibrationEnabled;
-    private Vector3 initialOrientation;
+    private Vector3 initialOrientation = new Vector3(0, 0, -1);
     private float previousVolume;
    
 
