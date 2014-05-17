@@ -58,11 +58,11 @@ public class IntroScene : MonoBehaviour
 		logoSound.SetActive (false);
 		logoSound.SetActive (true);
 
-		spotlight1.SetActive (false);
-		spotlight2.SetActive (false);
-		spotlight3.SetActive (false);
-		spotlight4.SetActive (false);
-		muddictiveLogo.SetActive (false);
+		//spotlight1.SetActive (false);
+		//spotlight2.SetActive (false);
+		//spotlight3.SetActive (false);
+		//spotlight4.SetActive (false);
+		//muddictiveLogo.SetActive (false);
 		
 		//yield return new WaitForSeconds(0.5f);
 
