@@ -18,7 +18,7 @@ public class OptionsService : MonoBehaviour
     private float previousVolume;
    
 
-    void Start()
+    void Awake()
     {
         initSound();
         initVibration();

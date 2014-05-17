@@ -46,7 +46,9 @@ public class LevelItem : MonoBehaviour
 
     void setupLevelRewardIcons(LevelRecord level)
     {
-        if (level.getRequiredRewards() <= GameServiceLayer.serviceLayer.itemService.getRewardCount())
+        int currentRewardCount = GameServiceLayer.serviceLayer.itemService.getRewardCount();
+
+        if (level.getRequiredRewards() <= currentRewardCount)
         {
             levelUIButton.isEnabled = true;
             lockObject.SetActive(false);
@@ -77,7 +79,7 @@ public class LevelItem : MonoBehaviour
         {
             lockObject.SetActive(true);
             rewardObject.SetActive(false);
-            lockLabel.text = level.getRequiredRewards().ToString();
+            lockLabel.text = (level.getRequiredRewards() - currentRewardCount)  .ToString();
             levelUIButton.isEnabled = false;
         }
     }

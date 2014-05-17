@@ -10,6 +10,12 @@ public class AccelometerController : MonoBehaviour
     public float accelerationStrength = 2.0f;
     private Vector3 mulitpliedAcceleration = Vector3.zero;
 
+    void Start()
+    {
+        initialAcceleration = GameServiceLayer.serviceLayer.optionsService.getInitialOrientation();
+    }
+
+
     // Update is called once per frame
     void Update()
     {
