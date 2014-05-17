@@ -74,36 +74,6 @@ public class LevelServiceTest
 
     }
 
-    [Test]
-    public void shouldGetOneDiamond()
-    {
-        int sceneIndex = 3;
-        float elapsedTime = 31f;
-        int expectedDiamondCount = 1;
-
-
-        setResultCheckCollectedDiamonds(sceneIndex, elapsedTime, expectedDiamondCount);
-    }
-
-    [Test]
-    public void shouldGetTwoDiamond()
-    {
-        int sceneIndex = 3;
-        float elapsedTime = 30f;
-        int expectedDiamondCount = 2;
-
-        setResultCheckCollectedDiamonds(sceneIndex, elapsedTime, expectedDiamondCount);
-    }
-
-    [Test]
-    public void shouldGetThreeDiamond()
-    {
-        int sceneIndex = 3;
-        float elapsedTime = 20f;
-        int expectedDiamondCount = 3;
-        
-        setResultCheckCollectedDiamonds(sceneIndex, elapsedTime, expectedDiamondCount);
-    }
 
     [Test]
     public void shouldReturnWorlds()
@@ -224,29 +194,37 @@ public class LevelServiceTest
     [Test]
     public void shouldAddNewDiamondsToItemStorage()
     {
-        checkLevelReward(1, 1, 3); 
+        checkLevelReward(1, 3, 1,3); 
     }
 
     [Test]
-    [Ignore]
     public void shouldAddNewStressDiamondsToItemStorage()
     {
-        checkLevelReward(5, 1, 6);    
+        checkLevelReward(5, 3, 1,6);    
     }
 
     [Test]
-    [Ignore]
     public void shouldAddNewBossDiamondsToItemStorage()
     {
-        checkLevelReward(15, 1, 9);    
+        checkLevelReward(15,3, 1, 9);    
+    }
+
+    [Test]
+    public void shouldAddOnlyNewDiamonds()
+    {
+        LevelRecord level = testSubject.getLevelRecordForScene(1);
+        testSubject.setLevelResult(level, 2, 1);
+
+        checkLevelReward(1,3, 1, 3);
     }
 
     [Test]
     public void shouldSaveResultsToLevelStorage()
     {
-        testSubject.setLevelResult(1, 3 , 1);
-        resetLevelService();
         LevelRecord level = testSubject.getLevelRecordForScene(1);
+        testSubject.setLevelResult(level, 3 , 1);
+        resetLevelService();
+        level = testSubject.getLevelRecordForScene(1);
 
         Assert.AreEqual(3, level.collectedRewards);
     }
@@ -280,6 +258,9 @@ public class LevelServiceTest
         
         Assert.AreEqual(testSubject.getMainMenuIndex(), testSubject.getNextLevelSceneIndex(currentSceneIndex));
     }
+
+
+
 
 
 
@@ -333,13 +314,6 @@ public class LevelServiceTest
         testSubject.Start();
     }
 
-    void setResultCheckCollectedDiamonds(int sceneIndex, float elapsedTime, int expectedDiamondCount)
-    {
-        testSubject.setLevelResult(sceneIndex,expectedDiamondCount, elapsedTime);
-        LevelRecord testLevel = testSubject.getLevelRecordForScene(sceneIndex);
-        Assert.AreEqual(expectedDiamondCount, testLevel.collectedRewards);
-        Assert.AreEqual(elapsedTime, testLevel.bestTime);
-    }
 
     List<LevelRecord>  generateCompleteWorld(int worldId, int collectedDiamonds, bool isMultiplayer)
     {
@@ -361,9 +335,11 @@ public class LevelServiceTest
         Assert.AreEqual(expectedRequirement, currentLevel.getRequiredRewards());
     }
 
-    void checkLevelReward(int scheneIndex, int gameResult, int expectedDiamondReward)
+    void checkLevelReward(int sceneIndex, int gameResult, int elapsedTime, int expectedDiamondReward)
     {
-        testSubject.setLevelResult(scheneIndex, expectedDiamondReward, gameResult);
+        LevelRecord testLevel = testSubject.getLevelRecordForScene(sceneIndex);
+        testSubject.setLevelResult(testLevel, gameResult, elapsedTime);
+
         int newDiamondCount = itemService.getRewardCount();
         Assert.AreEqual(expectedDiamondReward, newDiamondCount);
     }
