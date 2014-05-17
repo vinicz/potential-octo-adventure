@@ -1,46 +1,54 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class CalibrationWindow : MonoBehaviour {
+public class CalibrationWindow : MonoBehaviour
+{
 
     public UILabel calibrationLabel;
     public GameObject previousWindow;
-
     private bool beforeCalibration = true;
     private bool calibrationFinished = false;
+    private List<GameObject> activeWindows = new List<GameObject>();
 
     void Start()
     {
         disableOtherWindows();
+
     }
 
-
-	void Update () {
+    void Update()
+    {
         if (Input.anyKey)
         {
-            if(beforeCalibration)
+            if (beforeCalibration)
             {
-                calibrationLabel.text="Calibrating..";
+                calibrationLabel.text = "Calibrating..";
                 beforeCalibration = false;
 
-                GameServiceLayer.serviceLayer.optionsService.CalibrationCompleted+= onCalibrationCompleted;
+                GameServiceLayer.serviceLayer.optionsService.CalibrationCompleted += onCalibrationCompleted;
                 GameServiceLayer.serviceLayer.optionsService.calibrateInitialOrientation();
             }
 
-            if(calibrationFinished)
+            if (calibrationFinished)
             {
                 calibrationFinished = false;
                 this.gameObject.SetActive(false);
                 previousWindow.SetActive(true);
+
+                foreach (var window in activeWindows)
+                {
+                    window.SetActive(true);
+                }
             }
 
         }
-	}
+    }
 
     void onCalibrationCompleted()
     {
         calibrationFinished = true;
-        calibrationLabel.text="Calibration finished,\n tap to exit";
+        calibrationLabel.text = "Calibration finished,\n tap to exit";
       
     }
 
@@ -50,6 +58,7 @@ public class CalibrationWindow : MonoBehaviour {
         {
             if (window != this.transform)
             {
+                activeWindows.Add(window.gameObject);
                 window.gameObject.SetActive(false);
             }
         }
