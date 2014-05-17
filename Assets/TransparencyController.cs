@@ -4,7 +4,7 @@ using System.Collections;
 public class TransparencyController : MonoBehaviour {
 
     public Material transparentMaterial;
-    public float transparencyExpireTIme = 1f;
+    public float transparencyExpireTime = 1f;
 
     private Material normalMaterial;
     private float transparencyTimer = 0f;
@@ -20,14 +20,15 @@ public class TransparencyController : MonoBehaviour {
     {
         if (transparent)
         {
-            transparencyTimer-= Time.deltaTime;
+            transparencyTimer -= Time.deltaTime;
 
-            if(transparencyTimer<=0)
+            if (transparencyTimer <= 0)
             {
                 makeVisible();
             }
         }
     }
+        
 
     public void makeVisible()
     {
@@ -38,6 +39,7 @@ public class TransparencyController : MonoBehaviour {
     public void makeTransparent()
     {
         transparent = true;
+        transparencyTimer = transparencyExpireTime;
         this.renderer.material = transparentMaterial;
     }
 }
