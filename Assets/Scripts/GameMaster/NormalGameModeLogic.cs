@@ -13,6 +13,10 @@ public class NormalGameModeLogic : GameModeLogic
         gameMaster.setGameTimeLeft(level.timeToSecondReward);
     }
 
+    public void initGame()
+    {
+
+    }
 
 
     public void update()

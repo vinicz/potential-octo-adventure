@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerSpawner : MonoBehaviour {
 
     public GameObject playerAvatar;
-
+    private GameObject playerObject;
 
     void Start()
     {
@@ -14,8 +14,17 @@ public class PlayerSpawner : MonoBehaviour {
 
 	public void spawnPlayer()
     {
-        GameObject playerObject = (GameObject) Instantiate(playerAvatar);
+        if (playerObject == null)
+        {
+            playerObject = (GameObject)Instantiate(playerAvatar);
+        }
+
         playerObject.transform.parent = this.transform;
         playerObject.transform.position = this.transform.position;
+    }
+
+    public GameObject getPlayerObject()
+    {
+        return playerObject;
     }
 }

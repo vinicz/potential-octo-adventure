@@ -4,24 +4,31 @@ using System.Collections;
 public abstract class GameHandlerScript : MonoBehaviour
 {
     public delegate void CollectedDiamondCountChangedHandler();
+
     public event CollectedDiamondCountChangedHandler CollectedDiamondCountChanged;
 
     public delegate void KilledEnemyCountChangedHandler();
+
     public event KilledEnemyCountChangedHandler KilledEnemyCountChanged;
 
     public delegate void LevelPassedHandler();
+
     public event LevelPassedHandler LevelPassed;
   
     public delegate void LevelFailedHandler();
+
     public event LevelPassedHandler LevelFailed;
 
     public delegate void GameStateChangedHandler();
+
     public event GameStateChangedHandler GameStateChanged;
 
     public delegate void GamePausedHandler();
+
     public event GamePausedHandler GamePaused;
 
     public delegate void GameResumedHandler();
+
     public event GameResumedHandler GameResumed;
 
     public int ballCount;
@@ -64,6 +71,7 @@ public abstract class GameHandlerScript : MonoBehaviour
         levelRecord = GameServiceLayer.serviceLayer.levelService.getLevelRecordForScene(Application.loadedLevel);
         requiredDiamondCount = GameObject.FindGameObjectsWithTag(DIAMOND_TAG_NAME).Length;
         gameModeLogic = GameModeLogicFactory.createGameModeLogic(this, levelRecord);
+        gameModeLogic.initGame();
 
     }
 
@@ -93,9 +101,7 @@ public abstract class GameHandlerScript : MonoBehaviour
       
     }
 
-
     public abstract void levelSpecificGameLogic();
-  
 
     public virtual void killOneBall(GameObject ball)
     {
@@ -148,12 +154,11 @@ public abstract class GameHandlerScript : MonoBehaviour
         Application.LoadLevel(Application.loadedLevel);
     }
 
-
     public void levelPassed()
     {
         int collectedRewardCount = gameModeLogic.calculateReward();
 
-        GameServiceLayer.serviceLayer.levelService.setLevelResult(Application.loadedLevel, collectedRewardCount, elapsedTime);
+        GameServiceLayer.serviceLayer.levelService.setLevelResult(levelRecord, collectedRewardCount, elapsedTime);
         
         if (LevelPassed != null)
         {
@@ -195,34 +200,35 @@ public abstract class GameHandlerScript : MonoBehaviour
         }
     }
 
-
     public void continueLevel()
     {
         GameServiceLayer.serviceLayer.itemService.spendTokens(continueCost);
-        ballCount++;
 
+        if (ballCount == 0)
+        {
+            ballCount++;
+        }
+
+        gameModeLogic.initGame();
         resumeLevel();
-
         playerSpawner.spawnPlayer();
     }
 
-
-
-
-    void OnApplicationPause(bool pauseStatus) {
-        if (pauseStatus && gameState == GameState.GAME )
+    void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus && gameState == GameState.GAME)
         {
             pauseLevel();
         }
     }
 
-    void OnApplicationFocus(bool focusStatus) {
-        if (!focusStatus && gameState == GameState.GAME )
+    void OnApplicationFocus(bool focusStatus)
+    {
+        if (!focusStatus && gameState == GameState.GAME)
         {
             pauseLevel();
         } 
     }
-
 
     public int getCollectedDiamonds()
     {
@@ -282,6 +288,11 @@ public abstract class GameHandlerScript : MonoBehaviour
     public int getBallCount()
     {
         return ballCount;
+    }
+
+    public void setBallCount(int balls)
+    {
+        ballCount = balls;
     }
 
 

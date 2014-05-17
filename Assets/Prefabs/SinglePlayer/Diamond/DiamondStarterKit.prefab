@@ -151,6 +151,7 @@ GameObject:
   - 124: {fileID: 12400000}
   - 81: {fileID: 8100000}
   - 114: {fileID: 11400074}
+  - 114: {fileID: 11400396}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2229,7 +2230,7 @@ GameObject:
   - 4: {fileID: 400264}
   - 114: {fileID: 11400344}
   m_Layer: 0
-  m_Name: playerSpawner
+  m_Name: PlayerSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2846,7 +2847,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 101.76339, y: 45.8762932, z: -8.14096069}
+  m_LocalPosition: {x: 5.55556774, y: -13.9060278, z: 7.59444857}
   m_LocalScale: {x: 518.462158, y: 76.3041611, z: 1.01999974}
   m_Children: []
   m_Father: {fileID: 400280}
@@ -9307,6 +9308,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosiveLabel: {fileID: 11400386}
   explosionLabel: {fileID: 11400388}
+--- !u!114 &11400396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73ebf1498bc4df847848945d331219c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpwanerList:
+  - {fileID: 11400344}
+  capsuleSize: 5
+  capsuleRadius: 5
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

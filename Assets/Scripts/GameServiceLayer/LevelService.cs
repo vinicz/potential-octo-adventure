@@ -59,22 +59,19 @@ public class LevelService : MonoBehaviour
         return level;
     }
 
-    public void setLevelResult(int sceneIndex, int collectedRewards, float elapsedTime)
+    public void setLevelResult(LevelRecord currentLevel, int collectedRewards, float elapsedTime)
     {
-        LevelRecord currentLevel = getLevelRecordForScene(sceneIndex);
 
         if (collectedRewards > currentLevel.collectedRewards)
         {
             addNewRewardsToStorage(currentLevel,collectedRewards);
+            currentLevel.collectedRewards = collectedRewards;
         }
         
         if (elapsedTime < currentLevel.bestTime || currentLevel.bestTime ==0)
         {
             currentLevel.bestTime = elapsedTime;
         }
-
-        currentLevel.collectedRewards = collectedRewards;
-
 
         levelStorage.saveLevelList(levelList);
     }

@@ -9,6 +9,7 @@ public class GameServiceLayer : MonoBehaviour {
     public GameHandlerScript gameMaster;
     public LevelService levelService;
     public ItemService itemService;
+    public OptionsService optionsService;
 
 	void Awake () {
 

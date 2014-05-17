@@ -11,8 +11,13 @@ public class StressGameModeLogic : GameModeLogic
         this.gameMaster = gameMaster;
         this.level = gameMaster.getCurrentLevelRecord();
 
-        gameMaster.setGameTimeLeft(level.timeToSecondReward);
         gameMaster.CollectedDiamondCountChanged += onDiamondCollected;
+    }
+
+
+    public void initGame()
+    {
+        gameMaster.setGameTimeLeft(level.timeToSecondReward);
     }
 
     public void update()
