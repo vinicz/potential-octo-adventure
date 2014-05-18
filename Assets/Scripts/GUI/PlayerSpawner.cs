@@ -21,6 +21,7 @@ public class PlayerSpawner : MonoBehaviour {
 
         playerObject.transform.parent = this.transform;
         playerObject.transform.position = this.transform.position;
+        playerObject.SetActive(true);
     }
 
     public GameObject getPlayerObject()

@@ -24,26 +24,32 @@ public class CameraTransparencyController : MonoBehaviour
             SphereCollider sphereCollider = playerObject.GetComponent<SphereCollider>();
             if (sphereCollider != null)
             {
-                sphereOffset = sphereCollider.radius*2;
+                sphereOffset = sphereCollider.radius * 2;
             }
-           
 
+            RaycastHit testHit;
             RaycastHit[] hits;
             Vector3 top = playerPosition;
             Vector3 bottom = this.transform.position;
-           
-            hits = Physics.SphereCastAll(new Ray(bottom, playerDirection), sphereRadius, playerDistance - sphereRadius / 2f-sphereOffset);
-           
 
 
-            foreach (RaycastHit hit in hits)
+            Physics.Raycast(new Ray(bottom, playerDirection), out testHit);
+           
+            if (testHit.collider.tag != "Player")
             {
-                TransparencyController transparencyController = hit.transform.gameObject.GetComponent<TransparencyController>();
-                if (transparencyController != null)
-                {
-                    transparencyController.makeTransparent();
-                }
 
+                hits = Physics.SphereCastAll(new Ray(bottom, playerDirection), sphereRadius, playerDistance - sphereRadius / 2f - sphereOffset);
+           
+
+                foreach (RaycastHit hit in hits)
+                {
+                    TransparencyController transparencyController = hit.transform.gameObject.GetComponent<TransparencyController>();
+                    if (transparencyController != null)
+                    {
+                        transparencyController.makeTransparent();
+                    }
+
+                }
             }
 
         }

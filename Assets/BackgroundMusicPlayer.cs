@@ -12,7 +12,7 @@ public class BackgroundMusicPlayer : MonoBehaviour
     }
 
 
-    public void setupBackgroundMusicPlayer(AudioClip newbackgroudMusic)
+    public void setupBackgroundMusicPlayer(AudioClip newbackgroudMusic, float volume)
     {
         string newbackgroudMusicName = newbackgroudMusic.name;
         string currentBackgroudMusicName = null;
@@ -26,7 +26,7 @@ public class BackgroundMusicPlayer : MonoBehaviour
         if (currentBackgroudMusicName != newbackgroudMusicName)
         {
 
-            changeMusicPlayerToNew(newbackgroudMusic);
+            changeMusicPlayerToNew(newbackgroudMusic, volume);
         }
 
     }
@@ -37,7 +37,7 @@ public class BackgroundMusicPlayer : MonoBehaviour
     }
 
 
-    void changeMusicPlayerToNew(AudioClip newbackgroudMusic)
+    void changeMusicPlayerToNew(AudioClip newbackgroudMusic,float volume)
     {
         backgroudMusicAudioSource.Stop();
 
@@ -46,6 +46,7 @@ public class BackgroundMusicPlayer : MonoBehaviour
         if (GameServiceLayer.serviceLayer.optionsService.isMusicEnabled())
         {
             backgroudMusicAudioSource.Play();
+            backgroudMusicAudioSource.volume = volume;
         } 
         
         GameServiceLayer.serviceLayer.optionsService.MusicEnabledOptionChanged += onMusicEnabledOptionChanged;
