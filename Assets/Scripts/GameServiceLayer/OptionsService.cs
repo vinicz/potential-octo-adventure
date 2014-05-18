@@ -6,13 +6,18 @@ public class OptionsService : MonoBehaviour
 {
 
     public static string SOUND_ENABLED_OPTION = "sound_enabled";
+    public static string MUSIC_ENABLED_OPTION = "music_enabled";
     public static string VIBRATION_ENABLED_OPTION = "vibration_enabled";
 
     public delegate void CalibrationCompletedHandler();
     public event CalibrationCompletedHandler CalibrationCompleted;
 
+    public delegate void MusicEnabledOptionChangedHandler();
+    public event MusicEnabledOptionChangedHandler MusicEnabledOptionChanged;
+
     public OrientationCalibrationService orientationCalibrationService;
     private bool soundEnabled;
+    private bool musicEnabled;
     private bool vibrationEnabled;
     private Vector3 initialOrientation = new Vector3(0, 0, -1);
     private float previousVolume;
@@ -21,12 +26,13 @@ public class OptionsService : MonoBehaviour
     void Awake()
     {
         initSound();
+        initMusic();
         initVibration();
     }
 
    
 
-    public bool getSoundEnabled()
+    public bool isSoundEnabled()
     {
         return soundEnabled;
     }
@@ -56,7 +62,27 @@ public class OptionsService : MonoBehaviour
         PlayerPrefs.Save();   
     }
 
-    public bool getVibrationEnabled()
+    public bool isMusicEnabled()
+    {
+        return musicEnabled;
+    }
+    
+    public void setMusicEnabled(bool enabled)
+    {
+        musicEnabled = enabled;
+        int musicEnabledInt = enabled ? 1 : 0;
+        
+        PlayerPrefs.SetInt(MUSIC_ENABLED_OPTION, musicEnabledInt);
+        PlayerPrefs.Save();
+
+        if (MusicEnabledOptionChanged != null)
+        {
+            MusicEnabledOptionChanged();
+        }
+    }
+
+
+    public bool isVibrationEnabled()
     {
         return vibrationEnabled;
     }
@@ -120,9 +146,17 @@ public class OptionsService : MonoBehaviour
         }
     }
 
+    void initMusic()
+    {
+        int musicEnabledInt = PlayerPrefs.GetInt(MUSIC_ENABLED_OPTION, 1);
+        musicEnabled = (musicEnabledInt == 1) ? true : false;
+    }
+
     void initVibration()
     {
         int vibrationEnabledInt = PlayerPrefs.GetInt(VIBRATION_ENABLED_OPTION, 1);
         vibrationEnabled = (vibrationEnabledInt == 1) ? true : false;
     }
+
+
 }

@@ -5,13 +5,15 @@ public class OptionsWindow : MonoBehaviour {
 
     public GameObject calibrationWindow;
     public UICheckbox soundCheckBox;
+    public UICheckbox musicCheckBox;
     public UICheckbox vibrationCheckBox;
 
 
     void Awake()
     {
-        soundCheckBox.startsChecked = GameServiceLayer.serviceLayer.optionsService.getSoundEnabled();
-        vibrationCheckBox.startsChecked = GameServiceLayer.serviceLayer.optionsService.getVibrationEnabled();
+        soundCheckBox.startsChecked = GameServiceLayer.serviceLayer.optionsService.isSoundEnabled();
+        musicCheckBox.startsChecked = GameServiceLayer.serviceLayer.optionsService.isMusicEnabled();
+        vibrationCheckBox.startsChecked = GameServiceLayer.serviceLayer.optionsService.isVibrationEnabled();
     }
 
 
@@ -30,7 +32,7 @@ public class OptionsWindow : MonoBehaviour {
 
     public void onMusicCheckBoxClicked(bool check)
     {
-       
+        GameServiceLayer.serviceLayer.optionsService.setMusicEnabled(check);
     }
 
     public void onVibrationCheckBoxClicked(bool check)

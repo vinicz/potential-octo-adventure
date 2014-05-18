@@ -10,6 +10,7 @@ public class GameServiceLayer : MonoBehaviour {
     public LevelService levelService;
     public ItemService itemService;
     public OptionsService optionsService;
+    public BackgroundMusicPlayer backgroundMusicPlayer;
 
 	void Awake () {
 
