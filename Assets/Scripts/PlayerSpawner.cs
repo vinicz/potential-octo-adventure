@@ -21,6 +21,8 @@ public class PlayerSpawner : MonoBehaviour {
 
         playerObject.transform.parent = this.transform;
         playerObject.transform.position = this.transform.position;
+        playerObject.rigidbody.velocity = Vector3.zero;
+        playerObject.rigidbody.angularVelocity = Vector3.zero;
         playerObject.SetActive(true);
     }
 

@@ -27,12 +27,16 @@ public class AccelometerController : MonoBehaviour
             Quaternion rotationAmplifierQuaternion = Quaternion.AngleAxis(angleBetweenDirections * accelerationStrength, rotationAxis);
             mulitpliedAcceleration = rotationAmplifierQuaternion * new Vector3(0f,0f,-1f);
 
-     
+            
+            float xHelperForceValue =  Mathf.Abs(Input.acceleration.y)*2;
+            float xHelperForce = xHelperForceValue>=1 ? xHelperForceValue:1;
+            float zHelperForceValue =  Mathf.Abs(Input.acceleration.x)*2;
+            float zHelperForce = zHelperForceValue>=1 ? zHelperForceValue:1;
 
             mulitpliedAcceleration = new Vector3(
-                mulitpliedAcceleration.x * speed.x, 
+                mulitpliedAcceleration.x * speed.x * xHelperForce, 
                 mulitpliedAcceleration.y * speed.z, 
-                mulitpliedAcceleration.z * speed.y);
+                mulitpliedAcceleration.z * speed.y * zHelperForce);
 
             rigidbody.AddForce(
                 mulitpliedAcceleration.x * Time.deltaTime, 
