@@ -129,7 +129,7 @@ public abstract class GameHandlerScript : MonoBehaviour
     {
 
         collectedDiamondCount++;
-        diamond.SetActive(false);
+		diamond.GetComponent<DiamondActivator> ().DeactivateDiamond ();
 
         if (CollectedDiamondCountChanged != null)
         {

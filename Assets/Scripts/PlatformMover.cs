@@ -7,22 +7,18 @@ public class PlatformMover : MonoBehaviour {
     public List<GameObject> targetList;
     public float speed=0.5f;
     private int targetIndex=0;
-   
+	public bool loop = true;
 
 	// Use this for initialization
 	void Start () {
-	
         if(targetList.Count==0)
         {
             enabled=false;
         }
-
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-
 
         transform.position = Vector3.Lerp(transform.position, targetList[targetIndex].transform.position, Time.deltaTime*speed);
 
@@ -30,8 +26,10 @@ public class PlatformMover : MonoBehaviour {
         {
             targetIndex++;
             if(targetIndex>=targetList.Count)
-            {
-                targetIndex=0;
+			{
+				targetIndex=0;
+				if (!loop)
+					enabled = false;
             }
         }
 	
