@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class CalibrationWindow : MonoBehaviour
 {
+    const string INITIAL_CALIBRATION_TEXT = "Tap to set base\n orientation";
 
     public UILabel calibrationLabel;
     public GameObject previousWindow;
@@ -14,7 +15,7 @@ public class CalibrationWindow : MonoBehaviour
     void Start()
     {
         disableOtherWindows();
-
+        calibrationLabel.text = INITIAL_CALIBRATION_TEXT;
     }
 
     void Update()
@@ -27,6 +28,7 @@ public class CalibrationWindow : MonoBehaviour
                 beforeCalibration = false;
 
                 GameServiceLayer.serviceLayer.optionsService.CalibrationCompleted += onCalibrationCompleted;
+                GameServiceLayer.serviceLayer.optionsService.CalibrationFailed += onCalibrationFailed;
                 GameServiceLayer.serviceLayer.optionsService.calibrateInitialOrientation();
             }
 
@@ -40,6 +42,9 @@ public class CalibrationWindow : MonoBehaviour
                 {
                     window.SetActive(true);
                 }
+
+                beforeCalibration= true;
+                calibrationLabel.text = INITIAL_CALIBRATION_TEXT;
             }
 
         }
@@ -47,9 +52,20 @@ public class CalibrationWindow : MonoBehaviour
 
     void onCalibrationCompleted()
     {
+        GameServiceLayer.serviceLayer.optionsService.CalibrationCompleted -= onCalibrationCompleted;
+        GameServiceLayer.serviceLayer.optionsService.CalibrationFailed -= onCalibrationFailed;
         calibrationFinished = true;
         calibrationLabel.text = "Calibration finished,\n tap to exit";
       
+    }
+
+    void onCalibrationFailed()
+    {
+        GameServiceLayer.serviceLayer.optionsService.CalibrationCompleted -= onCalibrationCompleted;
+        GameServiceLayer.serviceLayer.optionsService.CalibrationFailed -= onCalibrationFailed;
+        beforeCalibration = true;
+        calibrationLabel.text = "Calibration failed,\n please change the orientation\n Tap to retry";
+        
     }
 
     void disableOtherWindows()

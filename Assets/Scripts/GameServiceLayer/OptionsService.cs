@@ -8,11 +8,20 @@ public class OptionsService : MonoBehaviour
     public static string SOUND_ENABLED_OPTION = "sound_enabled";
     public static string MUSIC_ENABLED_OPTION = "music_enabled";
     public static string VIBRATION_ENABLED_OPTION = "vibration_enabled";
+    public static string INITIAL_ORIENTATION_X = "initial_orientation_x";
+    public static string INITIAL_ORIENTATION_Y = "initial_orientation_y";
+    public static string INITIAL_ORIENTATION_Z = "initial_orientation_z";
 
     public delegate void CalibrationCompletedHandler();
+
     public event CalibrationCompletedHandler CalibrationCompleted;
 
+    public delegate void CalibrationFailedHandler();
+
+    public event CalibrationFailedHandler CalibrationFailed;
+
     public delegate void MusicEnabledOptionChangedHandler();
+
     public event MusicEnabledOptionChangedHandler MusicEnabledOptionChanged;
 
     public OrientationCalibrationService orientationCalibrationService;
@@ -21,16 +30,14 @@ public class OptionsService : MonoBehaviour
     private bool vibrationEnabled;
     private Vector3 initialOrientation = new Vector3(0, 0, -1);
     private float previousVolume;
-   
 
     void Awake()
     {
         initSound();
         initMusic();
         initVibration();
+        initOrientation();
     }
-
-   
 
     public bool isSoundEnabled()
     {
@@ -81,7 +88,6 @@ public class OptionsService : MonoBehaviour
         }
     }
 
-
     public bool isVibrationEnabled()
     {
         return vibrationEnabled;
@@ -110,11 +116,30 @@ public class OptionsService : MonoBehaviour
     void onCalibrationCompleted()
     {
         orientationCalibrationService.CalibrationCompleted -= onCalibrationCompleted;
-        initialOrientation = orientationCalibrationService.getOrientation();
+       
+        Vector3 calibratedOrientation = orientationCalibrationService.getOrientation();
+        bool xIn90Degrees = (Mathf.Abs(calibratedOrientation.x) >= 0.9 && Mathf.Abs(calibratedOrientation.x) <= 1.1);
+        bool yIn90Degrees = (Mathf.Abs(calibratedOrientation.y) >= 0.9 && Mathf.Abs(calibratedOrientation.y) <= 1.1);
 
-        if (CalibrationCompleted != null)
+        if (xIn90Degrees || yIn90Degrees)
         {
-            CalibrationCompleted();
+            if (CalibrationFailed != null)
+            {
+                CalibrationFailed();
+            }
+        } else
+        {
+            initialOrientation = calibratedOrientation;
+
+            PlayerPrefs.SetFloat(INITIAL_ORIENTATION_X, initialOrientation.x);
+            PlayerPrefs.SetFloat(INITIAL_ORIENTATION_Y, initialOrientation.y);
+            PlayerPrefs.SetFloat(INITIAL_ORIENTATION_Z, initialOrientation.z);
+            PlayerPrefs.Save();
+
+            if (CalibrationCompleted != null)
+            {
+                CalibrationCompleted();
+            }
         }
     }
 
@@ -156,6 +181,16 @@ public class OptionsService : MonoBehaviour
     {
         int vibrationEnabledInt = PlayerPrefs.GetInt(VIBRATION_ENABLED_OPTION, 1);
         vibrationEnabled = (vibrationEnabledInt == 1) ? true : false;
+    }
+
+    void initOrientation()
+    {
+        float initialOrientationX = PlayerPrefs.GetFloat(INITIAL_ORIENTATION_X,0f);
+        float initialOrientationY = PlayerPrefs.GetFloat(INITIAL_ORIENTATION_Y,0f);
+        float initialOrientationZ = PlayerPrefs.GetFloat(INITIAL_ORIENTATION_Z,-1f);
+
+        initialOrientation = new Vector3(initialOrientationX, initialOrientationY, initialOrientationZ);
+
     }
 
 

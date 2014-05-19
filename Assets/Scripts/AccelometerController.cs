@@ -22,7 +22,6 @@ public class AccelometerController : MonoBehaviour
         if (GameServiceLayer.serviceLayer.gameMaster.getGameState() == GameHandlerScript.GameState.GAME)
         {
 
-     
             Vector3 rotationAxis = Vector3.Cross(initialAcceleration, Input.acceleration);
             float angleBetweenDirections = Vector3.Angle(initialAcceleration, Input.acceleration);
             Quaternion rotationAmplifierQuaternion = Quaternion.AngleAxis(angleBetweenDirections * accelerationStrength, rotationAxis);
