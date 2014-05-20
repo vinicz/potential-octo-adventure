@@ -2,20 +2,27 @@
 using System.Collections;
 
 public class SmokeStormIncrease : MonoBehaviour {
-
-	public float targetEmission = 100;
+	
+	public float targetAlpha = 255;
 	public float time = 100;
 
-	private ParticleSystem particleSystem;
+	private Material material;
+	private Color tintColor;
 	private float step;
-
+	
 	void Start () {
-		particleSystem = GetComponent<ParticleSystem> ();
-		step = (targetEmission - particleSystem.emissionRate) / time;
-	}
+		material = GetComponent<ParticleSystem> ().renderer.material;
+		tintColor = material.GetColor("_TintColor");
 
+		step = (targetAlpha / 255 - tintColor.a) / time;
+	}
+	
 	void Update () {
-		if(GameServiceLayer.serviceLayer.gameMaster.getGameState() == GameHandlerScript.GameState.GAME)
-			particleSystem.emissionRate += step * Time.deltaTime;
+		if (GameServiceLayer.serviceLayer.gameMaster.getGameState () == GameHandlerScript.GameState.GAME) {
+			tintColor.a += step * Time.deltaTime;
+			if(tintColor.a > 1.0)
+				tintColor.a = 1.0f;
+			material.SetColor("_TintColor", tintColor);
+		}
 	}
 }

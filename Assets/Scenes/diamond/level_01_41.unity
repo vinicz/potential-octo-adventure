@@ -1911,7 +1911,7 @@ ParticleSystem:
       minMaxState: 3
     gravityModifier: 0
     inheritVelocity: 0
-    maxNumParticles: 1000
+    maxNumParticles: 100
   ShapeModule:
     serializedVersion: 2
     enabled: 1
@@ -7939,7 +7939,7 @@ MonoBehaviour:
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 100000, guid: 8b06ce0d0d4fe104299c4feff26e1d48, type: 2}
-  m_PrefabInternal: {fileID: 925149805}
+  m_PrefabInternal: {fileID: 1806417238}
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 549257773}
@@ -7958,7 +7958,7 @@ ParticleSystemRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 19900000, guid: 8b06ce0d0d4fe104299c4feff26e1d48,
     type: 2}
-  m_PrefabInternal: {fileID: 925149805}
+  m_PrefabInternal: {fileID: 1806417238}
   m_GameObject: {fileID: 549257770}
   m_Enabled: 1
   m_CastShadows: 0
@@ -7992,7 +7992,7 @@ ParticleSystem:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 19800000, guid: 8b06ce0d0d4fe104299c4feff26e1d48,
     type: 2}
-  m_PrefabInternal: {fileID: 925149805}
+  m_PrefabInternal: {fileID: 1806417238}
   m_GameObject: {fileID: 549257770}
   lengthInSec: 99999
   startDelay: 0
@@ -8202,7 +8202,7 @@ ParticleSystem:
       minMaxState: 3
     gravityModifier: 0
     inheritVelocity: 0
-    maxNumParticles: 1000
+    maxNumParticles: 50
   ShapeModule:
     serializedVersion: 2
     enabled: 1
@@ -8220,7 +8220,7 @@ ParticleSystem:
     enabled: 1
     m_Type: 0
     rate:
-      scalar: 0
+      scalar: 10
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -9014,10 +9014,10 @@ ParticleSystem:
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400000, guid: 8b06ce0d0d4fe104299c4feff26e1d48, type: 2}
-  m_PrefabInternal: {fileID: 925149805}
+  m_PrefabInternal: {fileID: 1806417238}
   m_GameObject: {fileID: 549257770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.46742129, y: -7.00578499, z: 4.54482937}
+  m_LocalPosition: {x: -2.46742129, y: -4.71557903, z: 4.54482937}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9026,14 +9026,14 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 11400000, guid: 8b06ce0d0d4fe104299c4feff26e1d48,
     type: 2}
-  m_PrefabInternal: {fileID: 925149805}
+  m_PrefabInternal: {fileID: 1806417238}
   m_GameObject: {fileID: 549257770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 297af8852514c1b48adbac2bdf5305b9, type: 3}
+  m_Script: {fileID: 11500000, guid: f8e1daa31b6609f4f9c31e8ff29f3b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetEmission: 100
+  targetAlpha: 255
   time: 100
 --- !u!1 &578671682
 GameObject:
@@ -15890,46 +15890,6 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!1001 &925149805
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 8b06ce0d0d4fe104299c4feff26e1d48, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -2.46742129
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8b06ce0d0d4fe104299c4feff26e1d48, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -7.00578499
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8b06ce0d0d4fe104299c4feff26e1d48, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 4.54482937
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8b06ce0d0d4fe104299c4feff26e1d48, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8b06ce0d0d4fe104299c4feff26e1d48, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8b06ce0d0d4fe104299c4feff26e1d48, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 8b06ce0d0d4fe104299c4feff26e1d48, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 8b06ce0d0d4fe104299c4feff26e1d48, type: 2}
-  m_RootGameObject: {fileID: 549257770}
-  m_IsPrefabParent: 0
-  m_IsExploded: 1
 --- !u!1 &940055846
 GameObject:
   m_ObjectHideFlags: 0
@@ -22138,7 +22098,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: evel_23
+  - levelName: level_23
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -22445,6 +22405,62 @@ MonoBehaviour:
   - levelName: multiTestMap
     levelGroup: 
     isMultiplayer: 1
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: level_01_36
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: level_01_37
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: level_01_38
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: level_01_39
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: level_01_40
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: level_01_41
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: level_01_over9000
+    levelGroup: diamond
+    isMultiplayer: 0
     collectedRewards: 0
     bestTime: 0
     timeToFirstReward: 40
@@ -22986,7 +23002,7 @@ ParticleSystem:
       minMaxState: 3
     gravityModifier: 0
     inheritVelocity: 0
-    maxNumParticles: 1000
+    maxNumParticles: 100
   ShapeModule:
     serializedVersion: 2
     enabled: 1
@@ -25846,7 +25862,7 @@ ParticleSystem:
       minMaxState: 3
     gravityModifier: 0
     inheritVelocity: 0
-    maxNumParticles: 1000
+    maxNumParticles: 100
   ShapeModule:
     serializedVersion: 2
     enabled: 1
@@ -32054,7 +32070,7 @@ ParticleSystem:
       minMaxState: 3
     gravityModifier: 0
     inheritVelocity: 0
-    maxNumParticles: 1000
+    maxNumParticles: 100
   ShapeModule:
     serializedVersion: 2
     enabled: 1
@@ -33444,6 +33460,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosiveLabel: {fileID: 1188450839}
   explosionLabel: {fileID: 1704847489}
+--- !u!1001 &1806417238
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 8b06ce0d0d4fe104299c4feff26e1d48, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2.46742129
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8b06ce0d0d4fe104299c4feff26e1d48, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -4.71557903
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8b06ce0d0d4fe104299c4feff26e1d48, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 4.54482937
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8b06ce0d0d4fe104299c4feff26e1d48, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8b06ce0d0d4fe104299c4feff26e1d48, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8b06ce0d0d4fe104299c4feff26e1d48, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8b06ce0d0d4fe104299c4feff26e1d48, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 8b06ce0d0d4fe104299c4feff26e1d48, type: 2}
+  m_RootGameObject: {fileID: 549257770}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &1810027494
 GameObject:
   m_ObjectHideFlags: 0
