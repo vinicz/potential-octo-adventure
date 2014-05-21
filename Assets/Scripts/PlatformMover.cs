@@ -19,19 +19,17 @@ public class PlatformMover : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (GameServiceLayer.serviceLayer.gameMaster.getGameState () == GameHandlerScript.GameState.GAME) {
+			transform.position = Vector3.Lerp (transform.position, targetList [targetIndex].transform.position, Time.deltaTime * speed);
 
-        transform.position = Vector3.Lerp(transform.position, targetList[targetIndex].transform.position, Time.deltaTime*speed);
-
-        if ((transform.position - targetList [targetIndex].transform.position).magnitude < 0.2)
-        {
-            targetIndex++;
-            if(targetIndex>=targetList.Count)
-			{
-				targetIndex=0;
-				if (!loop)
-					enabled = false;
-            }
-        }
-	
+			if ((transform.position - targetList [targetIndex].transform.position).magnitude < 0.2) {
+				targetIndex++;
+				if (targetIndex >= targetList.Count) {
+					targetIndex = 0;
+					if (!loop)
+						enabled = false;
+				}
+			}
+		}
 	}
 }
