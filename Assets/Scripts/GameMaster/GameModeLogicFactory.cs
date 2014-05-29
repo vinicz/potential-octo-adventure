@@ -12,7 +12,7 @@ public class GameModeLogicFactory
                 newGameModeLogic = new NormalGameModeLogic(gameMaster);
                 break;
             case LevelRecord.LevelType.STRESS:
-                newGameModeLogic = new StressGameModeLogic(gameMaster);
+                newGameModeLogic = new NormalGameModeLogic(gameMaster);
                 break;
             case LevelRecord.LevelType.BOSS:
                 newGameModeLogic = new NormalGameModeLogic(gameMaster);
