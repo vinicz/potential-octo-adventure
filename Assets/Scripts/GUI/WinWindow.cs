@@ -11,6 +11,8 @@ public class WinWindow : UIWindow {
     public UISprite reward3Icon;
     public GameObject lockObject;
     public UILabel lockLabel;
+	public UILabel timeLabel;
+	public UILabel bestTimeLabel;
 
     bool inited = false;
 
@@ -36,6 +38,8 @@ public class WinWindow : UIWindow {
         this.gameObject.SetActive(true);
         LevelRecord currentLevel = GameServiceLayer.serviceLayer.gameMaster.getCurrentLevelRecord();
         setupLevelRewardIcons(currentLevel);
+
+		setupTimeLabels (currentLevel);
 
     }
 
@@ -77,6 +81,12 @@ public class WinWindow : UIWindow {
             nextButtonLabel.gameObject.SetActive(false);
         }
     }
+
+	void setupTimeLabels (LevelRecord currentLevel)
+	{
+		timeLabel.text = "Time: " + GameServiceLayer.serviceLayer.gameMaster.getElapsedTime ().ToString ("0.00");
+		bestTimeLabel.text = "Best: " + currentLevel.bestTime.ToString ("0.00");
+	}
 
     void OnDestroy()
     {
