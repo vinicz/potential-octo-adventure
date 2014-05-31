@@ -100,18 +100,21 @@ public class LevelDataCollector : MonoBehaviour
 				requestURL += "levelName=" + currentLevel.levelName;
 				requestURL += "&levelPassed=" + levelPassed.ToString ();
 				requestURL += "&gameTime=" + gameTime.ToString ();
-				requestURL += "&diamondCollections=";
 
-				int counter = 1;
-				foreach (float diamondCollectionTime in diamondCollectionTimes) {
-						requestURL += diamondCollectionTime.ToString();
+				if (diamondCollectionTimes.Count > 0) {
+						requestURL += "&diamondCollections=";
 
-						if (counter != diamondCollectionTimes.Count) {
-								requestURL += ",";
-						}
+						int counter = 1;
+						foreach (float diamondCollectionTime in diamondCollectionTimes) {
+								requestURL += diamondCollectionTime.ToString ();
 
-						counter++;
+								if (counter != diamondCollectionTimes.Count) {
+										requestURL += ",";
+								}
+
+								counter++;
 			
+						}
 				}
 
 				ramballServerUpload = new WWW (requestURL);
