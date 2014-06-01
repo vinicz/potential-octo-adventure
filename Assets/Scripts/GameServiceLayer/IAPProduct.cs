@@ -8,7 +8,8 @@ public class IAPProduct
         MONEY,
         REWARD,
         TOKEN,
-        PREMIUM_MEMEBERSHIP
+        PREMIUM_MEMEBERSHIP,
+		CHARACTER
     };
 
     public string name;
@@ -18,6 +19,8 @@ public class IAPProduct
     public float price;
     public ProductType payingCurrency;
     public ProductType productItemTye;
+	public bool consumable = true;
+	public bool purchased = false;
 
     public IAPProduct(string name, string description, string item_id, int amount, int price, ProductType payingCurrency, ProductType productItemTye)
     {

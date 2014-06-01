@@ -15,6 +15,8 @@ public abstract class IAPService : MonoBehaviour
 
     public abstract List<IAPProduct> getProducts();
 
+	public abstract IEnumerable<IAPProduct> getProductOfType(IAPProduct.ProductType productype);
+
     protected virtual void OnPurchaseCompletedSuccesfully()
     {
         if (PurchaseCompletedSuccesfully != null)

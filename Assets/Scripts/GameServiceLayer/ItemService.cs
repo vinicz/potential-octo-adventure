@@ -7,6 +7,9 @@ public class ItemService : MonoBehaviour
     public delegate void ItemCountChangedHandler();
     public event ItemCountChangedHandler ItemCountChanged;
 
+	public delegate void PurchaseCompletedHandler();
+	public event PurchaseCompletedHandler PurchaseCompleted;
+
     public ItemStorage itemStorage;
     public IAPService iapService;
     public int rewardsToTokenCount = 50;
@@ -76,9 +79,19 @@ public class ItemService : MonoBehaviour
         return iapService.getProducts();
     }
 
+	public IEnumerable<IAPProduct> getIAPProductsOfType(IAPProduct.ProductType productype)
+	{
+		return iapService.getProductOfType (productype);
+	}
+
     void purchaseCompletedSuccesfully()
     {
         refreshItems();
+
+		if (PurchaseCompleted != null)
+		{
+			PurchaseCompleted();
+		}
     }
 
     void purchaseFailed()
