@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameServiceLayer : MonoBehaviour {
 	
@@ -11,6 +12,7 @@ public class GameServiceLayer : MonoBehaviour {
 	public ItemService itemService;
 	public OptionsService optionsService;
 	public BackgroundMusicPlayer backgroundMusicPlayer;
+	public List<PlayerSpawner> playerSpawnerList;
 	
 	public delegate void LevelConfigurationFinishedHandler();
 	public event LevelConfigurationFinishedHandler LevelConfigurationFinished;
@@ -25,6 +27,9 @@ public class GameServiceLayer : MonoBehaviour {
 		{
 			Destroy(gameObject);
 		}
+
+		playerSpawnerList = new List<PlayerSpawner> ();
+
 	}
 	
 	public void setCurrentGameMaster(GameHandlerScript master)

@@ -8,6 +8,8 @@ public class PlayerSpawner : MonoBehaviour {
 
     void Start()
     {
+		GameServiceLayer.serviceLayer.playerSpawnerList.Add (this);
+
         spawnPlayer();
     }
 
@@ -30,4 +32,9 @@ public class PlayerSpawner : MonoBehaviour {
     {
         return playerObject;
     }
+
+	public void OnDestroy()
+	{
+		GameServiceLayer.serviceLayer.playerSpawnerList.Remove(this);
+	}
 }

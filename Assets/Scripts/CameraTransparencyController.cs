@@ -9,6 +9,12 @@ public class CameraTransparencyController : MonoBehaviour
     public List<PlayerSpawner> playerSpwanerList;
     public float sphereRadius = 0.5f;
 
+
+	void Start()
+	{
+		playerSpwanerList = GameServiceLayer.serviceLayer.playerSpawnerList;
+	}
+
     void Update()
     {
         foreach (PlayerSpawner playerSpawner in playerSpwanerList)
