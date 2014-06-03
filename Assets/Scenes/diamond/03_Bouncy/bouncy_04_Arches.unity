@@ -2854,7 +2854,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 3
   m_Type: 2
-  m_Color: {r: 1, g: .921568632, b: .607843161, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1.75
   m_Range: 17
   m_SpotAngle: 30
@@ -11002,7 +11002,6 @@ Transform:
   m_Children:
   - {fileID: 1186538821}
   - {fileID: 892581101}
-  - {fileID: 1088851272}
   - {fileID: 235596725}
   m_Father: {fileID: 0}
 --- !u!114 &891666097
@@ -11088,28 +11087,7 @@ MonoBehaviour:
   enemyCount: 0
   gameTimeLeft: 0
   preGameString: 
-  playerSpawner: {fileID: 1364694359}
   continueCost: 5
---- !u!114 &892581103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: b4795ba2847883f45be216e8c33d6f94,
-    type: 2}
-  m_PrefabInternal: {fileID: 1721967833}
-  m_GameObject: {fileID: 1088851271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b9f2a776033d544f873b16be6e7abe7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonWidth: 100
-  buttonHeight: 40
-  bigWindowWidht: 650
-  bigWindowHeight: 420
-  smallWindowWidht: 400
-  smallWindowHeight: 300
-  originalWidth: 800
-  originalHeight: 480
 --- !u!1 &917694235
 GameObject:
   m_ObjectHideFlags: 0
@@ -14087,33 +14065,6 @@ Prefab:
   m_RootGameObject: {fileID: 612194877}
   m_IsPrefabParent: 0
   m_IsExploded: 1
---- !u!1 &1088851271
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100022, guid: b4795ba2847883f45be216e8c33d6f94, type: 2}
-  m_PrefabInternal: {fileID: 1721967833}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1088851272}
-  - 114: {fileID: 892581103}
-  m_Layer: 0
-  m_Name: GUIHelper
-  m_TagString: Untagged
-  m_Icon: {fileID: 266726316, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1088851272
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400022, guid: b4795ba2847883f45be216e8c33d6f94, type: 2}
-  m_PrefabInternal: {fileID: 1721967833}
-  m_GameObject: {fileID: 1088851271}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.52431726, y: .266141891, z: 2.63295078}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 891666096}
 --- !u!1 &1090899851
 GameObject:
   m_ObjectHideFlags: 0
@@ -14367,6 +14318,7 @@ MonoBehaviour:
   itemService: {fileID: 1547639261}
   optionsService: {fileID: 922514457}
   backgroundMusicPlayer: {fileID: 1630610651}
+  playerSpawnerList: []
 --- !u!1 &1136710104
 GameObject:
   m_ObjectHideFlags: 0
@@ -18438,7 +18390,7 @@ Transform:
   m_PrefabInternal: {fileID: 1721967833}
   m_GameObject: {fileID: 1503418879}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.46960545, y: -8.24220657, z: 4.47872734}
+  m_LocalPosition: {x: 5.55556774, y: -13.9060278, z: 7.59444857}
   m_LocalScale: {x: 518.462158, y: 76.3041611, z: 1.01999974}
   m_Children: []
   m_Father: {fileID: 2069749678}
@@ -21481,6 +21433,14 @@ MonoBehaviour:
     timeToSecondReward: 20
     isLevelCompleted: 0
   - levelName: labyrinth_10_ClosedRect
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: labyrinth_11_FireInside
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
