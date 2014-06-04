@@ -64,6 +64,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &100008
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400006}
+  m_Layer: 0
+  m_Name: BuyCharacterObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &100016
 GameObject:
   m_ObjectHideFlags: 1
@@ -141,32 +156,45 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_LocalRotation: {x: 0, y: -.00454445044, z: 0, w: .999989748}
-  m_LocalPosition: {x: 56.1509323, y: -23.8367367, z: -.157465756}
-  m_LocalScale: {x: 23.7226334, y: 24.3797646, z: .305687875}
+  m_LocalRotation: {x: -5.75756829e-08, y: -.00454400247, z: -3.05820214e-09, w: .999989688}
+  m_LocalPosition: {x: 12.2301884, y: -8.36734295, z: .842269242}
+  m_LocalScale: {x: 4.74911261, y: 4.87595224, z: .305771112}
   m_Children: []
-  m_Father: {fileID: 400018}
+  m_Father: {fileID: 400006}
 --- !u!4 &400002
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.5743599, y: -25.2572365, z: .116852276}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalRotation: {x: -4.16353458e-08, y: 4.50697968e-07, z: -1.38825351e-09, w: 1}
+  m_LocalPosition: {x: 6.19364929, y: -8.6002655, z: .999923706}
+  m_LocalScale: {x: 5, y: 5, z: .580290377}
   m_Children: []
-  m_Father: {fileID: 400018}
+  m_Father: {fileID: 400006}
 --- !u!4 &400004
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
+  m_LocalRotation: {x: 5.94748087e-07, y: -5.56976715e-07, z: -1.0244829e-07, w: 1}
+  m_LocalPosition: {x: -5, y: 18.0000477, z: -1.00006938}
+  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400018}
+--- !u!4 &400006
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100008}
   m_LocalRotation: {x: 0, y: -4.73294165e-07, z: 0, w: 1}
   m_LocalPosition: {x: -5, y: 18, z: -1}
   m_LocalScale: {x: 5, y: 5, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 400002}
+  - {fileID: 400000}
   m_Father: {fileID: 400018}
 --- !u!4 &400010
 Transform:
@@ -175,7 +203,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100024}
   m_LocalRotation: {x: -.705609262, y: -.0445300564, z: -.0447021984, w: .705786407}
-  m_LocalPosition: {x: 887.070374, y: -.862993896, z: 3352.96265}
+  m_LocalPosition: {x: 0, y: -0, z: 3352.96265}
   m_LocalScale: {x: 691.229187, y: 691.228638, z: 691.229065}
   m_Children:
   - {fileID: 400018}
@@ -212,11 +240,10 @@ Transform:
   m_LocalPosition: {x: -.911707699, y: 4.48539066, z: -.152124763}
   m_LocalScale: {x: .00902140234, y: .00877787359, z: .00700068707}
   m_Children:
+  - {fileID: 400006}
   - {fileID: 400004}
-  - {fileID: 400002}
   - {fileID: 400016}
   - {fileID: 400012}
-  - {fileID: 400000}
   - {fileID: 400024}
   m_Father: {fileID: 400010}
 --- !u!4 &400024
@@ -226,8 +253,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.52839375, y: 20.7746658, z: .610430419}
-  m_LocalScale: {x: 43.9996414, y: 14.0294514, z: 1.14746487}
+  m_LocalPosition: {x: -4.52840376, y: 20.7746849, z: .610358894}
+  m_LocalScale: {x: 43.9996414, y: 14.0294523, z: 1.14746463}
   m_Children: []
   m_Father: {fileID: 400018}
 --- !u!65 &6500000
@@ -371,9 +398,9 @@ MonoBehaviour:
   mPivot: 4
   mDepth: 30
   mFont: {fileID: 11400000, guid: 7a48ea22e80d1ac4b97fdd87f9009546, type: 2}
-  mText: 22
-  mMaxLineWidth: 30
-  mMaxLineHeight: 10
+  mText: 25
+  mMaxLineWidth: 0
+  mMaxLineHeight: 0
   mEncoding: 1
   mMaxLineCount: 0
   mPassword: 0
@@ -382,7 +409,7 @@ MonoBehaviour:
   mEffectColor: {r: 0, g: 0, b: 0, a: 1}
   mSymbols: 1
   mEffectDistance: {x: 1, y: 1}
-  mShrinkToFit: 1
+  mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
 --- !u!114 &11400014
@@ -399,6 +426,7 @@ MonoBehaviour:
   characterDesc: {fileID: 11400028}
   characterPrice: {fileID: 11400012}
   characterName: {fileID: 11400010}
+  buyCharacterObject: {fileID: 100008}
 --- !u!114 &11400016
 MonoBehaviour:
   m_ObjectHideFlags: 1
