@@ -36,7 +36,7 @@ public class PlayerCharacterPreview : MonoBehaviour
 
 		void createCharacterPreview ()
 		{
-				GameObject playerCharacterPreview = (GameObject)Instantiate (playerCharacter);
+				playerCharacterPreview = (GameObject)Instantiate (playerCharacter);
 				playerCharacterPreview.transform.parent = this.transform;
 				playerCharacterPreview.transform.localPosition = Vector3.zero;
 				playerCharacterPreview.transform.rotation = Quaternion.identity;
