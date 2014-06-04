@@ -6,6 +6,7 @@ public class ShopWindow : UIWindow
 {
 
     public GameObject productItemViewPrefab;
+	public UIGrid productListGrid;
     public int rows = 2;
     public float columnWidth = 600f;
     public float rowWidth = 240f;
@@ -21,23 +22,23 @@ public class ShopWindow : UIWindow
 
         foreach (IAPProduct product in prodcuts)
         {
-            GameObject productItemObject = NGUITools.AddChild(this.gameObject, productItemViewPrefab);
+			GameObject productItemObject = NGUITools.AddChild(productListGrid.gameObject, productItemViewPrefab);
             ProductItem productItemView = productItemObject.GetComponent<ProductItem>();
             productItemView.setupProductItem(product);
 
-            productItemObject.transform.localPosition = productItemViewPrefab.transform.position +  new Vector3(columnCounter * columnWidth, 
-                                                                                                                rowCounter * -rowWidth, 
-                                                                                                                columnCounter * depthAdjustment);
+            productItemObject.transform.localPosition = productItemViewPrefab.transform.position;
             productItemObject.transform.localRotation = productItemViewPrefab.transform.rotation;
             productItemObject.transform.localScale = productItemViewPrefab.transform.localScale;
 
-            rowCounter++;
-            if (rowCounter >= rows)
-            {
-                rowCounter = 0;
-                columnCounter++;
-            }
+//            rowCounter++;
+//            if (rowCounter >= rows)
+//            {
+//                rowCounter = 0;
+//                columnCounter++;
+//            }
         }
+
+		productListGrid.Reposition();
     }
 
     public override void initWindow()

@@ -11,25 +11,29 @@ public class OptionsService : MonoBehaviour
     public static string INITIAL_ORIENTATION_X = "initial_orientation_x";
     public static string INITIAL_ORIENTATION_Y = "initial_orientation_y";
     public static string INITIAL_ORIENTATION_Z = "initial_orientation_z";
+	public static string PLAYER_CHARACTER_NAME = "player_character";
 
     public delegate void CalibrationCompletedHandler();
-
     public event CalibrationCompletedHandler CalibrationCompleted;
 
     public delegate void CalibrationFailedHandler();
-
     public event CalibrationFailedHandler CalibrationFailed;
 
     public delegate void MusicEnabledOptionChangedHandler();
-
     public event MusicEnabledOptionChangedHandler MusicEnabledOptionChanged;
 
+	public delegate void SelectedCharacterChangedHandler();
+	public event SelectedCharacterChangedHandler SelectedCharacterChanged;
+	
     public OrientationCalibrationService orientationCalibrationService;
+	public PlayerCharacterStorage playerCharacterStorage;
     private bool soundEnabled;
     private bool musicEnabled;
     private bool vibrationEnabled;
     private Vector3 initialOrientation = new Vector3(0, 0, -1);
     private float previousVolume;
+	private string playerCharacterName;
+	private PlayerCharacter playerCharacter;
 
     void Awake()
     {
@@ -37,6 +41,9 @@ public class OptionsService : MonoBehaviour
         initMusic();
         initVibration();
         initOrientation();
+		initPlayerCharacter ();
+
+
     }
 
     public bool isSoundEnabled()
@@ -143,19 +150,25 @@ public class OptionsService : MonoBehaviour
         }
     }
 
-    void getSelectedPlayerSkin()
+	public PlayerCharacter getSelectedPlayerCharacter()
     {
-
+		return playerCharacter;
     }
 
-    void setSelectedPlayerSkin()
+	public void setSelectedPlayerCharacter(PlayerCharacter character)
     {
+		playerCharacter = character;
+		PlayerPrefs.SetString (PLAYER_CHARACTER_NAME, playerCharacter.productId);
 
+		if (SelectedCharacterChanged != null) 
+		{
+			SelectedCharacterChanged();
+		}
     }
 
-    void getPossiblePlayerSkins()
+	public List<PlayerCharacter> getPossiblePlayerCharacters()
     {
-
+		return playerCharacterStorage.getPlayerCharacters ();
     }
 
     void initSound()
@@ -193,5 +206,16 @@ public class OptionsService : MonoBehaviour
 
     }
 
+	void initPlayerCharacter ()
+	{
+		List<PlayerCharacter> characters = playerCharacterStorage.getPlayerCharacters ();
+		string playerCharacterName = PlayerPrefs.GetString (PLAYER_CHARACTER_NAME, "");
+		foreach (PlayerCharacter character in characters) {
+			if (character.productId.Equals (playerCharacterName)) {
+				playerCharacter = character;
+				break;
+			}
+		}
+	}
 
 }

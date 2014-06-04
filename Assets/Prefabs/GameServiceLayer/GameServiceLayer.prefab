@@ -145,6 +145,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &100018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400018}
+  - 114: {fileID: 11400018}
+  m_Layer: 0
+  m_Name: PlayerCharacterStorage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
@@ -207,6 +223,7 @@ Transform:
   - {fileID: 400004}
   - {fileID: 400014}
   - {fileID: 400012}
+  - {fileID: 400018}
   m_Father: {fileID: 0}
 --- !u!4 &400010
 Transform:
@@ -249,6 +266,17 @@ Transform:
   m_GameObject: {fileID: 100016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.79493904, y: -18.7985229, z: -20.9080925}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400008}
+--- !u!4 &400018
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100018}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.6705265, y: -13.9924393, z: -17.1352005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400008}
@@ -1000,6 +1028,8 @@ MonoBehaviour:
     price: 1.99000001
     payingCurrency: 0
     productItemTye: 2
+    consumable: 0
+    purchased: 0
   - name: Explosion
     description: Explosion
     item_id: explosion_50
@@ -1007,6 +1037,8 @@ MonoBehaviour:
     price: 3.99000001
     payingCurrency: 0
     productItemTye: 2
+    consumable: 0
+    purchased: 0
   - name: Explosive
     description: Explosive
     item_id: explosive
@@ -1014,13 +1046,35 @@ MonoBehaviour:
     price: 10
     payingCurrency: 2
     productItemTye: 1
+    consumable: 0
+    purchased: 0
   - name: Premium
-    description: Premium
+    description: Get extra explosions, remove ads and much more...
     item_id: premium
     amount: 1
     price: 1.99000001
     payingCurrency: 0
     productItemTye: 3
+    consumable: 0
+    purchased: 0
+  - name: IceBall
+    description: Ice ball
+    item_id: ball_ice
+    amount: 1
+    price: 25
+    payingCurrency: 2
+    productItemTye: 4
+    consumable: 0
+    purchased: 0
+  - name: BumpyBall
+    description: A ball with bumpy skin, to be so so bumpy.
+    item_id: ball_bounce
+    amount: 1
+    price: 25
+    payingCurrency: 2
+    productItemTye: 4
+    consumable: 0
+    purchased: 0
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1044,6 +1098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientationCalibrationService: {fileID: 11400012}
+  playerCharacterStorage: {fileID: 11400018}
 --- !u!114 &11400016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1055,6 +1110,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13fd0f0c944e1af4f8f12ab7034399b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11400018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 016e1f8c192c8054c884c353ea78c611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCharacters:
+  - playerCharacter: {fileID: 100000, guid: fe22ae8a39860804f83fc6ed371c0400, type: 2}
+    productId: 
+  - playerCharacter: {fileID: 100000, guid: b3611bd9297224b4f98794596c8c4a81, type: 2}
+    productId: ball_ice
+  - playerCharacter: {fileID: 100000, guid: 4aee8a98979f0e14895b040789257ee0, type: 2}
+    productId: ball_bounce
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

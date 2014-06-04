@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{E009D4F5-9115-DAE5-B705-F471C7590BBD}</ProjectGuid>
+	<ProjectGuid>{023AD588-7D74-8BA1-98FE-5C4B4ABCC3E9}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>D:/Dev/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>D:/Dev/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +200,8 @@
      <Compile Include="Assets\Scripts\GUI\BackKeyHandler.cs" />
      <Compile Include="Assets\Scripts\GUI\BackTargetSetter.cs" />
      <Compile Include="Assets\Scripts\GUI\CalibrationWindow.cs" />
+     <Compile Include="Assets\Scripts\GUI\CharacterItem.cs" />
+     <Compile Include="Assets\Scripts\GUI\CharacterSelectWindow.cs" />
      <Compile Include="Assets\Scripts\GUI\ContinueButton.cs" />
      <Compile Include="Assets\Scripts\GUI\DiamondWindow.cs" />
      <Compile Include="Assets\Scripts\GUI\GUIHelper.cs" />
@@ -255,7 +257,8 @@
      <Compile Include="Assets\Scripts\GameServiceLayer\NotEnoughTokensException.cs" />
      <Compile Include="Assets\Scripts\GameServiceLayer\OptionsService.cs" />
      <Compile Include="Assets\Scripts\GameServiceLayer\OrientationCalibrationService.cs" />
-     <Compile Include="Assets\Scripts\GameServiceLayer\PlayerSkinStorage.cs" />
+     <Compile Include="Assets\Scripts\GameServiceLayer\PlayerCharacter.cs" />
+     <Compile Include="Assets\Scripts\GameServiceLayer\PlayerCharacterStorage.cs" />
      <Compile Include="Assets\Scripts\IntroScene.cs" />
      <Compile Include="Assets\Scripts\LevelBackgroundMusicHandler.cs" />
      <Compile Include="Assets\Scripts\LevelDataCollector.cs" />
@@ -266,6 +269,7 @@
      <Compile Include="Assets\Scripts\Multiplayer\NetworkPositionUpdater.cs" />
      <Compile Include="Assets\Scripts\PlatformMover.cs" />
      <Compile Include="Assets\Scripts\PlayerBallController.cs" />
+     <Compile Include="Assets\Scripts\PlayerCharacterPreview.cs" />
      <Compile Include="Assets\Scripts\PlayerSpawner.cs" />
      <Compile Include="Assets\Scripts\RotationLocker.cs" />
      <Compile Include="Assets\Scripts\Rotator.cs" />

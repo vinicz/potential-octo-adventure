@@ -12,6 +12,7 @@ public class ProductItem : MonoBehaviour
     public UILabel productNameLabel;
     public UILabel amountLabel;
     public UILabel priceLabel;
+	public UILabel descriptionLabel;
     public ProductButtonTool productButton;
 
     public void setupProductItem(IAPProduct product)
@@ -57,6 +58,7 @@ public class ProductItem : MonoBehaviour
         productNameLabel.text = product.name;
         amountLabel.text = product.amount.ToString();
         priceLabel.text = product.price.ToString();
+		descriptionLabel.text = product.description;
     }
 
     void setupButton(IAPProduct product)

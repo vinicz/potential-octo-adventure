@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerSpawner : MonoBehaviour {
 
-    public GameObject playerAvatar;
+    private GameObject playerAvatar;
     private GameObject playerObject;
 
     void Start()
@@ -16,9 +16,12 @@ public class PlayerSpawner : MonoBehaviour {
 
 	public void spawnPlayer()
     {
-        if (playerObject == null)
+		GameObject newplayerAvatar = GameServiceLayer.serviceLayer.optionsService.getSelectedPlayerCharacter ().playerCharacter;
+
+		if (playerObject == null || newplayerAvatar != playerAvatar)
         {
-            playerObject = (GameObject)Instantiate(playerAvatar);
+			playerObject = (GameObject)Instantiate(newplayerAvatar);
+			playerAvatar = newplayerAvatar;
         }
 
         playerObject.transform.parent = this.transform;

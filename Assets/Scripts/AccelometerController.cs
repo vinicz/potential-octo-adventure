@@ -19,7 +19,7 @@ public class AccelometerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameServiceLayer.serviceLayer.gameMaster.getGameState() == GameHandlerScript.GameState.GAME)
+		if (GameServiceLayer.serviceLayer.gameMaster.getGameState() == GameHandlerScript.GameState.GAME)
         {
 
             Vector3 rotationAxis = Vector3.Cross(initialAcceleration, Input.acceleration);
