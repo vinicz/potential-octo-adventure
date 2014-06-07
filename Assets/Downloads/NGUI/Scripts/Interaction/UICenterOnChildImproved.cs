@@ -22,6 +22,10 @@ public class UICenterOnChildImproved : MonoBehaviour
     public bool scaleSelected = false;
     
     UIPanel panel;
+
+	public delegate void NewItemCenteredHandler();
+	public event NewItemCenteredHandler NewItemCentered;
+
     
     #endregion Fields Arranged Nicely :)
     
@@ -79,6 +83,12 @@ public class UICenterOnChildImproved : MonoBehaviour
         
             // Spring the panel to this calculated position
             SpringPanel.Begin(draggablePanel.gameObject, dt.localPosition - offset, 8f);
+
+
+			if(NewItemCentered!=null)
+			{
+				NewItemCentered();
+			}
         }
     }
     /// <summary>

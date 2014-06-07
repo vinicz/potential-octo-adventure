@@ -10,6 +10,9 @@ public class ItemService : MonoBehaviour
 	public delegate void PurchaseCompletedHandler();
 	public event PurchaseCompletedHandler PurchaseCompleted;
 
+	public delegate void PurchaseFailedHandler();
+	public event PurchaseFailedHandler PurchaseFailed;
+
     public ItemStorage itemStorage;
     public IAPService iapService;
     public int rewardsToTokenCount = 50;
@@ -97,6 +100,8 @@ public class ItemService : MonoBehaviour
     void purchaseFailed()
     {
         refreshItems();
+
+
         throw new NotEnoughTokensException();
     }
 

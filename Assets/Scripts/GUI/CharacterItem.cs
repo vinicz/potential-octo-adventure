@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class CharacterItem : MonoBehaviour
 {
@@ -32,11 +33,25 @@ public class CharacterItem : MonoBehaviour
 
 		}
 
+		public void showCHaracterInPreview ()
+		{
+				GameServiceLayer.serviceLayer.optionsService.setPreviewPlayerCharacter (playerCharacter);
+		}
+
 		public void onCharacterSelected ()
 		{
 				if (characterProduct != null && !characterProduct.purchased) {
-						GameServiceLayer.serviceLayer.itemService.PurchaseCompleted += onCharacterPurchaseCompleted;
-						GameServiceLayer.serviceLayer.itemService.buyIAPProduct (characterProduct.item_id);						
+						
+						try {
+								GameServiceLayer.serviceLayer.itemService.PurchaseCompleted += onCharacterPurchaseCompleted;
+								GameServiceLayer.serviceLayer.itemService.buyIAPProduct (characterProduct.item_id);	
+						} catch (NotEnoughTokensException e) {
+								Debug.Log (e);
+								unsubscribeForCharacterPurchaseCompleted ();
+						} catch (Exception e) {
+								unsubscribeForCharacterPurchaseCompleted ();
+						}
+
 				} else {
 						GameServiceLayer.serviceLayer.optionsService.setSelectedPlayerCharacter (playerCharacter);
 				}
@@ -46,9 +61,13 @@ public class CharacterItem : MonoBehaviour
 
 		void onCharacterPurchaseCompleted ()
 		{
+				unsubscribeForCharacterPurchaseCompleted ();
 				GameServiceLayer.serviceLayer.optionsService.setSelectedPlayerCharacter (playerCharacter);
 				buyCharacterObject.SetActive (false);
 		}
-	
 
+		void unsubscribeForCharacterPurchaseCompleted ()
+		{
+				GameServiceLayer.serviceLayer.itemService.PurchaseCompleted -= onCharacterPurchaseCompleted;
+		}
 }

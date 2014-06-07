@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class MockIAPService : IAPService
 {
@@ -9,13 +11,20 @@ public class MockIAPService : IAPService
 		public ItemStorage itemStorage;
 		public List<IAPProduct> productList;
 		private Dictionary<string,IAPProduct> productMap;
+		public string file = "/ballthazar_iap_storage.dat";
+		private string fullFilePath;
 
 		public void Start ()
 		{
+				
+
 				productMap = new Dictionary<string, IAPProduct> ();
 				foreach (IAPProduct product in productList) {
 						productMap.Add (product.item_id, product);
 				}
+
+				fullFilePath = Application.persistentDataPath + file;
+				load ();
 		}
 
 		public override void buyProduct (string productId)
@@ -46,6 +55,7 @@ public class MockIAPService : IAPService
 				}
 
 				if (purchaseSuccesfull) {
+						save ();
 						OnPurchaseCompletedSuccesfully ();
 				} else {
 						OnPurchaseFailed ();
@@ -72,5 +82,42 @@ public class MockIAPService : IAPService
 						purchaseSuccesfull = true;
 				}
 				return purchaseSuccesfull;
+		}
+
+		private void save ()
+		{
+				BinaryFormatter bf = new BinaryFormatter ();
+				FileStream file = File.OpenWrite (fullFilePath);
+		
+				bf.Serialize (file,productList);
+				file.Close ();
+		}
+	
+		private void load ()
+		{
+				if (File.Exists (fullFilePath)) {
+			
+						BinaryFormatter bf = new BinaryFormatter ();
+						FileStream file = File.Open (fullFilePath, FileMode.Open);
+			
+						List<IAPProduct> persitedData = (List<IAPProduct>)bf.Deserialize (file);
+						
+						mergePersistedProducts (persitedData);
+			
+						file.Close ();
+			
+				} else {
+						save ();
+				} 
+		}
+		
+		void mergePersistedProducts (List<IAPProduct> persitedData)
+		{
+				foreach (IAPProduct persistedProduct in persitedData) {
+						IAPProduct product = productMap [persistedProduct.item_id];
+						if (product != null) {
+								product.purchased = persistedProduct.purchased;
+						}
+				}
 		}
 }

@@ -7,6 +7,7 @@ public class CharacterSelectWindow : MonoBehaviour
 
 		public UIGrid characterGrid;
 		public GameObject characterItem;
+		private UICenterOnChildImproved centeringHandler;
 
 		void Start ()
 		{
@@ -15,6 +16,8 @@ public class CharacterSelectWindow : MonoBehaviour
 						GameServiceLayer.serviceLayer.itemService.getIAPProductsOfType (IAPProduct.ProductType.CHARACTER);
 				List<PlayerCharacter> playerCharacters = 
 						GameServiceLayer.serviceLayer.optionsService.getPossiblePlayerCharacters ();
+				centeringHandler = characterGrid.GetComponent<UICenterOnChildImproved> ();
+				centeringHandler.NewItemCentered += onNewItemCentered;
 
 
 				foreach (PlayerCharacter character in playerCharacters) {
@@ -38,6 +41,20 @@ public class CharacterSelectWindow : MonoBehaviour
 				characterGrid.Reposition ();
 
 
+		}
+
+		void OnDisable ()
+		{
+
+				GameServiceLayer.serviceLayer.optionsService.setSelectedPlayerCharacter (
+					GameServiceLayer.serviceLayer.optionsService.getSelectedPlayerCharacter ());
+		}
+
+		void onNewItemCentered ()
+		{
+				GameObject characterItemObject = centeringHandler.centeredObject;
+				CharacterItem characterItem = characterItemObject.GetComponent<CharacterItem> ();
+				characterItem.showCHaracterInPreview ();
 		}
 
 		GameObject createCharacterItemView (GameObject parent)

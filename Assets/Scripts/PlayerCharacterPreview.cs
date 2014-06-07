@@ -17,21 +17,27 @@ public class PlayerCharacterPreview : MonoBehaviour
 				}
 
 				GameServiceLayer.serviceLayer.optionsService.SelectedCharacterChanged += onSelectedCharacterChanged;
+				GameServiceLayer.serviceLayer.optionsService.PreviewCharacterChanged += onPreviewCharacterChanged;
+		}
 
-			
-
+		void OnDestroy ()
+		{
+				GameServiceLayer.serviceLayer.optionsService.SelectedCharacterChanged -= onSelectedCharacterChanged;
+				GameServiceLayer.serviceLayer.optionsService.PreviewCharacterChanged -= onPreviewCharacterChanged;
 		}
 
 		void onSelectedCharacterChanged ()
 		{
 				GameObject newPlayerCharacter = GameServiceLayer.serviceLayer.optionsService.getSelectedPlayerCharacter ().playerCharacter;
 
-				if (newPlayerCharacter != playerCharacter) {
-						playerCharacter = newPlayerCharacter;
+				showNewCharacter (newPlayerCharacter);
+		}
 
-						Destroy (playerCharacterPreview);
-						createCharacterPreview ();
-				}
+		void onPreviewCharacterChanged ()
+		{
+				GameObject newPlayerCharacter = GameServiceLayer.serviceLayer.optionsService.getPreviewPlayerCharacter ().playerCharacter;
+		
+				showNewCharacter (newPlayerCharacter);
 		}
 
 		void createCharacterPreview ()
@@ -45,5 +51,14 @@ public class PlayerCharacterPreview : MonoBehaviour
 
 				AccelometerController controller = playerCharacterPreview.GetComponent<AccelometerController> ();
 				controller.enabled = false;
+		}
+		
+		void showNewCharacter (GameObject newPlayerCharacter)
+		{
+				if (newPlayerCharacter != playerCharacter) {
+						playerCharacter = newPlayerCharacter;
+						Destroy (playerCharacterPreview);
+						createCharacterPreview ();
+				}
 		}
 }

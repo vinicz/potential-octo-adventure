@@ -24,6 +24,9 @@ public class OptionsService : MonoBehaviour
 
 	public delegate void SelectedCharacterChangedHandler();
 	public event SelectedCharacterChangedHandler SelectedCharacterChanged;
+
+	public delegate void PreviewCharacterChangedHandler();
+	public event PreviewCharacterChangedHandler PreviewCharacterChanged;
 	
     public OrientationCalibrationService orientationCalibrationService;
 	public PlayerCharacterStorage playerCharacterStorage;
@@ -34,6 +37,7 @@ public class OptionsService : MonoBehaviour
     private float previousVolume;
 	private string playerCharacterName;
 	private PlayerCharacter playerCharacter;
+	private PlayerCharacter previewCharacter;
 
     void Awake()
     {
@@ -165,6 +169,21 @@ public class OptionsService : MonoBehaviour
 			SelectedCharacterChanged();
 		}
     }
+
+	public PlayerCharacter getPreviewPlayerCharacter()
+	{
+		return previewCharacter;
+	}
+	
+	public void setPreviewPlayerCharacter(PlayerCharacter character)
+	{
+		previewCharacter = character;
+		
+		if (PreviewCharacterChanged != null) 
+		{
+			PreviewCharacterChanged();
+		}
+	}
 
 	public List<PlayerCharacter> getPossiblePlayerCharacters()
     {
