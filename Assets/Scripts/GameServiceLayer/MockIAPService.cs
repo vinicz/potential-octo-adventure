@@ -89,7 +89,7 @@ public class MockIAPService : IAPService
 				BinaryFormatter bf = new BinaryFormatter ();
 				FileStream file = File.OpenWrite (fullFilePath);
 		
-				bf.Serialize (file,productList);
+				bf.Serialize (file, productList);
 				file.Close ();
 		}
 	
@@ -114,10 +114,11 @@ public class MockIAPService : IAPService
 		void mergePersistedProducts (List<IAPProduct> persitedData)
 		{
 				foreach (IAPProduct persistedProduct in persitedData) {
-						IAPProduct product = productMap [persistedProduct.item_id];
-						if (product != null) {
+						if (productMap.ContainsKey (persistedProduct.item_id)) {
+								IAPProduct product = productMap [persistedProduct.item_id];
 								product.purchased = persistedProduct.purchased;
 						}
+
 				}
 		}
 }
