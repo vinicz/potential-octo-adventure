@@ -57,8 +57,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 400006}
   - 114: {fileID: 11400006}
+  - 148: {fileID: 14800000}
   m_Layer: 0
-  m_Name: ItemService
+  m_Name: NetworkManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,7 +202,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 8.31137848, y: 5.81066942, z: -34.5761719}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400008}
@@ -219,8 +220,8 @@ Transform:
   - {fileID: 400010}
   - {fileID: 400000}
   - {fileID: 400002}
-  - {fileID: 400006}
   - {fileID: 400004}
+  - {fileID: 400006}
   - {fileID: 400014}
   - {fileID: 400012}
   - {fileID: 400018}
@@ -363,7 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelStorage: {fileID: 11400000}
-  itemService: {fileID: 11400006}
+  itemService: {fileID: 0}
   levelListOffset: 3
   worldPartSize: 15
   stressLevelFrequency: 5
@@ -985,12 +986,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c01efa4eeda13ef4aafb53ce7bdd53e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1fcd3406ba21b6945931c00e2cbf5e69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemStorage: {fileID: 11400004}
-  iapService: {fileID: 11400010}
-  rewardsToTokenCount: 50
+  playerObject: {fileID: 100004, guid: 5f66a10f20b101f4d87cb407ae9e2830, type: 2}
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1004,10 +1003,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameMaster: {fileID: 0}
   levelService: {fileID: 11400002}
-  itemService: {fileID: 11400006}
+  itemService: {fileID: 0}
   optionsService: {fileID: 11400014}
   backgroundMusicPlayer: {fileID: 11400016}
   playerSpawnerList: []
+  networkManager: {fileID: 11400006}
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1151,6 +1151,18 @@ MonoBehaviour:
     productId: ball_jump
   - playerCharacter: {fileID: 100000, guid: 4a28db911b817db4fbb7700c399c427d, type: 2}
     productId: ball_dash
+--- !u!148 &14800000
+NetworkView:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_StateSynchronization: 0
+  m_Observed: {fileID: 400006}
+  m_ViewID:
+    m_ID: 0
+    m_Type: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

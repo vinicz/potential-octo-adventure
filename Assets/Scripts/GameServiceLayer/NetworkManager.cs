@@ -4,9 +4,13 @@ using System.Collections;
 public class NetworkManager : MonoBehaviour
 {
 
+	public static string gameNamePrefix = appName+".";
+	public static string appName = "com.muddictive.ramball";
+
+	private string gameName;
+	private string gamePassword;
     private bool gameStarted;
     private bool refreshing;
-    private const string gameName = "com.mudvision.balluniversity.test";
     private int playerCount;
     public GameObject playerObject;
 
@@ -22,47 +26,34 @@ public class NetworkManager : MonoBehaviour
 
     }
 
-    void OnGUI()
-    {
-        if (!gameStarted)
-        {
-            if (GUI.Button(new Rect(0, 0, 200, 200), "Start Server"))
-            {
-                startServer();
-            }
-            if (GUI.Button(new Rect(200, 0, 200, 200), "Join Server"))
-            {
-                joinServer();
-                            
-            }
-        } else
-        {
-            GUI.Label(new Rect(0, 0, 100, 20), playerCount.ToString());
-            //if (GUI.Button (new Rect (200, 0, 200, 200), "Spawn Player")) {
-            //      spawnPlayer ();
-            //}
-        }
-                      
-                      
-    }
     
-    static void startServer()
+    public void startServer(string gameName, string gamePassword)
     {
+		this.gameName = gameNamePrefix+gameName;
+
+		Network.incomingPassword = gamePassword;
         Network.InitializeServer(32, 26001, !Network.HavePublicAddress());
                 
         Debug.Log("Initializing server");
     }
+	
+
+	public void joinServer(string gameName, string gamePassword)
+	{
+		this.gameName = gameNamePrefix+gameName;
+		this.gamePassword = gamePassword;
+
+		MasterServer.RequestHostList(appName);
+		refreshing = true;
+	}
+
+
 
     void OnServerInitialized()
     {
-        MasterServer.RegisterHost(gameName, "Multiplayer test game", "Multiplayer test game");
+		MasterServer.RegisterHost(appName, gameName, "");
         Debug.Log("Server initialized");
         StartCoroutine(spawnPlayer());
-            
-
-
-
-
     }
 
     void OnConnectedToServer()
@@ -82,11 +73,7 @@ public class NetworkManager : MonoBehaviour
             Debug.Log(msEvent);
     }
 
-    void joinServer()
-    {
-        MasterServer.RequestHostList(gameName);
-        refreshing = true;
-    }
+    
 
     // Update is called once per frame
     void Update()
@@ -98,17 +85,15 @@ public class NetworkManager : MonoBehaviour
                 refreshing = false;
                 gameStarted = true;
                         
-                Network.Connect(MasterServer.PollHostList() [0]);
-                                
+                
+
+				Network.Connect(MasterServer.PollHostList() [0] );             
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
             Application.LoadLevel(0);
 
-               
-
-        
     }
 
     void OnPlayerConnected(NetworkPlayer player)

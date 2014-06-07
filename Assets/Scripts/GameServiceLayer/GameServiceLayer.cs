@@ -13,6 +13,7 @@ public class GameServiceLayer : MonoBehaviour {
 	public OptionsService optionsService;
 	public BackgroundMusicPlayer backgroundMusicPlayer;
 	public List<PlayerSpawner> playerSpawnerList;
+	public NetworkManager networkManager;
 	
 	public delegate void LevelConfigurationFinishedHandler();
 	public event LevelConfigurationFinishedHandler LevelConfigurationFinished;
