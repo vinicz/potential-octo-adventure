@@ -1,6 +1,6 @@
 using System;
 
-public class GameModeLogicFactory
+public class DiamondModeLogicFactory
 {
     public static GameModeLogic createGameModeLogic(GameHandlerScript gameMaster, LevelRecord level)
     {
@@ -9,19 +9,19 @@ public class GameModeLogicFactory
         switch (level.getLevelType())
         {   
             case LevelRecord.LevelType.NORMAL:
-                newGameModeLogic = new NormalGameModeLogic(gameMaster);
+                newGameModeLogic = new NormalDiamondGameModeLogic(gameMaster);
                 break;
             case LevelRecord.LevelType.STRESS:
-                newGameModeLogic = new NormalGameModeLogic(gameMaster);
+                newGameModeLogic = new NormalDiamondGameModeLogic(gameMaster);
                 break;
             case LevelRecord.LevelType.BOSS:
-                newGameModeLogic = new NormalGameModeLogic(gameMaster);
+                newGameModeLogic = new NormalDiamondGameModeLogic(gameMaster);
                 break;
             case LevelRecord.LevelType.STRESSBOSS:
-                newGameModeLogic = new NormalGameModeLogic(gameMaster);
+                newGameModeLogic = new NormalDiamondGameModeLogic(gameMaster);
                 break;
             default:
-                newGameModeLogic = new NormalGameModeLogic(gameMaster);
+                newGameModeLogic = new NormalDiamondGameModeLogic(gameMaster);
                 break;
         }
 

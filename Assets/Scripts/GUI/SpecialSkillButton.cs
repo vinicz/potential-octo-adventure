@@ -10,10 +10,14 @@ public class SpecialSkillButton : SkillButton
 		protected override Skill getCurrentSkill ()
 		{
 				playerSpawners = GameServiceLayer.serviceLayer.playerSpawnerList;
-				GameObject onePlayerObject = playerSpawners [0].getPlayerObject ();
-				Skill currentSkill = onePlayerObject.GetComponent<Skill> ();
+				if (playerSpawners.Count > 0) {
+						GameObject onePlayerObject = playerSpawners [0].getPlayerObject ();
+						Skill currentSkill = onePlayerObject.GetComponent<Skill> ();
 
-				return currentSkill;
+						return currentSkill;
+				} else {
+						return null;
+				}
 		}
 
 		protected override void useSkill ()

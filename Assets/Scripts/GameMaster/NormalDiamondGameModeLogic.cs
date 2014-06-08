@@ -1,13 +1,13 @@
-public class NormalGameModeLogic : GameModeLogic       
+public class NormalDiamondGameModeLogic : GameModeLogic       
 {
    
-    private GameHandlerScript gameMaster;
+    private DiamondMasterScript gameMaster;
     private LevelRecord level;
     private bool twoRewardsAvailable = true;
 
-    public NormalGameModeLogic(GameHandlerScript gameMaster)
+    public NormalDiamondGameModeLogic(GameHandlerScript gameMaster)
     {
-        this.gameMaster = gameMaster;
+		this.gameMaster = (DiamondMasterScript)gameMaster;
         this.level = gameMaster.getCurrentLevelRecord();
 
         gameMaster.setGameTimeLeft(level.timeToSecondReward);

@@ -32,7 +32,10 @@ public class LevelDataCollector : MonoBehaviour
 		{
 		
 				if (GameServiceLayer.serviceLayer.gameMaster != null) {
-						GameServiceLayer.serviceLayer.gameMaster.CollectedDiamondCountChanged += onCollectedDiamondCountChanged;
+						if (GameServiceLayer.serviceLayer.gameMaster.GetType () == typeof(DiamondMasterScript)) {
+								DiamondMasterScript diamondMaster = (DiamondMasterScript)GameServiceLayer.serviceLayer.gameMaster;
+								diamondMaster.CollectedDiamondCountChanged += onCollectedDiamondCountChanged;
+						}
 						GameServiceLayer.serviceLayer.gameMaster.LevelFailed += onLevelFailed;
 						GameServiceLayer.serviceLayer.gameMaster.LevelPassed += onLevelPassed;
 						gameTime = GameServiceLayer.serviceLayer.gameMaster.getElapsedTime ();

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BowlingMasterScript : GameHandlerScript
+public class BowlingMasterScript : DiamondMasterScript
 {
 
 
@@ -13,26 +13,24 @@ public class BowlingMasterScript : GameHandlerScript
         {
             setGameState(GameState.POSTGAME);
         }
+
+		GUI.Box(new Rect(400, 10, 150, 30), "Enemies remaining: " + enemyCount);
+		GUI.Box(new Rect(600, 10, 100, 30), ((int)gameTimeLeft).ToString());
+		
+		if (gameState == GameState.POSTGAME)
+		{
+			if (enemyCount > 0)
+			{
+				levelFailed();
+			} else
+			{
+				levelPassed();
+			}
+		}
         
     }
 
-    public override void levelSpecificGameLogic()
-    {
-        GUI.Box(new Rect(400, 10, 150, 30), "Enemies remaining: " + enemyCount);
-        GUI.Box(new Rect(600, 10, 100, 30), ((int)gameTimeLeft).ToString());
-        
-        if (gameState == GameState.POSTGAME)
-        {
-            if (enemyCount > 0)
-            {
-                levelFailed();
-            } else
-            {
-                levelPassed();
-            }
-        }
-    }
-
+  
     public override void killOneBall(GameObject ball)
     {
         ball.transform.position = transform.position;

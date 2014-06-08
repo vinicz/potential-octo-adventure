@@ -6,14 +6,16 @@ public class DiamondWindow : MonoBehaviour
 
     public UILabel diamondLabel;
     private bool inited = false;
+	private DiamondMasterScript diamondGameHandler;
 
     void Update()
     {
         if (!inited)
         {
+			diamondGameHandler = (DiamondMasterScript) GameServiceLayer.serviceLayer.gameMaster;
+
             updateDiamondLabel();
-            
-            GameServiceLayer.serviceLayer.gameMaster.CollectedDiamondCountChanged += updateDiamondLabel;
+			diamondGameHandler.CollectedDiamondCountChanged += updateDiamondLabel;
         }
     }
 
@@ -21,15 +23,15 @@ public class DiamondWindow : MonoBehaviour
     {
         string newDiamondLabel = "";
 
-        newDiamondLabel += GameServiceLayer.serviceLayer.gameMaster.getCollectedDiamonds().ToString();
+		newDiamondLabel += diamondGameHandler.getCollectedDiamonds().ToString();
         newDiamondLabel += "/";
-        newDiamondLabel += GameServiceLayer.serviceLayer.gameMaster.getRequiredDiamondCount().ToString();
+		newDiamondLabel += diamondGameHandler.getRequiredDiamondCount().ToString();
         diamondLabel.text = newDiamondLabel;
     }
 
     void OnDestroy()
     {
-        GameServiceLayer.serviceLayer.gameMaster.CollectedDiamondCountChanged -= updateDiamondLabel;
+		diamondGameHandler.CollectedDiamondCountChanged -= updateDiamondLabel;
     }
 
 

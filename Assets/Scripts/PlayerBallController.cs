@@ -19,7 +19,8 @@ public class PlayerBallController : MonoBehaviour
 
         if (otherCollider.gameObject.tag == "Diamond")
         {
-            GameServiceLayer.serviceLayer.gameMaster.collectOneDiamond(otherCollider.gameObject);
+			DiamondMasterScript diamondMaster = (DiamondMasterScript) GameServiceLayer.serviceLayer.gameMaster;
+			diamondMaster.collectOneDiamond(otherCollider.gameObject);
             
         }
 

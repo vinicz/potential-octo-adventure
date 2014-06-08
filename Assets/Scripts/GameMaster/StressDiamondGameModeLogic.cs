@@ -1,17 +1,17 @@
 
 using System;
 
-public class StressGameModeLogic : GameModeLogic
+public class StressDiamondGameModeLogic : GameModeLogic
 {
-    private GameHandlerScript gameMaster;
+    private DiamondMasterScript gameMaster;
     private LevelRecord level;
     
-    public StressGameModeLogic(GameHandlerScript gameMaster)
+    public StressDiamondGameModeLogic(GameHandlerScript gameMaster)
     {
-        this.gameMaster = gameMaster;
+        this.gameMaster = (DiamondMasterScript) gameMaster;
         this.level = gameMaster.getCurrentLevelRecord();
 
-        gameMaster.CollectedDiamondCountChanged += onDiamondCollected;
+		this.gameMaster.CollectedDiamondCountChanged += onDiamondCollected;
     }
 
 

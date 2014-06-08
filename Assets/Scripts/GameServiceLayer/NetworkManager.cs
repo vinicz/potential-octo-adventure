@@ -4,6 +4,9 @@ using System.Collections;
 public class NetworkManager : MonoBehaviour
 {
 
+	public delegate void PlayerConnectedHandler();
+	public event PlayerConnectedHandler PlayerConnected;
+	
 	public static string gameNamePrefix = appName+".";
 	public static string appName = "com.muddictive.ramball";
 
@@ -68,6 +71,12 @@ public class NetworkManager : MonoBehaviour
         {
             Debug.Log("Server registered");
             gameStarted = true;
+
+			if(PlayerConnected!=null)
+			{
+				PlayerConnected();
+			}
+
                         
         } else
             Debug.Log(msEvent);
@@ -82,12 +91,29 @@ public class NetworkManager : MonoBehaviour
         {
             if (MasterServer.PollHostList().Length > 0)
             {
-                refreshing = false;
-                gameStarted = true;
-                        
-                
 
-				Network.Connect(MasterServer.PollHostList() [0] );             
+				foreach (HostData host in MasterServer.PollHostList()) {
+
+
+					if(host.gameName==gameName)
+					{
+
+						refreshing = false;
+						gameStarted = true;
+
+						if(PlayerConnected!=null)
+						{
+							PlayerConnected();
+						}
+
+					
+						Network.Connect(host,gamePassword); 
+
+						break;
+					}
+								
+				}
+						         
             }
         }
 

@@ -26,7 +26,8 @@ public class FallDownHandler : MonoBehaviour {
         }
         
         if (otherCollider.gameObject.tag == "Enemy" && killEnemy) {
-            gameHandler.killOneEnemy(otherCollider.gameObject);
+
+            ((DiamondMasterScript)gameHandler).killOneEnemy(otherCollider.gameObject);
             
         }
         
