@@ -4,65 +4,92 @@ using System.Collections;
 public class ProductItem : MonoBehaviour
 {
 
-    public UISprite tokenProductSprite;
-    public UISprite premiumProductSprite;
-    public UISprite rewardProductSprite;
-    public UISprite moneyCurrencySprite;
-    public UISprite tokenCurrencySprite;
-    public UILabel productNameLabel;
-    public UILabel amountLabel;
-    public UILabel priceLabel;
-	public UILabel descriptionLabel;
-    public ProductButtonTool productButton;
+		public UISprite tokenProductSprite;
+		public UISprite premiumProductSprite;
+		public UISprite rewardProductSprite;
+		public UISprite moneyCurrencySprite;
+		public UISprite tokenCurrencySprite;
+		public UILabel productNameLabel;
+		public UILabel amountLabel;
+		public UILabel priceLabel;
+		public UILabel priceTextLabel;
+		public UILabel descriptionLabel;
+		public ProductButtonTool productButton;
+		private IAPProduct product;
 
-    public void setupProductItem(IAPProduct product)
-    {
-        setupProductIcon(product);
-        setupCurrencyIcon(product);
-        setupLabels(product);
-        setupButton(product);
+		public void setupProductItem (IAPProduct product)
+		{
+				this.product = product;
 
-    }
+				setupProductIcon ();
+				setupCurrencyIcon ();
+				setupLabels ();
+				setupButton ();
 
-    void setupProductIcon(IAPProduct product)
-    {
-        switch (product.productItemTye)
-        {
-            case IAPProduct.ProductType.REWARD:
-                rewardProductSprite.gameObject.SetActive(true);
-                break;
-            case IAPProduct.ProductType.TOKEN:
-                tokenProductSprite.gameObject.SetActive(true);
-                break;
-            case IAPProduct.ProductType.PREMIUM_MEMEBERSHIP:
-                premiumProductSprite.gameObject.SetActive(true);
-                break;
-        }
-    }
+				GameServiceLayer.serviceLayer.itemService.ItemCountChanged += setupLabels;
 
-    void setupCurrencyIcon(IAPProduct product)
-    {
-        switch (product.payingCurrency)
-        {
-            case IAPProduct.ProductType.MONEY:
-                moneyCurrencySprite.gameObject.SetActive(true);
-                break;
-            case IAPProduct.ProductType.TOKEN:
-                tokenCurrencySprite.gameObject.SetActive(true);
-                break;
-        }
-    }
+		}
 
-    void setupLabels(IAPProduct product)
-    {
-        productNameLabel.text = product.name;
-        amountLabel.text = product.amount.ToString();
-        priceLabel.text = product.price.ToString();
-		descriptionLabel.text = product.description;
-    }
+		void setupProductIcon ()
+		{
+				switch (product.productItemTye) {
+				case IAPProduct.ProductType.REWARD:
+						rewardProductSprite.gameObject.SetActive (true);
+						break;
+				case IAPProduct.ProductType.TOKEN:
+						tokenProductSprite.gameObject.SetActive (true);
+						break;
+				case IAPProduct.ProductType.PREMIUM_MEMEBERSHIP:
+						premiumProductSprite.gameObject.SetActive (true);
+						break;
+				}
+		}
 
-    void setupButton(IAPProduct product)
-    {
-        productButton.product = product;
-    }
+		void setupCurrencyIcon ()
+		{
+				switch (product.payingCurrency) {
+				case IAPProduct.ProductType.MONEY:
+						moneyCurrencySprite.gameObject.SetActive (true);
+						break;
+				case IAPProduct.ProductType.TOKEN:
+						tokenCurrencySprite.gameObject.SetActive (true);
+						break;
+				}
+		}
+
+		void setupLabels ()
+		{
+				productNameLabel.text = product.name;
+				amountLabel.text = product.amount.ToString ();
+				priceLabel.text = product.price.ToString ();
+				descriptionLabel.text = product.description;
+
+				if (GameServiceLayer.serviceLayer.itemService.getTokenCount () < product.price 
+						&& product.payingCurrency == IAPProduct.ProductType.TOKEN) {
+						productNameLabel.color = Color.red;
+						amountLabel.color = Color.red;
+						priceLabel.color = Color.red;
+						descriptionLabel.color = Color.red;
+						priceTextLabel.color = Color.red;
+						productButton.gameObject.GetComponent<UIButton> ().isEnabled = false;
+				} else {
+						productNameLabel.color = Color.white;
+						amountLabel.color = Color.white;
+						priceLabel.color = Color.white;
+						descriptionLabel.color = Color.white;
+						priceTextLabel.color = Color.white;
+						productButton.gameObject.GetComponent<UIButton> ().isEnabled = true;
+
+				}
+		}
+
+		void setupButton ()
+		{
+				productButton.product = product;
+		}
+
+		void OnDestroy ()
+		{
+				GameServiceLayer.serviceLayer.itemService.ItemCountChanged -= setupLabels;
+		}
 }

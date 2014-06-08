@@ -7,6 +7,7 @@ public class CharacterSelectWindow : MonoBehaviour
 
 		public UIGrid characterGrid;
 		public GameObject characterItem;
+		public GameObject backTargetWindow;
 		private UICenterOnChildImproved centeringHandler;
 
 		void Start ()
@@ -69,13 +70,13 @@ public class CharacterSelectWindow : MonoBehaviour
 		void createCharacterItem (PlayerCharacter playerCharacter, IAPProduct characterProduct)
 		{
 				CharacterItem newCharacterItem = createCharacterItemObject ();
-				newCharacterItem.setupCharacterItem (playerCharacter, characterProduct);
+				newCharacterItem.setupCharacterItem (playerCharacter, characterProduct, this.gameObject, backTargetWindow);
 		}
 
 		void createCharacterItem (PlayerCharacter playerCharacter)
 		{
 				CharacterItem newCharacterItem = createCharacterItemObject ();
-				newCharacterItem.setupCharacterItem (playerCharacter);
+				newCharacterItem.setupCharacterItem (playerCharacter, this.gameObject, backTargetWindow);
 		}
 
 		CharacterItem createCharacterItemObject ()
