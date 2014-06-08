@@ -50,6 +50,7 @@ GameObject:
   - 135: {fileID: 13500000}
   - 114: {fileID: 11400002}
   - 148: {fileID: 14800000}
+  - 114: {fileID: 11400004}
   m_Layer: 0
   m_Name: ballthazarFootball 1
   m_TagString: Untagged
@@ -219,6 +220,18 @@ MonoBehaviour:
   printAccelometerInfo: 0
   playerNameObject: {fileID: 100002}
   shockWave: {fileID: 11400000}
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4effd4fb2430d02419e5c4fe66e57132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interpolationSpeed: 50
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -238,7 +251,7 @@ NetworkView:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
-  m_StateSynchronization: 1
+  m_StateSynchronization: 0
   m_Observed: {fileID: 400004}
   m_ViewID:
     m_ID: 0

@@ -116,10 +116,6 @@ public class NetworkManager : MonoBehaviour
 						         
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-            Application.LoadLevel(0);
-
     }
 
     void OnPlayerConnected(NetworkPlayer player)

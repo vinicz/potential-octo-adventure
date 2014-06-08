@@ -56,7 +56,7 @@ public abstract class GameHandlerScript : MonoBehaviour
 				Screen.sleepTimeout = SleepTimeout.NeverSleep;
 				Time.timeScale = 1;
 		
-				gameModeLogic = createGameModeLogic();
+				gameModeLogic = createGameModeLogic ();
 				gameModeLogic.initGame ();
 		
 		}
@@ -81,7 +81,6 @@ public abstract class GameHandlerScript : MonoBehaviour
 						gameModeLogic.update ();
 				}
 		}
-
 	
 		public virtual void killOneBall (GameObject ball)
 		{
@@ -180,7 +179,6 @@ public abstract class GameHandlerScript : MonoBehaviour
 						pauseLevel ();
 				} 
 		}
-
 	
 		public GameState getGameState ()
 		{
@@ -209,7 +207,6 @@ public abstract class GameHandlerScript : MonoBehaviour
 		{
 				return levelRecord;
 		}
-
 	
 		public float getGameTimeLeft ()
 		{

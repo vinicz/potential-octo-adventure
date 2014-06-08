@@ -569,6 +569,15 @@ MonoBehaviour:
     productItemTye: 4
     consumable: 0
     purchased: 0
+  - name: FlappyBall
+    description: Flappy
+    item_id: ball_flappy
+    amount: 1
+    price: 25
+    payingCurrency: 2
+    productItemTye: 4
+    consumable: 0
+    purchased: 0
   file: /ballthazar_iap_storage.dat
 --- !u!1 &151145290
 GameObject:
@@ -1406,22 +1415,14 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11400002, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
-      propertyPath: itemService
-      value: 
-      objectReference: {fileID: 1840915779}
     - target: {fileID: 14800000, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
       propertyPath: m_ViewID.m_ID
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 14800000, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
       propertyPath: m_ViewID.m_Type
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11400008, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
-      propertyPath: itemService
-      value: 
-      objectReference: {fileID: 1840915779}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
   m_RootGameObject: {fileID: 1995326543}
@@ -6926,7 +6927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelStorage: {fileID: 2032254390}
-  itemService: {fileID: 1840915779}
+  itemService: {fileID: 175160193}
   levelListOffset: 3
   worldPartSize: 15
   stressLevelFrequency: 5
@@ -10092,6 +10093,8 @@ MonoBehaviour:
     productId: ball_jump
   - playerCharacter: {fileID: 100000, guid: 4a28db911b817db4fbb7700c399c427d, type: 2}
     productId: ball_dash
+  - playerCharacter: {fileID: 100000, guid: 4371aeaf292d6ce4c822cae221e1ab95, type: 2}
+    productId: ball_flappy
 --- !u!4 &1245898752
 Transform:
   m_ObjectHideFlags: 0
@@ -10776,6 +10779,7 @@ GameObject:
   - 54: {fileID: 1312242363}
   - 122: {fileID: 1312242362}
   - 148: {fileID: 1312242361}
+  - 114: {fileID: 1312242369}
   m_Layer: 8
   m_Name: footBall
   m_TagString: SoccerBall
@@ -10791,7 +10795,7 @@ NetworkView:
   m_PrefabInternal: {fileID: 1908006785}
   m_GameObject: {fileID: 1312242360}
   m_Enabled: 1
-  m_StateSynchronization: 2
+  m_StateSynchronization: 0
   m_Observed: {fileID: 1312242368}
   m_ViewID:
     m_ID: 2
@@ -10893,6 +10897,18 @@ Transform:
   m_LocalScale: {x: .927102387, y: .927102387, z: .927102387}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &1312242369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1312242360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4effd4fb2430d02419e5c4fe66e57132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interpolationSpeed: 50
 --- !u!1 &1319018267
 GameObject:
   m_ObjectHideFlags: 0
@@ -13502,7 +13518,7 @@ NetworkView:
   m_StateSynchronization: 0
   m_Observed: {fileID: 1767470101}
   m_ViewID:
-    m_ID: 1
+    m_ID: 5
     m_Type: 1
 --- !u!1 &1796646748
 GameObject:
@@ -14113,6 +14129,10 @@ Prefab:
     - target: {fileID: 2300000, guid: 81288bb4ba6dbf443b3e983786a8c233, type: 2}
       propertyPath: m_UseLightProbes
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 14800000, guid: 81288bb4ba6dbf443b3e983786a8c233, type: 2}
+      propertyPath: m_StateSynchronization
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 81288bb4ba6dbf443b3e983786a8c233, type: 2}
@@ -14787,7 +14807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameMaster: {fileID: 0}
   levelService: {fileID: 883656428}
-  itemService: {fileID: 1840915779}
+  itemService: {fileID: 175160193}
   optionsService: {fileID: 1852237252}
   backgroundMusicPlayer: {fileID: 513412515}
   playerSpawnerList: []
