@@ -5,6 +5,7 @@ public class TransparencyController : MonoBehaviour {
 
     public Material transparentMaterial;
     public float transparencyExpireTime = 1f;
+	public bool changeBack = true;
 
     private Material normalMaterial;
     private float transparencyTimer = 0f;
@@ -18,7 +19,7 @@ public class TransparencyController : MonoBehaviour {
 
     void Update()
     {
-        if (transparent)
+        if (transparent && changeBack)
         {
             transparencyTimer -= Time.deltaTime;
 
