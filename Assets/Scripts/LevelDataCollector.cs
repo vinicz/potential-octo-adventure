@@ -104,6 +104,12 @@ public class LevelDataCollector : MonoBehaviour
 				requestURL += "&levelPassed=" + levelPassed.ToString ();
 				requestURL += "&gameTime=" + gameTime.ToString ();
 
+				string ballName = GameServiceLayer.serviceLayer.optionsService.getSelectedPlayerCharacter ().productId;
+
+				if (!ballName.Equals ("")) {
+						requestURL += "&ballName=" + ballName;
+				}
+
 				if (diamondCollectionTimes.Count > 0) {
 						requestURL += "&diamondCollections=";
 

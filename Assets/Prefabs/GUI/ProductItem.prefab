@@ -203,6 +203,7 @@ GameObject:
   - 114: {fileID: 11400020}
   - 114: {fileID: 11400018}
   - 114: {fileID: 11400030}
+  - 114: {fileID: 11400034}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -675,8 +676,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tweenTarget: {fileID: 400024}
-  hover: {x: 1.10000002, y: 1.10000002, z: 1.10000002}
-  pressed: {x: 1.5, y: 1.5, z: 1.5}
+  hover: {x: 1, y: 1, z: 1}
+  pressed: {x: 1.20000005, y: 1.20000005, z: 1.20000005}
   duration: .200000003
 --- !u!114 &11400022
 MonoBehaviour:
@@ -754,6 +755,7 @@ MonoBehaviour:
   productNameLabel: {fileID: 11400032}
   amountLabel: {fileID: 11400014}
   priceLabel: {fileID: 11400006}
+  priceTextLabel: {fileID: 11400010}
   descriptionLabel: {fileID: 11400026}
   productButton: {fileID: 11400030}
 --- !u!114 &11400030
@@ -806,6 +808,19 @@ MonoBehaviour:
   mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
+--- !u!114 &11400034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f02842fa4878db54f9587ff4de7d9f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  draggablePanel: {fileID: 0}
+  panel: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

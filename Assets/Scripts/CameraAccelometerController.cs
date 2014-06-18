@@ -8,6 +8,12 @@ public class CameraAccelometerController : MonoBehaviour
     public float maxZRotationAngle = 20f;
     private Vector3 initialOrientation;
     private Quaternion initialCameraOrientation;
+	private bool zRotationAdjuster;
+	private float zRotationAdjusterChangedTimer=0;
+
+	private float xRotation;
+	private float zRotation;
+
 
     void Start()
     {
@@ -20,18 +26,36 @@ public class CameraAccelometerController : MonoBehaviour
         if (GameServiceLayer.serviceLayer.gameMaster.getGameState() == GameHandlerScript.GameState.GAME)
         {
 
-//            Vector3 fixedAcceleration = new Vector3(
-//                Input.acceleration.x, 
-//                Input.acceleration.z, 
-//                Input.acceleration.y);
-
-
+//			bool xIn90Degrees = (Mathf.Abs(Input.acceleration.x) >= 0.95 && Mathf.Abs(Input.acceleration.x) <= 1.05);
+//			bool yIn90Degrees = (Mathf.Abs(Input.acceleration.y) >= 0.95 && Mathf.Abs(Input.acceleration.y) <= 1.05);
+//
+//			if(xIn90Degrees || yIn90Degrees)
+//			{
+//				return;
+//			}
 
             Quaternion fullRotation = Quaternion.FromToRotation(initialOrientation, Input.acceleration);
-            bool zRotationAdjuster = Input.acceleration.y *Input.acceleration.z <0;
 
-            float xRotation = 360-fullRotation.eulerAngles.x;
-            float zRotation =  zRotationAdjuster?  360-fullRotation.eulerAngles.z : fullRotation.eulerAngles.z;
+
+			bool zRotationAdjuster = Input.acceleration.y *Input.acceleration.z <0;
+//			if(newzRotationAdjuster!=zRotationAdjuster)
+//			{
+//                zRotationAdjusterChangedTimer +=  Time.deltaTime;
+//
+//                if(zRotationAdjusterChangedTimer> 0.5f)
+//				{
+//					zRotationAdjuster = newzRotationAdjuster;
+//				}
+//			}else
+//			{
+//                zRotationAdjusterChangedTimer=0;
+//			}
+
+
+
+
+			float xRotation = 360-fullRotation.eulerAngles.x;
+			float zRotation =  zRotationAdjuster?  360-fullRotation.eulerAngles.z : fullRotation.eulerAngles.z;
 
             if (xRotation > maxXRotationAngle && xRotation < 180)
             {
@@ -49,8 +73,9 @@ public class CameraAccelometerController : MonoBehaviour
             {
                 zRotation = 360 - maxZRotationAngle;
             }
-            Quaternion fixedYRotation = Quaternion.Euler(xRotation, 0, zRotation);
-            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, fixedYRotation * initialCameraOrientation, Time.deltaTime * 5);
+
+			Quaternion fixedYRotation = Quaternion.Euler(xRotation, 0, zRotation);
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, fixedYRotation * initialCameraOrientation, Time.deltaTime*5);
             //this.transform.rotation = fixedYRotation * initialCameraOrientation;
             //this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, fixedYRotation * initialCameraOrientation, Time.deltaTime*10);
         } 
