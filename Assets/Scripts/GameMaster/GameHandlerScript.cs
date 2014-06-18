@@ -6,18 +6,23 @@ public abstract class GameHandlerScript : MonoBehaviour
 {
 	
 		public delegate void LevelPassedHandler ();
+
 		public event LevelPassedHandler LevelPassed;
 	
 		public delegate void LevelFailedHandler ();
+
 		public event LevelFailedHandler LevelFailed;
 	
 		public delegate void GameStateChangedHandler ();
+
 		public event GameStateChangedHandler GameStateChanged;
 	
 		public delegate void GamePausedHandler ();
+
 		public event GamePausedHandler GamePaused;
 	
 		public delegate void GameResumedHandler ();
+
 		public event GameResumedHandler GameResumed;
 
 		public float gameTimeLeft;
@@ -92,22 +97,22 @@ public abstract class GameHandlerScript : MonoBehaviour
 				}
 		}
 	
-		public void loadNextLevel ()
+		public virtual void loadNextLevel ()
 		{
 				Application.LoadLevel (GameServiceLayer.serviceLayer.levelService.getNextLevelSceneIndex (Application.loadedLevel));
 		}
 	
-		public void loadMainMenu ()
+		public virtual void loadMainMenu ()
 		{
 				Application.LoadLevel (GameServiceLayer.serviceLayer.levelService.getMainMenuIndex ());
 		}
 	
-		public void restartLevel ()
+		public virtual void restartLevel ()
 		{
 				Application.LoadLevel (Application.loadedLevel);
 		}
 	
-		public void levelPassed ()
+		public virtual void levelPassed ()
 		{
 				int collectedRewardCount = gameModeLogic.calculateReward ();
 		
@@ -119,7 +124,7 @@ public abstract class GameHandlerScript : MonoBehaviour
 		
 		}
 	
-		public void levelFailed ()
+		public virtual void levelFailed ()
 		{
 		
 				if (LevelFailed != null) {
@@ -128,7 +133,7 @@ public abstract class GameHandlerScript : MonoBehaviour
 		
 		}
 	
-		public void pauseLevel ()
+		public virtual void pauseLevel ()
 		{
 				Time.timeScale = 0;
 				setGameState (GameState.PAUSE);
@@ -139,7 +144,7 @@ public abstract class GameHandlerScript : MonoBehaviour
 		
 		}
 	
-		public void resumeLevel ()
+		public virtual void resumeLevel ()
 		{
 				Time.timeScale = 1;
 				setGameState (GameState.GAME);
@@ -149,7 +154,7 @@ public abstract class GameHandlerScript : MonoBehaviour
 				}
 		}
 	
-		public void continueLevel ()
+		public virtual void continueLevel ()
 		{
 				GameServiceLayer.serviceLayer.itemService.spendTokens (continueCost);
 		
@@ -166,26 +171,26 @@ public abstract class GameHandlerScript : MonoBehaviour
 
 		}
 	
-		void OnApplicationPause (bool pauseStatus)
+		protected virtual void OnApplicationPause (bool pauseStatus)
 		{
 				if (pauseStatus && gameState == GameState.GAME) {
 						pauseLevel ();
 				}
 		}
 	
-		void OnApplicationFocus (bool focusStatus)
+		protected virtual  void OnApplicationFocus (bool focusStatus)
 		{
 				if (!focusStatus && gameState == GameState.GAME) {
 						pauseLevel ();
 				} 
 		}
 	
-		public GameState getGameState ()
+		public virtual GameState getGameState ()
 		{
 				return gameState;
 		}
 	
-		public void setGameState (GameState state)
+		public virtual void setGameState (GameState state)
 		{
 				if (gameState == GameState.GAME && state == GameState.POSTGAME) {
 						gameModeLogic.determineGameResult ();
@@ -198,32 +203,32 @@ public abstract class GameHandlerScript : MonoBehaviour
 				}
 		}
 	
-		public float getElapsedTime ()
+		public virtual float getElapsedTime ()
 		{
 				return elapsedTime;
 		}
 	
-		public LevelRecord getCurrentLevelRecord ()
+		public virtual LevelRecord getCurrentLevelRecord ()
 		{
 				return levelRecord;
 		}
 	
-		public float getGameTimeLeft ()
+		public virtual float getGameTimeLeft ()
 		{
 				return gameTimeLeft;
 		}
 	
-		public void setGameTimeLeft (float time)
+		public virtual void setGameTimeLeft (float time)
 		{
 				gameTimeLeft = time;
 		}
 	
-		public int getBallCount ()
+		public virtual int getBallCount ()
 		{
 				return ballCount;
 		}
 	
-		public void setBallCount (int balls)
+		public virtual void setBallCount (int balls)
 		{
 				ballCount = balls;
 		}

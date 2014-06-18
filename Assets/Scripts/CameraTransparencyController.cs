@@ -20,6 +20,11 @@ public class CameraTransparencyController : MonoBehaviour
         foreach (PlayerSpawner playerSpawner in playerSpwanerList)
         {
             GameObject playerObject = playerSpawner.getPlayerObject();
+			if(playerObject==null)
+			{
+				continue;
+			}
+
             Vector3 playerPosition = playerObject.transform.position;
             Vector3 playerDirection = playerObject.transform.position - this.transform.position;
             float playerDistance = playerDirection.magnitude;

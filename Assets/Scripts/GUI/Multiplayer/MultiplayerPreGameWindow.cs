@@ -7,6 +7,7 @@ public class MultiplayerPreGameWindow : UIWindow {
 	public UILabel playerNameLabel;
 	public UILabel serverNameLabel;
 	public UILabel serverPasswordLabel;
+	public GameObject lobbyWindow;
 
 	private bool inited;
 
@@ -38,14 +39,14 @@ public class MultiplayerPreGameWindow : UIWindow {
 	{
 
 		GameServiceLayer.serviceLayer.networkManager.PlayerConnected += onPlayerConnected;
-		GameServiceLayer.serviceLayer.networkManager.joinServer (serverNameLabel.text,serverPasswordLabel.text);
+		GameServiceLayer.serviceLayer.networkManager.joinServer (serverNameLabel.text,serverPasswordLabel.text, playerNameLabel.text);
 
 	}
 
 	void onCreateGamePressed()
 	{
 		GameServiceLayer.serviceLayer.networkManager.PlayerConnected += onPlayerConnected;
-		GameServiceLayer.serviceLayer.networkManager.startServer (serverNameLabel.text,serverPasswordLabel.text);
+		GameServiceLayer.serviceLayer.networkManager.startServer (serverNameLabel.text,serverPasswordLabel.text, playerNameLabel.text);
 		
 	}
 	
@@ -64,8 +65,8 @@ public class MultiplayerPreGameWindow : UIWindow {
 	{
 		GameServiceLayer.serviceLayer.networkManager.PlayerConnected -= onPlayerConnected;
 
-		GameServiceLayer.serviceLayer.gameMaster.setGameState(GameHandlerScript.GameState.GAME);
 		this.gameObject.SetActive(false);
+		lobbyWindow.SetActive (true);
 	}
 	
 	void OnDestroy()

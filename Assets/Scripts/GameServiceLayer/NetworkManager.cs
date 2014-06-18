@@ -11,28 +11,27 @@ public class NetworkManager : MonoBehaviour
 	public static string appName = "com.muddictive.ramball";
 
 	private string gameName;
+	private string playerName;
 	private string gamePassword;
-    private bool gameStarted;
     private bool refreshing;
-    private int playerCount;
-    public GameObject playerObject;
+	private MultiGameMaster gameMaster;
+  
 
     // Use this for initialization
     void Start()
     {
 
-        gameStarted = false;
         refreshing = false;
             
-        playerCount = 0;
-
+		gameMaster = (MultiGameMaster)GameServiceLayer.serviceLayer.gameMaster;	
 
     }
 
     
-    public void startServer(string gameName, string gamePassword)
+	public void startServer(string gameName, string gamePassword, string playerName)
     {
 		this.gameName = gameNamePrefix+gameName;
+		this.playerName = playerName;
 
 		Network.incomingPassword = gamePassword;
         Network.InitializeServer(32, 26001, !Network.HavePublicAddress());
@@ -41,10 +40,11 @@ public class NetworkManager : MonoBehaviour
     }
 	
 
-	public void joinServer(string gameName, string gamePassword)
+	public void joinServer(string gameName, string gamePassword, string playerName)
 	{
 		this.gameName = gameNamePrefix+gameName;
 		this.gamePassword = gamePassword;
+		this.playerName = playerName;
 
 		MasterServer.RequestHostList(appName);
 		refreshing = true;
@@ -56,31 +56,34 @@ public class NetworkManager : MonoBehaviour
     {
 		MasterServer.RegisterHost(appName, gameName, "");
         Debug.Log("Server initialized");
-        StartCoroutine(spawnPlayer());
-    }
-
-    void OnConnectedToServer()
-    {
-        StartCoroutine(spawnPlayer());
 
     }
+
+    
 
     void OnMasterServerEvent(MasterServerEvent msEvent)
     {
         if (msEvent == MasterServerEvent.RegistrationSucceeded)
         {
             Debug.Log("Server registered");
-            gameStarted = true;
-
+        
 			if(PlayerConnected!=null)
 			{
 				PlayerConnected();
 			}
 
+			gameMaster.serverInitialized(playerName);
+
                         
         } else
             Debug.Log(msEvent);
     }
+
+	void OnPlayerConnected(NetworkPlayer player)
+	{
+		Debug.Log("Player connected from " + player.ipAddress + ":" + player.port);
+	}
+
 
     
 
@@ -97,16 +100,8 @@ public class NetworkManager : MonoBehaviour
 
 					if(host.gameName==gameName)
 					{
-
 						refreshing = false;
-						gameStarted = true;
 
-						if(PlayerConnected!=null)
-						{
-							PlayerConnected();
-						}
-
-					
 						Network.Connect(host,gamePassword); 
 
 						break;
@@ -118,29 +113,19 @@ public class NetworkManager : MonoBehaviour
         }
     }
 
-    void OnPlayerConnected(NetworkPlayer player)
-    {
-        Debug.Log("Player connected from " + player.ipAddress + ":" + player.port);
-    }
+   
+	void OnConnectedToServer()
+	{
 
-    IEnumerator spawnPlayer()
-    {
-        networkView.RPC("increasePlayerCount", RPCMode.AllBuffered);
-        yield return new WaitForSeconds(1);
-
-        GameObject newObject = (GameObject)Network.Instantiate(playerObject, transform.position, Quaternion.identity, 0);
-        BallNetworkController ballController = newObject.GetComponent<BallNetworkController>();
-
-        ballController.initializeTeam(playerCount);
-                
-    }
-
-    [RPC]
-    void increasePlayerCount()
-    {
-        playerCount++;
-
-    }
+		if(PlayerConnected!=null)
+		{
+			PlayerConnected();
+		}
+		
+		gameMaster.playerConnectedToServer (Network.player, playerName);
+		
+	}
+	
     
     
     
