@@ -10,14 +10,14 @@ public class AccelometerController : MonoBehaviour
     public float accelerationStrength = 2.0f;
     private Vector3 mulitpliedAcceleration = Vector3.zero;
 
-    void Start()
+    public virtual void Start()
     {
         initialAcceleration = GameServiceLayer.serviceLayer.optionsService.getInitialOrientation();
     }
 
 
     // Update is called once per frame
-    void Update()
+	public virtual void Update()
     {
 		if (GameServiceLayer.serviceLayer.gameMaster.getGameState() == GameHandlerScript.GameState.GAME)
         {

@@ -3,18 +3,19 @@ using System.Collections;
 
 public class NetworkManager : MonoBehaviour
 {
+    const string MASTER_SERVER_ADDRESS = "54.187.114.127";
 
-	public delegate void PlayerConnectedHandler();
-	public event PlayerConnectedHandler PlayerConnected;
-	
-	public static string gameNamePrefix = appName+".";
-	public static string appName = "com.muddictive.ramball";
+    public delegate void PlayerConnectedHandler();
 
-	private string gameName;
-	private string playerName;
-	private string gamePassword;
+    public event PlayerConnectedHandler PlayerConnected;
+    
+    public static string gameNamePrefix = appName + ".";
+    public static string appName = "com.muddictive.ramball";
+    private string gameName;
+    private string playerName;
+    private string gamePassword;
     private bool refreshing;
-	private MultiGameMaster gameMaster;
+    private MultiGameMaster gameMaster;
   
 
     // Use this for initialization
@@ -22,44 +23,56 @@ public class NetworkManager : MonoBehaviour
     {
 
         refreshing = false;
-            
-		gameMaster = (MultiGameMaster)GameServiceLayer.serviceLayer.gameMaster;	
+        GameServiceLayer.serviceLayer.networkManager = this;
+
+        gameMaster = (MultiGameMaster)GameServiceLayer.serviceLayer.gameMaster; 
 
     }
-
     
-	public void startServer(string gameName, string gamePassword, string playerName)
+    public void startServer(string gameName, string gamePassword, string playerName)
     {
-		this.gameName = gameNamePrefix+gameName;
-		this.playerName = playerName;
+        this.gameName = gameNamePrefix + gameName;
+        this.playerName = playerName;
 
-		Network.incomingPassword = gamePassword;
+        Network.natFacilitatorIP = MASTER_SERVER_ADDRESS;
+        Network.incomingPassword = gamePassword;
         Network.InitializeServer(32, 26001, !Network.HavePublicAddress());
                 
         Debug.Log("Initializing server");
     }
-	
 
-	public void joinServer(string gameName, string gamePassword, string playerName)
-	{
-		this.gameName = gameNamePrefix+gameName;
-		this.gamePassword = gamePassword;
-		this.playerName = playerName;
+    public void joinServer(string gameName, string gamePassword, string playerName)
+    {
+        this.gameName = gameNamePrefix + gameName;
+        this.gamePassword = gamePassword;
+        this.playerName = playerName;
 
-		MasterServer.RequestHostList(appName);
-		refreshing = true;
-	}
-
-
+        Network.natFacilitatorIP = MASTER_SERVER_ADDRESS;
+        MasterServer.ipAddress = MASTER_SERVER_ADDRESS;
+        MasterServer.port = 23466;
+        MasterServer.RequestHostList(appName);
+        refreshing = true;
+    }
 
     void OnServerInitialized()
     {
-		MasterServer.RegisterHost(appName, gameName, "");
+
+        MasterServer.ipAddress = MASTER_SERVER_ADDRESS;
+        MasterServer.RegisterHost(appName, gameName, "");
         Debug.Log("Server initialized");
 
     }
 
+    void OnFailedToConnect(NetworkConnectionError error)
+    {
+        Debug.Log("Could not connect to server: " + error);
+    }
     
+    void OnFailedToConnectToMasterServer(NetworkConnectionError info)
+    {
+        Debug.Log("Could not connect to master server: " + info + " " + MasterServer.ipAddress);
+                
+    }
 
     void OnMasterServerEvent(MasterServerEvent msEvent)
     {
@@ -67,22 +80,22 @@ public class NetworkManager : MonoBehaviour
         {
             Debug.Log("Server registered");
         
-			if(PlayerConnected!=null)
-			{
-				PlayerConnected();
-			}
+            if (PlayerConnected != null)
+            {
+                PlayerConnected();
+            }
 
-			gameMaster.serverInitialized(playerName);
+            gameMaster.serverInitialized(playerName);
 
                         
         } else
             Debug.Log(msEvent);
     }
 
-	void OnPlayerConnected(NetworkPlayer player)
-	{
-		Debug.Log("Player connected from " + player.ipAddress + ":" + player.port);
-	}
+    void OnPlayerConnected(NetworkPlayer player)
+    {
+        Debug.Log("Player connected from " + player.ipAddress + ":" + player.port);
+    }
 
 
     
@@ -95,37 +108,37 @@ public class NetworkManager : MonoBehaviour
             if (MasterServer.PollHostList().Length > 0)
             {
 
-				foreach (HostData host in MasterServer.PollHostList()) {
+                foreach (HostData host in MasterServer.PollHostList())
+                {
 
 
-					if(host.gameName==gameName)
-					{
-						refreshing = false;
+                    if (host.gameName == gameName)
+                    {
+                        refreshing = false;
 
-						Network.Connect(host,gamePassword); 
+                        Network.Connect(host, gamePassword); 
 
-						break;
-					}
-								
-				}
-						         
+                        break;
+                    }
+                                
+                }
+                                 
             }
         }
     }
-
    
-	void OnConnectedToServer()
-	{
+    void OnConnectedToServer()
+    {
 
-		if(PlayerConnected!=null)
-		{
-			PlayerConnected();
-		}
-		
-		gameMaster.playerConnectedToServer (Network.player, playerName);
-		
-	}
-	
+        if (PlayerConnected != null)
+        {
+            PlayerConnected();
+        }
+        
+        gameMaster.playerConnectedToServer(Network.player, playerName);
+        
+    }
+    
     
     
     

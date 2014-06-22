@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -6,131 +6,169 @@ using System;
 public abstract class MultiGameMaster : GameHandlerScript
 {
 
-		public delegate void PlayerListChangedHandler ();
+    public delegate void PlayerListChangedHandler();
+    public event PlayerListChangedHandler PlayerListChanged;
 
-		public event PlayerListChangedHandler PlayerListChanged;
+    public delegate void PlayerConnectedToServerHandler(string playerName);
+    public event PlayerConnectedToServerHandler PlayerConnectedToServer;
 
-		public class MultiPlayerStruct
-		{
-				public string name;
-				public int team;
-				public NetworkPlayer networkPlayer;
+    public class MultiPlayerStruct
+    {
+        public string name;
+        public int team;
+        public NetworkPlayer networkPlayer;
 
-				public MultiPlayerStruct (string name, int team, NetworkPlayer guid)
-				{
-						this.name = name;
-						this.team = team;
-						this.networkPlayer = guid;
-				}
-		
+        public MultiPlayerStruct(string name, int team, NetworkPlayer guid)
+        {
+            this.name = name;
+            this.team = team;
+            this.networkPlayer = guid;
+        }
+    };
 
-		};
+    private NetworkPlayer currentPlayer;
+    private string currentPlayerName;
+    private List<MultiPlayerStruct> playerList = new List<MultiPlayerStruct>();
 
-		private NetworkPlayer currentPlayer;
-		private string currentPlayerName;
-		private List<MultiPlayerStruct> playerList = new List<MultiPlayerStruct> ();
+    public void serverInitialized(string playerName)
+    {
+        currentPlayerName = playerName;
 
-		public void serverInitialized (string playerName)
-		{
-				currentPlayerName = playerName;
+    }
 
-		}
+    public void playerConnectedToServer(NetworkPlayer player, string name)
+    {
+        currentPlayer = player;
+        currentPlayerName = name;
 
-		public void playerConnectedToServer (NetworkPlayer player, string name)
-		{
-				currentPlayer = player;
-				currentPlayerName = name;
-		}
+        networkView.RPC("onPlayerConnectedToServer", RPCMode.All, currentPlayerName);  
+    }
 
-		public void playerJoinedRandom ()
-		{
-				networkView.RPC ("addPLayerRandomOnServer", RPCMode.Server, currentPlayerName, currentPlayer);	
-		}
+    public void playerJoinedRandom()
+    {
+        networkView.RPC("addPLayerRandomOnServer", RPCMode.Server, currentPlayerName, currentPlayer);   
+    }
 
-		public void playerJoinedToTeam (int team)
-		{
-				networkView.RPC ("addPLayerWithTeamOnServer", RPCMode.Server, currentPlayerName, team, currentPlayer);
-		}
+    public void playerJoinedToTeam(int team)
+    {
+        networkView.RPC("addPLayerWithTeamOnServer", RPCMode.Server, currentPlayerName, team, currentPlayer);
+    }
 
-		[RPC]
-		void addPLayerRandomOnServer (string name, NetworkPlayer networkPlayer)
-		{
-				int team = determineRandomTeam ();
+    public void startGame()
+    {
+        if (isPlayerServer())
+        {
+            networkView.RPC("setRemoteGameState", RPCMode.AllBuffered, GameState.GAME.ToString());
+            networkView.RPC("spawnRemotePlayers", RPCMode.AllBuffered);
+        }
+    }
 
-				addPlayerOnserver (name, team, networkPlayer);
-		}
+    [RPC]
+    void onPlayerConnectedToServer(string name)
+    {
+        if (PlayerConnectedToServer != null)
+        {
+            PlayerConnectedToServer(name);
+        }
 
-		[RPC]
-		void addPLayerWithTeamOnServer (string name, int team, NetworkPlayer networkPlayer)
-		{
-				addPlayerOnserver (name, team, networkPlayer);
-		}
+    }
 
-		void addPlayerOnserver (string name, int team, NetworkPlayer networkPlayer)
-		{
-				playerList.Add (new MultiPlayerStruct (name, team, networkPlayer));
+    [RPC]
+    void addPLayerRandomOnServer(string name, NetworkPlayer networkPlayer)
+    {
+        int team = determineRandomTeam();
 
-				if (PlayerListChanged != null) {
-						PlayerListChanged ();
-				}
+        addPlayerOnserver(name, team, networkPlayer);
+    }
 
-				networkView.RPC ("addPlayerOnClient", RPCMode.OthersBuffered, name, team, networkPlayer);
-		}
+    [RPC]
+    void addPLayerWithTeamOnServer(string name, int team, NetworkPlayer networkPlayer)
+    {
+        addPlayerOnserver(name, team, networkPlayer);
+    }
 
-		[RPC]
-		void addPlayerOnClient (string name, int team, NetworkPlayer networkPlayer)
-		{
-				playerList.Add (new MultiPlayerStruct (name, team, networkPlayer));
+    void addPlayerOnserver(string name, int team, NetworkPlayer networkPlayer)
+    {
+        playerList.Add(new MultiPlayerStruct(name, team, networkPlayer));
 
-				if (PlayerListChanged != null) {
-						PlayerListChanged ();
-				}
-		}
+        if (PlayerListChanged != null)
+        {
+            PlayerListChanged();
+        }
 
-		public override void setGameState (GameState state)
-		{
-				if (isPlayerServer ()) {
-						networkView.RPC ("setRemoteGameState", RPCMode.AllBuffered, state.ToString ());
-				}
-		}
+        networkView.RPC("addPlayerOnClient", RPCMode.OthersBuffered, name, team, networkPlayer);
+    }
 
-		[RPC]
-		void setRemoteGameState (string stringState)
-		{
-				GameState state = (GameState)Enum.Parse (typeof(GameState), stringState);
+    [RPC]
+    void addPlayerOnClient(string name, int team, NetworkPlayer networkPlayer)
+    {
+        playerList.Add(new MultiPlayerStruct(name, team, networkPlayer));
 
-				base.setGameState (state);
-		}
+        if (PlayerListChanged != null)
+        {
+            PlayerListChanged();
+        }
+    }
 
-		public void startGame ()
-		{
-				if (isPlayerServer ()) {
-						networkView.RPC ("setRemoteGameState", RPCMode.AllBuffered, GameState.GAME.ToString ());
-						networkView.RPC ("spawnRemotePlayers", RPCMode.AllBuffered);
-				}
-		}
-		
-		[RPC]
-		void spawnRemotePlayers ()
-		{
-				foreach (PlayerSpawner playerSpawner in playerSpawnerList) {
-						playerSpawner.spawnPlayer ();
-				}
-		}
-	
-		protected abstract int determineRandomTeam ();
+    public override void setGameState(GameState state)
+    {
+        if (isPlayerServer())
+        {
+            networkView.RPC("setRemoteGameState", RPCMode.AllBuffered, state.ToString());
+        }
+    }
 
-		public abstract List<int> getPossibleTeams ();
+    [RPC]
+    void setRemoteGameState(string stringState)
+    {
+        GameState state = (GameState)Enum.Parse(typeof(GameState), stringState);
 
-		public List<MultiPlayerStruct> getPlayerList ()
-		{
-				return playerList;
-		}
+        base.setGameState(state);
+    }
+        
+    [RPC]
+    void spawnRemotePlayers()
+    {
+        foreach (PlayerSpawner playerSpawner in playerSpawnerList)
+        {
+            playerSpawner.spawnPlayer();
+        }
+    }
+    
+    protected abstract int determineRandomTeam();
 
-		public bool isPlayerServer ()
-		{
-				return Network.isServer;
-		}
+    public abstract List<int> getPossibleTeams();
+
+    public List<MultiPlayerStruct> getPlayerList()
+    {
+        return playerList;
+    }
+
+    public bool isPlayerServer()
+    {
+        return Network.isServer;
+    }
+
+    public MultiPlayerStruct getPlayerInfo(string guid)
+    {
+        MultiPlayerStruct playerInfo = null;
+
+        foreach (MultiPlayerStruct player in playerList)
+        {
+            if(player.networkPlayer.guid.Equals(guid))
+            {
+                playerInfo = player;
+                break;
+            }
+        }
+
+        return playerInfo;
+    }
+
+    public MultiPlayerStruct getCurrentPlayerInfo()
+    {
+        return getPlayerInfo(currentPlayer.guid);
+    }
 
 
 }
