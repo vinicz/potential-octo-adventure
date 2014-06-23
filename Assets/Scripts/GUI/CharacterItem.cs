@@ -45,7 +45,7 @@ public class CharacterItem : MonoBehaviour
 
 		public void showCHaracterInPreview ()
 		{
-				GameServiceLayer.serviceLayer.optionsService.setPreviewPlayerCharacter (playerCharacter);
+				GameServiceLayer.serviceLayer.characterService.setPreviewPlayerCharacter (playerCharacter);
 		}
 
 		public void onCharacterSelected ()
@@ -83,7 +83,7 @@ public class CharacterItem : MonoBehaviour
 
 		void selectCharacter ()
 		{
-				GameServiceLayer.serviceLayer.optionsService.setSelectedPlayerCharacter (playerCharacter);
+				GameServiceLayer.serviceLayer.characterService.setSelectedPlayerCharacter (playerCharacter);
 				currentWindow.SetActive (false);
 				targetWindow.SetActive (true);
 		}

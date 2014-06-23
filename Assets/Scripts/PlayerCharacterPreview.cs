@@ -9,33 +9,33 @@ public class PlayerCharacterPreview : MonoBehaviour
 
 		void Start ()
 		{
-				PlayerCharacter playerCharacterStruct = GameServiceLayer.serviceLayer.optionsService.getSelectedPlayerCharacter ();
+				PlayerCharacter playerCharacterStruct = GameServiceLayer.serviceLayer.characterService.getSelectedPlayerCharacter ();
 
 				if (playerCharacterStruct != null) {
 						playerCharacter = playerCharacterStruct.playerCharacter;
 						createCharacterPreview ();
 				}
 
-				GameServiceLayer.serviceLayer.optionsService.SelectedCharacterChanged += onSelectedCharacterChanged;
-				GameServiceLayer.serviceLayer.optionsService.PreviewCharacterChanged += onPreviewCharacterChanged;
+				GameServiceLayer.serviceLayer.characterService.SelectedCharacterChanged += onSelectedCharacterChanged;
+				GameServiceLayer.serviceLayer.characterService.PreviewCharacterChanged += onPreviewCharacterChanged;
 		}
 
 		void OnDestroy ()
 		{
-				GameServiceLayer.serviceLayer.optionsService.SelectedCharacterChanged -= onSelectedCharacterChanged;
-				GameServiceLayer.serviceLayer.optionsService.PreviewCharacterChanged -= onPreviewCharacterChanged;
+				GameServiceLayer.serviceLayer.characterService.SelectedCharacterChanged -= onSelectedCharacterChanged;
+				GameServiceLayer.serviceLayer.characterService.PreviewCharacterChanged -= onPreviewCharacterChanged;
 		}
 
 		void onSelectedCharacterChanged ()
 		{
-				GameObject newPlayerCharacter = GameServiceLayer.serviceLayer.optionsService.getSelectedPlayerCharacter ().playerCharacter;
+				GameObject newPlayerCharacter = GameServiceLayer.serviceLayer.characterService.getSelectedPlayerCharacter ().playerCharacter;
 
 				showNewCharacter (newPlayerCharacter);
 		}
 
 		void onPreviewCharacterChanged ()
 		{
-				GameObject newPlayerCharacter = GameServiceLayer.serviceLayer.optionsService.getPreviewPlayerCharacter ().playerCharacter;
+				GameObject newPlayerCharacter = GameServiceLayer.serviceLayer.characterService.getPreviewPlayerCharacter ().playerCharacter;
 		
 				showNewCharacter (newPlayerCharacter);
 		}

@@ -15,7 +15,7 @@ public class MultiPlayerSpawner : PlayerSpawner
 
     public override  GameObject getSelectedPlayerAvatarObject()
     {
-        return (GameObject)GameServiceLayer.serviceLayer.optionsService.getSelectedPlayerCharacter().multiPlayerCharacter;
+        return (GameObject)GameServiceLayer.serviceLayer.characterService.getSelectedPlayerCharacter().multiPlayerCharacter;
     }
 
 }

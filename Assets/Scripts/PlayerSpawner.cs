@@ -42,7 +42,7 @@ public class PlayerSpawner : MonoBehaviour
 
     public virtual  GameObject getSelectedPlayerAvatarObject()
     {
-        return (GameObject)GameServiceLayer.serviceLayer.optionsService.getSelectedPlayerCharacter().playerCharacter;
+        return (GameObject)GameServiceLayer.serviceLayer.characterService.getSelectedPlayerCharacter().playerCharacter;
     }
 
     public GameObject getPlayerObject()

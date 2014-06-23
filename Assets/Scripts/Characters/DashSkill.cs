@@ -6,8 +6,6 @@ public class DashSkill : Skill {
 	public float coolDown;
 	public float force = 1;
 	
-	public static string DASH_SKILL_NAME = "dash_skill";
-	
 	private float cooldownTimer = 0;
 	
 	
@@ -19,13 +17,13 @@ public class DashSkill : Skill {
 		
 	}
 	
-	public override void useSkill()
+    public override void useSkill(GameObject targetObject)
 	{
 		if(cooldownTimer<=0)
 		{
-			Vector3 dashDirection = rigidbody.velocity.normalized;
+            Vector3 dashDirection = targetObject.rigidbody.velocity.normalized;
 
-			rigidbody.AddForce(dashDirection*force);
+            targetObject.rigidbody.AddForce(dashDirection*force);
 			cooldownTimer = coolDown;
 		}
 	}
@@ -36,9 +34,4 @@ public class DashSkill : Skill {
 		return cooldownTimer;
 	}
 	
-	public override string getSkillName()
-	{
-		return DASH_SKILL_NAME;
-	}
-
 }

@@ -5,8 +5,6 @@ using System.Collections.Generic;
 public class MultiplayerLobbyWindow : UIWindow
 {
 
-    public UILabel redTeam;
-    public UILabel blueTeam;
     public UIButton startButton;
     public UIButton redTeamButton;
     public UIButton blueTeamButtonButton;
@@ -30,9 +28,7 @@ public class MultiplayerLobbyWindow : UIWindow
             startButton.gameObject.SetActive(false);
         }
 
-        setUpPlayerList();
-                
-        gameMaster.PlayerListChanged += setUpPlayerList;
+       
         gameMaster.GameStateChanged += onGameStateChanged;
         gameMaster.PlayerConnectedToServer += onPlayerConnectedToServer;
        
@@ -70,23 +66,7 @@ public class MultiplayerLobbyWindow : UIWindow
         hideLobbyIfGameStarted();
     }
 
-    void setUpPlayerList()
-    {
-        redTeam.text = "";
-        blueTeam.text = "";
-        List<MultiGameMaster.MultiPlayerStruct> playerList = gameMaster.getPlayerList();
-        foreach (MultiGameMaster.MultiPlayerStruct player in playerList)
-        {
-            if (player.team == 1)
-            {
-                redTeam.text += "\n" + player.name;
-            } else
-            {
-                blueTeam.text += "\n" + player.name;
-            }
-        }
-
-    }
+   
 
     void onPlayerConnectedToServer(string playerName)
     {
@@ -119,6 +99,5 @@ public class MultiplayerLobbyWindow : UIWindow
     void OnDestroy()
     {
         gameMaster.GameStateChanged -= onGameStateChanged;
-        gameMaster.PlayerListChanged -= setUpPlayerList;
     }
 }

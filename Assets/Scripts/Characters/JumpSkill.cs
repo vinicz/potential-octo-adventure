@@ -6,8 +6,6 @@ public class JumpSkill : Skill {
 	public float coolDown;
 	public float force = 1;
 
-	public static string JUMP_SKILL_NAME = "jump_skill";
-
 	private float cooldownTimer = 0;
 
 	
@@ -19,11 +17,11 @@ public class JumpSkill : Skill {
 		
 	}
 
-	public override void useSkill()
+    public override void useSkill(GameObject targetObject)
 	{
 		if(cooldownTimer<=0)
 		{
-			rigidbody.AddForce(Vector3.up*force);
+            targetObject.rigidbody.AddForce(Vector3.up*force);
 			cooldownTimer = coolDown;
 		}
 	}
@@ -34,10 +32,6 @@ public class JumpSkill : Skill {
 		return cooldownTimer;
 	}
 
-	public override string getSkillName()
-	{
-		return JUMP_SKILL_NAME;
-	}
 
 
 }

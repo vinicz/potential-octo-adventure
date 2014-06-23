@@ -11,7 +11,7 @@ public class OptionsService : MonoBehaviour
     public static string INITIAL_ORIENTATION_X = "initial_orientation_x";
     public static string INITIAL_ORIENTATION_Y = "initial_orientation_y";
     public static string INITIAL_ORIENTATION_Z = "initial_orientation_z";
-	public static string PLAYER_CHARACTER_NAME = "player_character";
+
 
     public delegate void CalibrationCompletedHandler();
     public event CalibrationCompletedHandler CalibrationCompleted;
@@ -21,23 +21,14 @@ public class OptionsService : MonoBehaviour
 
     public delegate void MusicEnabledOptionChangedHandler();
     public event MusicEnabledOptionChangedHandler MusicEnabledOptionChanged;
-
-	public delegate void SelectedCharacterChangedHandler();
-	public event SelectedCharacterChangedHandler SelectedCharacterChanged;
-
-	public delegate void PreviewCharacterChangedHandler();
-	public event PreviewCharacterChangedHandler PreviewCharacterChanged;
+   
 	
     public OrientationCalibrationService orientationCalibrationService;
-	public PlayerCharacterStorage playerCharacterStorage;
     private bool soundEnabled;
     private bool musicEnabled;
     private bool vibrationEnabled;
     private Vector3 initialOrientation = new Vector3(0, 0, -1);
     private float previousVolume;
-	private string playerCharacterName;
-	private PlayerCharacter playerCharacter;
-	private PlayerCharacter previewCharacter;
 
     void Awake()
     {
@@ -45,9 +36,6 @@ public class OptionsService : MonoBehaviour
         initMusic();
         initVibration();
         initOrientation();
-		initPlayerCharacter ();
-
-
     }
 
     public bool isSoundEnabled()
@@ -154,41 +142,6 @@ public class OptionsService : MonoBehaviour
         }
     }
 
-	public PlayerCharacter getSelectedPlayerCharacter()
-    {
-		return playerCharacter;
-    }
-
-	public void setSelectedPlayerCharacter(PlayerCharacter character)
-    {
-		playerCharacter = character;
-		PlayerPrefs.SetString (PLAYER_CHARACTER_NAME, playerCharacter.productId);
-
-		if (SelectedCharacterChanged != null) 
-		{
-			SelectedCharacterChanged();
-		}
-    }
-
-	public PlayerCharacter getPreviewPlayerCharacter()
-	{
-		return previewCharacter;
-	}
-	
-	public void setPreviewPlayerCharacter(PlayerCharacter character)
-	{
-		previewCharacter = character;
-		
-		if (PreviewCharacterChanged != null) 
-		{
-			PreviewCharacterChanged();
-		}
-	}
-
-	public List<PlayerCharacter> getPossiblePlayerCharacters()
-    {
-		return playerCharacterStorage.getPlayerCharacters ();
-    }
 
     void initSound()
     {
@@ -224,17 +177,5 @@ public class OptionsService : MonoBehaviour
         initialOrientation = new Vector3(initialOrientationX, initialOrientationY, initialOrientationZ);
 
     }
-
-	void initPlayerCharacter ()
-	{
-		List<PlayerCharacter> characters = playerCharacterStorage.getPlayerCharacters ();
-		string playerCharacterName = PlayerPrefs.GetString (PLAYER_CHARACTER_NAME, "");
-		foreach (PlayerCharacter character in characters) {
-			if (character.productId.Equals (playerCharacterName)) {
-				playerCharacter = character;
-				break;
-			}
-		}
-	}
 
 }

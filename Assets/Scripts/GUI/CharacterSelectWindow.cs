@@ -16,7 +16,7 @@ public class CharacterSelectWindow : MonoBehaviour
 				IEnumerable<IAPProduct> purchasableCharacters = 
 						GameServiceLayer.serviceLayer.itemService.getIAPProductsOfType (IAPProduct.ProductType.CHARACTER);
 				List<PlayerCharacter> playerCharacters = 
-						GameServiceLayer.serviceLayer.optionsService.getPossiblePlayerCharacters ();
+						GameServiceLayer.serviceLayer.characterService.getPossiblePlayerCharacters ();
 				centeringHandler = characterGrid.GetComponent<UICenterOnChildImproved> ();
 				centeringHandler.NewItemCentered += onNewItemCentered;
 
@@ -47,8 +47,8 @@ public class CharacterSelectWindow : MonoBehaviour
 		void OnDisable ()
 		{
 
-				GameServiceLayer.serviceLayer.optionsService.setSelectedPlayerCharacter (
-					GameServiceLayer.serviceLayer.optionsService.getSelectedPlayerCharacter ());
+				GameServiceLayer.serviceLayer.characterService.setSelectedPlayerCharacter (
+					GameServiceLayer.serviceLayer.characterService.getSelectedPlayerCharacter ());
 		}
 
 		void onNewItemCentered ()
