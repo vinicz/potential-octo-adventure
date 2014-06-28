@@ -28,7 +28,6 @@ public class MultiplayerLobbyWindow : UIWindow
             startButton.gameObject.SetActive(false);
         }
 
-       
         gameMaster.GameStateChanged += onGameStateChanged;
         gameMaster.PlayerConnectedToServer += onPlayerConnectedToServer;
        
@@ -78,7 +77,7 @@ public class MultiplayerLobbyWindow : UIWindow
         redTeamButton.isEnabled = enabled;
         blueTeamButtonButton.isEnabled = enabled;
         randomTeamButton.isEnabled = enabled;
-
+      
     }
 
     void handleTeamSelection()
@@ -86,6 +85,7 @@ public class MultiplayerLobbyWindow : UIWindow
         setTeamSelectorsEnabled(false);
         startButton.isEnabled = true;
         teamSelected = true;
+        hideLobbyIfGameStarted();
     }
 
     void hideLobbyIfGameStarted()
@@ -99,5 +99,6 @@ public class MultiplayerLobbyWindow : UIWindow
     void OnDestroy()
     {
         gameMaster.GameStateChanged -= onGameStateChanged;
+        gameMaster.PlayerConnectedToServer -= onPlayerConnectedToServer;
     }
 }

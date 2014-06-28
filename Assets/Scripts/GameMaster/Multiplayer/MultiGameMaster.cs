@@ -12,6 +12,12 @@ public abstract class MultiGameMaster : GameHandlerScript
     public delegate void PlayerConnectedToServerHandler(string playerName);
     public event PlayerConnectedToServerHandler PlayerConnectedToServer;
 
+    public delegate void PlayerDisconnectedFromServerHandler(string playerName);
+    public event PlayerDisconnectedFromServerHandler PlayerDisconnectedFromServer;
+
+    public delegate void LostConnectionToServerHandler();
+    public event LostConnectionToServerHandler LostConnectionToServer;
+
     public class MultiPlayerStruct
     {
         public string name;
@@ -46,12 +52,12 @@ public abstract class MultiGameMaster : GameHandlerScript
 
     public void playerJoinedRandom()
     {
-        networkView.RPC("addPLayerRandomOnServer", RPCMode.Server, currentPlayerName, currentPlayer);   
+        networkView.RPC("addPlayerRandomOnServer", RPCMode.Server, currentPlayerName, currentPlayer);   
     }
 
     public void playerJoinedToTeam(int team)
     {
-        networkView.RPC("addPLayerWithTeamOnServer", RPCMode.Server, currentPlayerName, team, currentPlayer);
+        networkView.RPC("addPlayerWithTeamOnServer", RPCMode.Server, currentPlayerName, team, currentPlayer);
     }
 
     public void startGame()
@@ -59,7 +65,22 @@ public abstract class MultiGameMaster : GameHandlerScript
         if (isPlayerServer())
         {
             networkView.RPC("setRemoteGameState", RPCMode.AllBuffered, GameState.GAME.ToString());
-            networkView.RPC("spawnRemotePlayers", RPCMode.AllBuffered);
+            networkView.RPC("spawnRemotePlayers", RPCMode.All);
+        }
+    }
+
+    public void playerDisconnected(NetworkPlayer player)
+    {
+        networkView.RPC("removePlayer", RPCMode.AllBuffered, player);
+    }
+
+    public void lostConnectionToServer()
+    {
+        base.setGameState(GameState.POSTGAME);
+
+        if (LostConnectionToServer != null)
+        {
+            LostConnectionToServer();
         }
     }
 
@@ -74,7 +95,7 @@ public abstract class MultiGameMaster : GameHandlerScript
     }
 
     [RPC]
-    void addPLayerRandomOnServer(string name, NetworkPlayer networkPlayer)
+    void addPlayerRandomOnServer(string name, NetworkPlayer networkPlayer)
     {
         int team = determineRandomTeam();
 
@@ -82,7 +103,7 @@ public abstract class MultiGameMaster : GameHandlerScript
     }
 
     [RPC]
-    void addPLayerWithTeamOnServer(string name, int team, NetworkPlayer networkPlayer)
+    void addPlayerWithTeamOnServer(string name, int team, NetworkPlayer networkPlayer)
     {
         addPlayerOnserver(name, team, networkPlayer);
     }
@@ -108,6 +129,30 @@ public abstract class MultiGameMaster : GameHandlerScript
         {
             PlayerListChanged();
         }
+
+        if (gameState == GameState.GAME && networkPlayer.guid.Equals(currentPlayer.guid))
+        {
+            spawnPlayer();
+        }
+    }
+
+    [RPC]
+    void removePlayer(NetworkPlayer networkPlayer)
+    {
+        foreach (MultiPlayerStruct player in playerList)
+        {
+            if(player.networkPlayer.guid.Equals(networkPlayer.guid))
+            {
+                playerList.Remove(player);
+
+                if (PlayerDisconnectedFromServer != null)
+                {
+                    PlayerDisconnectedFromServer(player.name);
+                }
+
+                break;
+            }
+        }
     }
 
     public override void setGameState(GameState state)
@@ -129,10 +174,13 @@ public abstract class MultiGameMaster : GameHandlerScript
     [RPC]
     void spawnRemotePlayers()
     {
-        foreach (PlayerSpawner playerSpawner in playerSpawnerList)
-        {
-            playerSpawner.spawnPlayer();
-        }
+        base.spawnPlayer();
+    }
+
+    protected override void handleEscapeKey()
+    {
+        Network.Disconnect();
+        base.handleEscapeKey();
     }
     
     protected abstract int determineRandomTeam();

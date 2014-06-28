@@ -97,8 +97,14 @@ public class NetworkManager : MonoBehaviour
         Debug.Log("Player connected from " + player.ipAddress + ":" + player.port);
     }
 
+    void OnPlayerDisconnected(NetworkPlayer player) {
 
-    
+        gameMaster.playerDisconnected(player);
+        Network.RemoveRPCs(player);
+        Network.DestroyPlayerObjects(player);
+
+    }
+     
 
     // Update is called once per frame
     void Update()
@@ -137,6 +143,10 @@ public class NetworkManager : MonoBehaviour
         
         gameMaster.playerConnectedToServer(Network.player, playerName);
         
+    }
+
+    void OnDisconnectedFromServer(NetworkDisconnection info) {
+        gameMaster.lostConnectionToServer();
     }
     
     

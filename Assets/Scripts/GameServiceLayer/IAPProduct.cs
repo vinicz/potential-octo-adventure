@@ -9,7 +9,8 @@ public class IAPProduct
         REWARD,
         TOKEN,
         PREMIUM_MEMEBERSHIP,
-		CHARACTER
+		CHARACTER,
+        SKILL
     };
 
     public string name;

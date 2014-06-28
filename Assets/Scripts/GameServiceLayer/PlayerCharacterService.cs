@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -21,7 +21,7 @@ public class PlayerCharacterService : MonoBehaviour {
     private string playerCharacterName;
     private PlayerCharacter playerCharacter;
     private PlayerCharacter previewCharacter;
-    private List<string> selectedSkills;
+    private List<string> selectedSkills ;
 
     void Awake()
     {
@@ -67,15 +67,18 @@ public class PlayerCharacterService : MonoBehaviour {
         return playerCharacterStorage.getPlayerCharacters ();
     }
 
-    public void setSelectedSkills(List<string> selectedSkills)
+    public void setSelectedSkill(string selectedSkill, int skillIndex)
     {
-        this.selectedSkills = selectedSkills;
+        this.selectedSkills[skillIndex] = selectedSkill;
+
+        PlayerPrefs.SetString (PLAYER_SKIIL1_NAME, selectedSkills[0]);
+        PlayerPrefs.SetString (PLAYER_SKIIL2_NAME, selectedSkills[1]);
+  
     }
  
-    public List<string> getSelectedSkills()
+    public string getSelectedSkill(int skillIndex)
     {
-        //return selectedSkills;
-        return new List<string>{"skill_jump","skill_dash"};
+        return selectedSkills[skillIndex];
     }
 
     public List<string> getPossibleSkills()
@@ -100,5 +103,13 @@ public class PlayerCharacterService : MonoBehaviour {
         GameObject ownSkillStorageObject = (GameObject)Instantiate(playerSkillStoragePrefab.gameObject);
         ownSkillStorageObject.transform.parent = this.transform;
         playerSkillStorage = ownSkillStorageObject.GetComponent<PlayerSkillStorage>();
+
+        string playerSkill1 = PlayerPrefs.GetString (PLAYER_SKIIL1_NAME, "");
+        string playerSkill2 = PlayerPrefs.GetString (PLAYER_SKIIL2_NAME, "");
+
+        selectedSkills = new List<string>();
+        selectedSkills.Add(playerSkill1);
+        selectedSkills.Add(playerSkill2);
+     
     }
 }

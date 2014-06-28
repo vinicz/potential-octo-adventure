@@ -28,14 +28,9 @@ public class PlayerSkillHandler : MonoBehaviour
 
     public virtual string getSelectedSkillId(int skillIndex)
     {
-        List<string> selectedSkillIds = GameServiceLayer.serviceLayer.characterService.getSelectedSkills();
-        string requestedSkillId;
+         string requestedSkillId = GameServiceLayer.serviceLayer.characterService.getSelectedSkill(skillIndex);;
 
-
-        if (selectedSkillIds.Count > skillIndex)
-        {
-            requestedSkillId = selectedSkillIds [skillIndex];
-        } else
+        if (requestedSkillId.Equals(""))
         {
             requestedSkillId = null;
         }

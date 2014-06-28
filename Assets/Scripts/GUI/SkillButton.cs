@@ -6,13 +6,6 @@ using System.Collections.Generic;
 public abstract class SkillButton : MonoBehaviour
 {
 
-    [Serializable]
-    public class SkillIcon
-    {
-        public UISprite icon;
-        public string skillName;
-    }
-
     public UISprite defaultIcon;
     public List<SkillIcon> skillIcons;
     public UILabel coolDownTimer;
@@ -28,7 +21,7 @@ public abstract class SkillButton : MonoBehaviour
         if (currentSkillId != null)
         {
 
-            findIconForSkill();
+            SkillIcon.findIconForSkill(skillIcons,currentSkillId,defaultIcon);
         } else
         {
             this.gameObject.SetActive(false);
@@ -65,24 +58,5 @@ public abstract class SkillButton : MonoBehaviour
 
     protected abstract void useSkill();
 
-    void findIconForSkill()
-    {
-        bool iconFoundForSkill = false;
-        foreach (SkillIcon icon in skillIcons)
-        {
-            if (currentSkillId.Equals(icon.skillName))
-            {
-                icon.icon.gameObject.SetActive(true);
-                iconFoundForSkill = true;
-                currentIcon = icon.icon;
-                break;
-            }
-        }
-
-        if (!iconFoundForSkill)
-        {
-            defaultIcon.gameObject.SetActive(true);
-            currentIcon = defaultIcon;
-        }
-    }
+   
 }

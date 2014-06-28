@@ -17,15 +17,6 @@ GameObject:
   - 135: {fileID: 13500000}
   - 114: {fileID: 11400004}
   - 82: {fileID: 8200000}
-  - 114: {fileID: 11400008}
-  - 114: {fileID: 11400010}
-  - 148: {fileID: 14800000}
-  - 114: {fileID: 11400012}
-  - 114: {fileID: 11400014}
-  - 148: {fileID: 14800002}
-  - 114: {fileID: 11400016}
-  - 114: {fileID: 11400018}
-  - 148: {fileID: 14800004}
   m_Layer: 11
   m_Name: ballthazarIce
   m_TagString: Player
@@ -194,7 +185,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37c860bb1faf8944d8ad9d837164ff23, type: 3}
   m_Name: 
@@ -239,87 +230,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4305eb1a8d06a334eb9d36eeac3e0e41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11400008
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94e140179fd73764c9cb7dea8e78f837, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  printAccelometerInfo: 0
-  speed: {x: 300, y: 300, z: 300}
-  initialAcceleration: {x: 0, y: -0, z: -1}
-  accelerationStrength: 1.5
---- !u!114 &11400010
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4effd4fb2430d02419e5c4fe66e57132, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interpolationSpeed: 50
---- !u!114 &11400012
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94e140179fd73764c9cb7dea8e78f837, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  printAccelometerInfo: 0
-  speed: {x: 300, y: 300, z: 300}
-  initialAcceleration: {x: 0, y: -0, z: -1}
-  accelerationStrength: 1.5
---- !u!114 &11400014
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4effd4fb2430d02419e5c4fe66e57132, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interpolationSpeed: 50
---- !u!114 &11400016
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94e140179fd73764c9cb7dea8e78f837, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  printAccelometerInfo: 0
-  speed: {x: 300, y: 300, z: 300}
-  initialAcceleration: {x: 0, y: -0, z: -1}
-  accelerationStrength: 1.5
---- !u!114 &11400018
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4effd4fb2430d02419e5c4fe66e57132, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interpolationSpeed: 50
 --- !u!119 &11900000
 Projector:
   m_ObjectHideFlags: 1
@@ -350,42 +260,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: .431885451
   m_Center: {x: 0, y: -9.53674316e-07, z: 0}
---- !u!148 &14800000
-NetworkView:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_StateSynchronization: 0
-  m_Observed: {fileID: 400000}
-  m_ViewID:
-    m_ID: 0
-    m_Type: 0
---- !u!148 &14800002
-NetworkView:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_StateSynchronization: 0
-  m_Observed: {fileID: 400000}
-  m_ViewID:
-    m_ID: 0
-    m_Type: 0
---- !u!148 &14800004
-NetworkView:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_StateSynchronization: 0
-  m_Observed: {fileID: 400000}
-  m_ViewID:
-    m_ID: 0
-    m_Type: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

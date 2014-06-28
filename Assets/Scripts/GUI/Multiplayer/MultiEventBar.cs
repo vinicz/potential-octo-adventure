@@ -27,14 +27,37 @@ public class MultiEventBar : UIWindow {
     {
         gameMaster = (MultiGameMaster)GameServiceLayer.serviceLayer.gameMaster;
         gameMaster.PlayerConnectedToServer += onPlayerConnected;
+        gameMaster.PlayerDisconnectedFromServer += onPlayerDisconnected;
+        gameMaster.LostConnectionToServer += onLostConnectionToServer;
     }
 
     void onPlayerConnected(string name)
+    {  
+        showNotification(name+ " joined the game");
+    }
+
+    void onPlayerDisconnected(string name)
     {
-        messageLabel.text = name + " joined the game";
+        showNotification(name+ " disconnected from game");
+    }
+
+    void onLostConnectionToServer()
+    {
+        showNotification("Disconnected from the server!");
+    }
+
+
+    void showNotification(string notificationMessage)
+    {
+        messageLabel.text =  notificationMessage;
         notificationTimeToLive = notificationLength;
         this.gameObject.SetActive(true);
     }
 
-
+    void OnDestroy()
+    {
+        gameMaster.PlayerConnectedToServer -= onPlayerConnected;
+        gameMaster.PlayerDisconnectedFromServer -= onPlayerDisconnected;
+        gameMaster.LostConnectionToServer -= onLostConnectionToServer;
+    }
 }

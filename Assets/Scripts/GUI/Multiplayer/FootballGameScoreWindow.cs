@@ -19,4 +19,10 @@ public class FootballGameScoreWindow : MonoBehaviour {
         Vector2 gameScore = gameMaster.getGameScore();
         gameScoreLabel.text = gameScore [1] + " : " + gameScore [0];
     }
+
+    void OnDestroy()
+    {
+        gameMaster.GameScoreChanged -= onGameScoreChanged;
+    }
+
 }

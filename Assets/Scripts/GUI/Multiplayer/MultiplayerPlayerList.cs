@@ -9,7 +9,7 @@ public class MultiplayerPlayerList : MonoBehaviour {
     public UILabel blueTeam;
     private MultiGameMaster gameMaster;
 
-    public void initPlayerList()
+    void Start()
     {
         gameMaster = (MultiGameMaster)GameServiceLayer.serviceLayer.gameMaster;
 

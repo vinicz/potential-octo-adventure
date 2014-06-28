@@ -350,7 +350,7 @@ GameObject:
   - 4: {fileID: 400040}
   - 114: {fileID: 11400426}
   m_Layer: 0
-  m_Name: JumpIcon
+  m_Name: DashIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1744,7 +1744,7 @@ GameObject:
   - 4: {fileID: 400204}
   - 114: {fileID: 11400436}
   m_Layer: 0
-  m_Name: DashIcon
+  m_Name: JumpIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3084,8 +3084,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100040}
   m_LocalRotation: {x: .707096636, y: .00378799788, z: .00378799788, w: .707096636}
-  m_LocalPosition: {x: -.278271705, y: -.628328741, z: .633804739}
-  m_LocalScale: {x: .520012558, y: .679199994, z: .00424499996}
+  m_LocalPosition: {x: -.278271705, y: -.628309608, z: .592490613}
+  m_LocalScale: {x: .823338807, y: .631602228, z: 4.7877711e-05}
   m_Children: []
   m_Father: {fileID: 400218}
 --- !u!4 &400042
@@ -4039,8 +4039,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100206}
   m_LocalRotation: {x: .707096636, y: .00378799788, z: .00378799788, w: .707096636}
-  m_LocalPosition: {x: -.278271705, y: -.628309608, z: .592490613}
-  m_LocalScale: {x: .823338807, y: .631602228, z: 4.7877711e-05}
+  m_LocalPosition: {x: -.278271705, y: -.628328741, z: .633804739}
+  m_LocalScale: {x: .520012558, y: .679199994, z: .00424499996}
   m_Children: []
   m_Father: {fileID: 400218}
 --- !u!4 &400206
@@ -4124,8 +4124,8 @@ Transform:
   m_LocalPosition: {x: 112.506325, y: -50.7982025, z: -158.859802}
   m_LocalScale: {x: 235.571243, y: 235.571243, z: 235.571259}
   m_Children:
-  - {fileID: 400040}
   - {fileID: 400204}
+  - {fileID: 400040}
   m_Father: {fileID: 400014}
 --- !u!4 &400220
 Transform:
@@ -5586,11 +5586,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5683bc21b0dd8374e9e66860bc70160c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultIcon: {fileID: 11400436}
+  defaultIcon: {fileID: 11400426}
   skillIcons:
-  - icon: {fileID: 11400436}
-    skillName: skill_dash
   - icon: {fileID: 11400426}
+    skillName: skill_dash
+  - icon: {fileID: 11400436}
     skillName: skill_jump
   coolDownTimer: {fileID: 11400428}
   skillButton: {fileID: 11400266}
@@ -9611,7 +9611,7 @@ MonoBehaviour:
   mPivot: 4
   mDepth: 7
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: up
+  mSpriteName: dash.
   mFillCenter: 1
   mType: 0
   mFillDirection: 4
@@ -9719,7 +9719,7 @@ MonoBehaviour:
   mPivot: 4
   mDepth: 7
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: dash.
+  mSpriteName: up
   mFillCenter: 1
   mType: 0
   mFillDirection: 4
