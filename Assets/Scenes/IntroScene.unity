@@ -178,6 +178,58 @@ Light:
   m_ShadowAngle: 0
   m_IndirectIntensity: 1
   m_AreaSize: {x: 1, y: 1}
+--- !u!1 &152438190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100018, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+  m_PrefabInternal: {fileID: 178357783}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 152438191}
+  - 114: {fileID: 152438192}
+  m_Layer: 0
+  m_Name: PlayerCharacterStorage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &152438191
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400018, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+  m_PrefabInternal: {fileID: 178357783}
+  m_GameObject: {fileID: 152438190}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.6705265, y: -13.9924393, z: -17.1352005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 595865311}
+--- !u!114 &152438192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400018, guid: bb7bc9d97cee2fa4eb940a54aa98d920,
+    type: 2}
+  m_PrefabInternal: {fileID: 178357783}
+  m_GameObject: {fileID: 152438190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 016e1f8c192c8054c884c353ea78c611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCharacters:
+  - productId: 
+    playerCharacter: {fileID: 100000, guid: fe22ae8a39860804f83fc6ed371c0400, type: 2}
+    multiPlayerCharacter: {fileID: 100000, guid: 6e3e831cbeae7ad4481e7bff5efce837,
+      type: 2}
+  - productId: ball_ice
+    playerCharacter: {fileID: 100000, guid: b3611bd9297224b4f98794596c8c4a81, type: 2}
+    multiPlayerCharacter: {fileID: 100000, guid: 76b5ee3232bd0fa40b318202c945c742,
+      type: 2}
+  - productId: ball_bounce
+    playerCharacter: {fileID: 100000, guid: 4aee8a98979f0e14895b040789257ee0, type: 2}
+    multiPlayerCharacter: {fileID: 100000, guid: 5b5bd9f49918a9740a6ebad6a42e0841,
+      type: 2}
 --- !u!1 &164659624
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,6 +649,48 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 273528094}
   m_Mesh: {fileID: 4300000, guid: 879dd62cbfd65314d812354e257fc5cc, type: 3}
+--- !u!1 &370078854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100020, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+  m_PrefabInternal: {fileID: 178357783}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 370078855}
+  - 114: {fileID: 370078856}
+  m_Layer: 0
+  m_Name: ItemService
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &370078855
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400020, guid: bb7bc9d97cee2fa4eb940a54aa98d920, type: 2}
+  m_PrefabInternal: {fileID: 178357783}
+  m_GameObject: {fileID: 370078854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.3705759, y: -16.6491985, z: -16.0871468}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 595865311}
+--- !u!114 &370078856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400020, guid: bb7bc9d97cee2fa4eb940a54aa98d920,
+    type: 2}
+  m_PrefabInternal: {fileID: 178357783}
+  m_GameObject: {fileID: 370078854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01efa4eeda13ef4aafb53ce7bdd53e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemStorage: {fileID: 830335312}
+  iapService: {fileID: 485419159}
+  rewardsToTokenCount: 50
 --- !u!1 &389414951
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,7 +722,7 @@ MonoBehaviour:
   spotlight2: {fileID: 876593602}
   spotlight3: {fileID: 184669515}
   spotlight4: {fileID: 2034684363}
-  muddictiveLogo: {fileID: 723399234}
+  muddictiveLogo: {fileID: 1286708584}
   logoSound: {fileID: 1267427361}
 --- !u!4 &389414953
 Transform:
@@ -694,7 +788,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Priority: 128
   DopplerLevel: 1
@@ -907,6 +1001,8 @@ MonoBehaviour:
     price: 1.99000001
     payingCurrency: 0
     productItemTye: 2
+    consumable: 0
+    purchased: 0
   - name: Explosion
     description: Explosion
     item_id: explosion_50
@@ -914,6 +1010,8 @@ MonoBehaviour:
     price: 3.99000001
     payingCurrency: 0
     productItemTye: 2
+    consumable: 0
+    purchased: 0
   - name: Explosive
     description: Explosive
     item_id: explosive
@@ -921,13 +1019,81 @@ MonoBehaviour:
     price: 10
     payingCurrency: 2
     productItemTye: 1
+    consumable: 0
+    purchased: 0
   - name: Premium
-    description: Premium
+    description: Get extra explosions, remove ads and much more...
     item_id: premium
     amount: 1
     price: 1.99000001
     payingCurrency: 0
     productItemTye: 3
+    consumable: 0
+    purchased: 0
+  - name: IceBall
+    description: Ice ball
+    item_id: ball_ice
+    amount: 1
+    price: 25
+    payingCurrency: 2
+    productItemTye: 4
+    consumable: 0
+    purchased: 0
+  - name: BumpyBall
+    description: A ball with bumpy skin, to be so so bumpy.
+    item_id: ball_bounce
+    amount: 1
+    price: 25
+    payingCurrency: 2
+    productItemTye: 4
+    consumable: 0
+    purchased: 0
+  - name: JumpyBall
+    description: A ball which can jump
+    item_id: ball_jump
+    amount: 1
+    price: 25
+    payingCurrency: 2
+    productItemTye: 4
+    consumable: 0
+    purchased: 0
+  - name: DashBall
+    description: A ball which can dash
+    item_id: ball_dash
+    amount: 1
+    price: 25
+    payingCurrency: 2
+    productItemTye: 4
+    consumable: 0
+    purchased: 0
+  - name: FlappyBall
+    description: Flappy
+    item_id: ball_flappy
+    amount: 1
+    price: 25
+    payingCurrency: 2
+    productItemTye: 4
+    consumable: 0
+    purchased: 0
+  - name: JumpSkill
+    description: Jump
+    item_id: skill_jump
+    amount: 1
+    price: 25
+    payingCurrency: 2
+    productItemTye: 5
+    consumable: 0
+    purchased: 0
+  - name: DashSkill
+    description: Dash
+    item_id: skill_dash
+    amount: 1
+    price: 25
+    payingCurrency: 2
+    productItemTye: 5
+    consumable: 0
+    purchased: 0
+  file: /ballthazar_iap_storage.dat
 --- !u!1001 &528211591
 Prefab:
   m_ObjectHideFlags: 0
@@ -1119,13 +1285,15 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 390184143}
+  - {fileID: 1212530812}
   - {fileID: 485419158}
+  - {fileID: 370078855}
   - {fileID: 2064103790}
   - {fileID: 2046269966}
-  - {fileID: 1212530812}
   - {fileID: 830335311}
   - {fileID: 588934563}
   - {fileID: 1401108076}
+  - {fileID: 152438191}
   m_Father: {fileID: 0}
 --- !u!114 &595865312
 MonoBehaviour:
@@ -1141,9 +1309,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameMaster: {fileID: 0}
   levelService: {fileID: 2046269967}
-  itemService: {fileID: 1212530813}
+  itemService: {fileID: 370078856}
   optionsService: {fileID: 588934562}
   backgroundMusicPlayer: {fileID: 390184144}
+  playerSpawnerList: []
+  networkManager: {fileID: 0}
+  characterService: {fileID: 1212530813}
 --- !u!1 &625705308
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,52 +1354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundMusic: {fileID: 8300000, guid: 8227f505de82c5449b3e81735dea791b, type: 3}
---- !u!1 &723399234
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 723399237}
-  - 131: {fileID: 723399236}
-  m_Layer: 0
-  m_Name: MuddictiveLogo
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!131 &723399236
-GUITexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 723399234}
-  m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: 8f116090149232a4ca9f170ffebaa3b5, type: 3}
-  m_Color: {r: .5, g: .5, b: .5, a: .5}
-  m_PixelInset:
-    serializedVersion: 2
-    x: -251
-    y: -59
-    width: 502
-    height: 118
-  m_LeftBorder: 0
-  m_RightBorder: 0
-  m_TopBorder: 0
-  m_BottomBorder: 0
---- !u!4 &723399237
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 723399234}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .5, y: .5, z: 4.5}
-  m_LocalScale: {x: 0, y: 0, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
+  volume: .5
 --- !u!1 &749235808
 GameObject:
   m_ObjectHideFlags: 0
@@ -2926,7 +3052,7 @@ GameObject:
   - 4: {fileID: 1212530812}
   - 114: {fileID: 1212530813}
   m_Layer: 0
-  m_Name: ItemService
+  m_Name: CharacterService
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2939,7 +3065,7 @@ Transform:
   m_PrefabInternal: {fileID: 178357783}
   m_GameObject: {fileID: 1212530811}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.6705265, y: -13.9924393, z: -17.1352005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 595865311}
@@ -2952,12 +3078,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1212530811}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c01efa4eeda13ef4aafb53ce7bdd53e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 814a4ecaab41c324a9109755c1159077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemStorage: {fileID: 830335312}
-  iapService: {fileID: 485419159}
-  rewardsToTokenCount: 50
+  playerCharacterStorage: {fileID: 152438192}
+  playerSkillStoragePrefab: {fileID: 11400006, guid: da33732943baed5458344bbfc4192b97,
+    type: 2}
 --- !u!1 &1226100384
 GameObject:
   m_ObjectHideFlags: 0
@@ -3176,6 +3302,56 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.46564579, y: -14.2505074, z: 4.53034115}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+--- !u!1 &1286708584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1286708586}
+  - 212: {fileID: 1286708585}
+  m_Layer: 0
+  m_Name: MuddictiveLogo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!212 &1286708585
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1286708584}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_Sprite: {fileID: 21300000, guid: 8f116090149232a4ca9f170ffebaa3b5, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!4 &1286708586
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1286708584}
+  m_LocalRotation: {x: -.0860141665, y: -.701855898, z: -.0860141143, w: .701855779}
+  m_LocalPosition: {x: -7.3897438, y: -14.2573719, z: 4.5385499}
+  m_LocalScale: {x: .299086839, y: .299086839, z: .299086839}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1 &1302214903
@@ -7545,7 +7721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelStorage: {fileID: 2064103791}
-  itemService: {fileID: 1212530813}
+  itemService: {fileID: 370078856}
   levelListOffset: 3
   worldPartSize: 15
   stressLevelFrequency: 5
@@ -7555,7 +7731,7 @@ MonoBehaviour:
   firstBossStepOffset: 0
   bossStepOffset: 19
   levelList:
-  - levelName: level_01
+  - levelName: normal_01_Start
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7563,7 +7739,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_02
+  - levelName: normal_02_OneBlock
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7571,7 +7747,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_03
+  - levelName: normal_03_Nike
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7579,7 +7755,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_04
+  - levelName: normal_04_Mess
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7587,7 +7763,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_05
+  - levelName: normal_05_LongCross
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7595,7 +7771,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_06
+  - levelName: normal_06_LongZ
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7603,7 +7779,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_07
+  - levelName: normal_07_FirstHill
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7611,7 +7787,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_08
+  - levelName: normal_08_CornerHill
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7619,7 +7795,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_09
+  - levelName: normal_09_Temple
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7627,7 +7803,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_10
+  - levelName: normal_10_TwoHills
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7635,7 +7811,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_11
+  - levelName: normal_11_TwoHillsWithJump
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7643,7 +7819,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_12
+  - levelName: normal_12_JumpJump
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7651,7 +7827,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_13
+  - levelName: normal_13_ZagZagZag
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7659,7 +7835,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_14
+  - levelName: normal_14_FirstClimb
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7667,7 +7843,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_15
+  - levelName: normal_15_TrickyClimb
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7675,7 +7851,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_16
+  - levelName: ice_01_IceIntroduction
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7683,7 +7859,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_17
+  - levelName: ice_02_IceFloor
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7691,7 +7867,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_18
+  - levelName: ice_03_IceRound
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7699,7 +7875,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_19
+  - levelName: ice_04_IceWithObstacle1
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7707,7 +7883,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_20
+  - levelName: ice_05_IceWithObstacle2
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7715,7 +7891,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_21
+  - levelName: ice_06_IceWithObstacle3
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7723,7 +7899,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_22
+  - levelName: ice_07_ClimbUp
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7731,7 +7907,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: evel_23
+  - levelName: ice_08_DoubleIceHash
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7739,7 +7915,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_24
+  - levelName: ice_09_IceAlien
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7747,7 +7923,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_25
+  - levelName: ice_10_UpNDown
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7755,7 +7931,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_26
+  - levelName: ice_11_SlideToSpace
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7763,7 +7939,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_27
+  - levelName: ice_12_MustGetOver
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7771,7 +7947,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_28
+  - levelName: ice_13_RightRound
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7779,7 +7955,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_29
+  - levelName: ice_14_HalfTube
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7787,7 +7963,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: wheel1
+  - levelName: ice_15_SnakeUp
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7795,7 +7971,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: wheel2
+  - levelName: bouncy_01_NomNomNom
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7803,7 +7979,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: wheel3
+  - levelName: bouncy_02_SideUpMiddleJump
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7811,7 +7987,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: diamondHill
+  - levelName: bouncy_03_TankJumper
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7819,7 +7995,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: gate
+  - levelName: bouncy_04_Arches
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7827,7 +8003,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: lift
+  - levelName: bouncy_05_BouncyFloor
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7835,7 +8011,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: testmap
+  - levelName: bouncy_06_ReachThem
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7843,7 +8019,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_30
+  - levelName: bouncy_07_AnnoyingLights
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7851,7 +8027,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_31
+  - levelName: bouncy_08_LeapOver
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7859,7 +8035,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_45
+  - levelName: bouncy_09_CarefullyAround
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7867,7 +8043,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_46
+  - levelName: bouncy_10_101
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7875,7 +8051,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_47
+  - levelName: bouncy_11_BumpersEverywhere
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7883,7 +8059,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_48
+  - levelName: bouncy_12_RotatingCrosses
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7891,7 +8067,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: level_49
+  - levelName: bouncy_13_KnockBack
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7899,7 +8075,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: falldown
+  - levelName: bouncy_14_DiamondBabyYeah
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7907,7 +8083,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: falldown2
+  - levelName: bouncy_15_RunAndJumpBack
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7915,7 +8091,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: falldown3
+  - levelName: labyrinth_01_Lines
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7923,7 +8099,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: falldown4
+  - levelName: labyrinth_02_ParallelUniverse
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7931,7 +8107,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: falldown5
+  - levelName: labyrinth_03_FrogCrossTheRoad
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7939,7 +8115,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: falldown6
+  - levelName: labyrinth_04_LinesWithHoles
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7947,7 +8123,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: falldown7
+  - levelName: labyrinth_05_Grid
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7955,7 +8131,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: boss
+  - levelName: labyrinth_06_OpenLabyrinthSimple
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7963,7 +8139,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: dark1
+  - levelName: labyrinth_07_OpenLabyrinthSimpleH
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7971,7 +8147,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: dark2
+  - levelName: labyrinth_08_OpenLabyrinthEyes
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7979,7 +8155,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: dark3
+  - levelName: labyrinth_09_ArrowToClosedLabyrinth
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7987,7 +8163,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: dark4
+  - levelName: labyrinth_10_ClosedRect
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -7995,7 +8171,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: dark5
+  - levelName: labyrinth_11_FireInside
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -8003,7 +8179,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: dark6
+  - levelName: labyrinth_12_LabyrinthRoofWalk
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -8011,7 +8187,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: dark8
+  - levelName: labyrinth_13_ClosedLabyrinth
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -8019,7 +8195,7 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: dark10
+  - levelName: labyrinth_14_ClosedLabyrinth2
     levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
@@ -8027,16 +8203,136 @@ MonoBehaviour:
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: bowlingTestMap
-    levelGroup: bowling
+  - levelName: labyrinth_15_ComeOutToTheDark
+    levelGroup: diamond
     isMultiplayer: 0
     collectedRewards: 0
     bestTime: 0
     timeToFirstReward: 40
     timeToSecondReward: 20
     isLevelCompleted: 0
-  - levelName: multiTestMap
-    levelGroup: 
+  - levelName: spike_01_SpikeIntroduction
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: spike_02_TieFighter
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: spike_03_SnakeM
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: spike_04_DiamondWallRun
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: spike_05_JumpAcross
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: spike_06_QuestionMark
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: spike_07_SpikeyStairs
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: spike_08_OnTheFloor
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: spike_09_CastleEntrance
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: spike_10_Spike6Circles
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: spike_11_IceyW
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: spike_12_SpikePropellers
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: spike_13_ShitJustGotReel
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: spike_14_WellFuckYouToo
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: spike_15_SpikesAreComing
+    levelGroup: diamond
+    isMultiplayer: 0
+    collectedRewards: 0
+    bestTime: 0
+    timeToFirstReward: 40
+    timeToSecondReward: 20
+    isLevelCompleted: 0
+  - levelName: multi_00_BumpySoccer
+    levelGroup: multiplayer
     isMultiplayer: 1
     collectedRewards: 0
     bestTime: 0

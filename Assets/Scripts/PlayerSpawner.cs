@@ -3,8 +3,9 @@ using System.Collections;
 
 public class PlayerSpawner : MonoBehaviour
 {
-
     public bool spawnOnStart = true;
+	public bool spawnWithLight = false;
+
     private GameObject playerAvatar;
     private GameObject playerObject;
 
@@ -32,6 +33,9 @@ public class PlayerSpawner : MonoBehaviour
         playerObject.transform.position = this.transform.position;
         playerObject.rigidbody.velocity = Vector3.zero;
         playerObject.rigidbody.angularVelocity = Vector3.zero;
+
+		addLightToPlayerIfNeeded ();
+
         playerObject.SetActive(true);
     }
 
@@ -54,4 +58,12 @@ public class PlayerSpawner : MonoBehaviour
     {
         GameServiceLayer.serviceLayer.playerSpawnerList.Remove(this);
     }
+
+	private void addLightToPlayerIfNeeded()
+	{
+		if (spawnWithLight)
+		{
+			playerObject.light.enabled = true;
+		}
+	}
 }
