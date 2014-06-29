@@ -21,7 +21,7 @@ public abstract class SkillButton : MonoBehaviour
         if (currentSkillId != null)
         {
 
-            SkillIcon.findIconForSkill(skillIcons,currentSkillId,defaultIcon);
+            currentIcon = SkillIcon.findIconForSkill(skillIcons,currentSkillId,defaultIcon);
         } else
         {
             this.gameObject.SetActive(false);

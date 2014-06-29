@@ -63,5 +63,6 @@ public class SkillSlot : MonoBehaviour
     {
       
         skillIconsView.showSkillIcon(skillId);
+        initialLabel.gameObject.SetActive(false);
     }
 }
