@@ -21,6 +21,11 @@ public class PlayerSkillStorage : MonoBehaviour {
         currentPlayerSkill = findSkillByName(skillName);
 
         currentPlayerSkill.skill.useSkill(targetObject);
+
+        if (currentPlayerSkill.skill.particleSystem != null)
+        {
+            currentPlayerSkill.skill.particleSystem.Play();
+        }
     }
 
     public float getCooldownReamining(string skillId)
