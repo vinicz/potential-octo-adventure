@@ -32,7 +32,7 @@ public abstract class SkillButton : MonoBehaviour
     void Update()
     {
         float coolDownRemaining = getCoolDownRemaining();
-                
+              
         if (coolDownRemaining > 0)
         {
             coolDownTimer.text = ((int)coolDownRemaining).ToString();

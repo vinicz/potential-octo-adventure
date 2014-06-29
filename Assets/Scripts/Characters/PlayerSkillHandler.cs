@@ -13,6 +13,9 @@ public class PlayerSkillHandler : MonoBehaviour
     {
         GameObject ownSkillStorageObject = (GameObject)Instantiate(skillStoragePrefab.gameObject);
         ownSkillStorageObject.transform.parent = this.transform;
+        ownSkillStorageObject.transform.position = this.transform.position;
+        ownSkillStorageObject.transform.rotation = this.transform.rotation;
+
         ownSkillStorage = ownSkillStorageObject.GetComponent<PlayerSkillStorage>();
     }
 

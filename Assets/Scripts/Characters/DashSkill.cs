@@ -24,6 +24,9 @@ public class DashSkill : Skill {
             Vector3 dashDirection = targetObject.rigidbody.velocity.normalized;
 
             targetObject.rigidbody.AddForce(dashDirection*force);
+
+            particleSystem.transform.rotation = Quaternion.FromToRotation( particleSystem.gameObject.transform.forward,dashDirection) *particleSystem.gameObject.transform.rotation;
+
 			cooldownTimer = coolDown;
 		}
 	}
