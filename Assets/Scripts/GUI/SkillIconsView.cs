@@ -22,4 +22,9 @@ public class SkillIconsView : MonoBehaviour {
 
         selectedSkillIcon = newSkillIcon;
     }
+
+    public UISprite getSelectedSkillIcon()
+    {
+        return selectedSkillIcon;
+    }
 }

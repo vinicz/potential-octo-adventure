@@ -6,7 +6,7 @@ public class SkillSlot : MonoBehaviour
 
     public SkillSelectWindow skillSelectWindow;
     public int skillIndex;
-    public SkillIconsView skillIconsView;
+    public SkillIconsViewFactory skillIconsViewFactory;
     public UILabel initialLabel;
 
     void Start()
@@ -62,7 +62,7 @@ public class SkillSlot : MonoBehaviour
     void showSkill(string skillId)
     {
       
-        skillIconsView.showSkillIcon(skillId);
+        skillIconsViewFactory.getSkillIconsView().showSkillIcon(skillId);
         initialLabel.gameObject.SetActive(false);
     }
 }

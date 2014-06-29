@@ -478,8 +478,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400060}
-  m_Layer: 0
-  m_Name: SkillIcons
+  - 114: {fileID: 11400158}
+  - 65: {fileID: 6500014}
+  - 114: {fileID: 11400132}
+  m_Layer: 10
+  m_Name: Skill1Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -688,14 +691,14 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400088}
-  - 114: {fileID: 11400096}
+  - 114: {fileID: 11400098}
   m_Layer: 0
-  m_Name: DashIcon
+  m_Name: SkillIconsVIewFactory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &100084
 GameObject:
   m_ObjectHideFlags: 1
@@ -884,7 +887,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400120}
-  - 114: {fileID: 11400098}
+  - 114: {fileID: 11400160}
   m_Layer: 0
   m_Name: CoolDownLabel
   m_TagString: Untagged
@@ -900,14 +903,14 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400122}
-  - 114: {fileID: 11400132}
+  - 114: {fileID: 11400162}
   m_Layer: 0
-  m_Name: JumpIcon
+  m_Name: BackgroundSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &100110
 GameObject:
   m_ObjectHideFlags: 1
@@ -939,22 +942,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!1 &100114
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400126}
-  - 114: {fileID: 11400160}
-  m_Layer: 0
-  m_Name: BackgroundSprite
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &100116
 GameObject:
   m_ObjectHideFlags: 1
@@ -1121,24 +1108,6 @@ GameObject:
   - 114: {fileID: 11400186}
   m_Layer: 0
   m_Name: ScoreLabel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &100136
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400146}
-  - 114: {fileID: 11400162}
-  - 65: {fileID: 6500014}
-  - 114: {fileID: 11400168}
-  m_Layer: 10
-  m_Name: Skill2Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2906,7 +2875,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &100350
 GameObject:
   m_ObjectHideFlags: 1
@@ -3253,7 +3222,7 @@ GameObject:
   - 65: {fileID: 6500068}
   - 114: {fileID: 11400538}
   m_Layer: 10
-  m_Name: Skill1Button
+  m_Name: Skill2Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3275,22 +3244,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &100396
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400396}
-  - 114: {fileID: 11400544}
-  m_Layer: 0
-  m_Name: JumpIcon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &100398
 GameObject:
   m_ObjectHideFlags: 1
@@ -3307,22 +3260,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!1 &100400
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400400}
-  - 114: {fileID: 11400548}
-  m_Layer: 0
-  m_Name: DashIcon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &100402
 GameObject:
   m_ObjectHideFlags: 1
@@ -3331,8 +3268,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400402}
+  - 114: {fileID: 11400096}
   m_Layer: 0
-  m_Name: SkillIcons
+  m_Name: SkillIconsVIewFactory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3702,13 +3640,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100056}
-  m_LocalRotation: {x: -.707096636, y: -.00378799811, z: -.00378799811, w: .707096636}
-  m_LocalPosition: {x: 112.506325, y: -50.7982025, z: -158.859802}
-  m_LocalScale: {x: 235.571243, y: 235.571243, z: 235.571259}
+  m_LocalRotation: {x: .707096696, y: .00378799858, z: .00378799858, w: .707096696}
+  m_LocalPosition: {x: .0534815788, y: 17.7636528, z: -7.12936211}
+  m_LocalScale: {x: .00424500043, y: .00424499856, z: .0042449981}
   m_Children:
   - {fileID: 400122}
+  - {fileID: 400120}
   - {fileID: 400088}
-  m_Father: {fileID: 400146}
+  m_Father: {fileID: 400348}
 --- !u!4 &400062
 Transform:
   m_ObjectHideFlags: 1
@@ -3859,9 +3798,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100082}
-  m_LocalRotation: {x: .707096636, y: .00378799788, z: .00378799788, w: .707096636}
-  m_LocalPosition: {x: -.278271705, y: -.628309608, z: .592490613}
-  m_LocalScale: {x: .823338807, y: .631602228, z: 4.7877711e-05}
+  m_LocalRotation: {x: -.707096636, y: -.00378799811, z: -.00378799811, w: .707096636}
+  m_LocalPosition: {x: -490.132019, y: 944.888123, z: 2862.948}
+  m_LocalScale: {x: 235.571243, y: 235.571243, z: 235.571259}
   m_Children: []
   m_Father: {fileID: 400060}
 --- !u!4 &400090
@@ -4068,16 +4007,16 @@ Transform:
   m_LocalPosition: {x: 48.999897, y: 88.0506897, z: -.00208017742}
   m_LocalScale: {x: 168.250854, y: 168.250854, z: 6.00895882}
   m_Children: []
-  m_Father: {fileID: 400146}
+  m_Father: {fileID: 400060}
 --- !u!4 &400122
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100108}
-  m_LocalRotation: {x: .707096636, y: .00378799788, z: .00378799788, w: .707096636}
-  m_LocalPosition: {x: -.278271705, y: -.628328741, z: .633804739}
-  m_LocalScale: {x: .520012558, y: .679199994, z: .00424499996}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 39.8072205, y: 93.5246048, z: -17.885107}
+  m_LocalScale: {x: 210.48674, y: 214.595642, z: 18.5096607}
   m_Children: []
   m_Father: {fileID: 400060}
 --- !u!4 &400124
@@ -4093,17 +4032,6 @@ Transform:
   - {fileID: 400194}
   - {fileID: 400208}
   m_Father: {fileID: 400256}
---- !u!4 &400126
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100114}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 39.8072205, y: 93.5246048, z: -17.885107}
-  m_LocalScale: {x: 210.48674, y: 214.595642, z: 18.5096607}
-  m_Children: []
-  m_Father: {fileID: 400146}
 --- !u!4 &400128
 Transform:
   m_ObjectHideFlags: 1
@@ -4205,20 +4133,6 @@ Transform:
   - {fileID: 400022}
   - {fileID: 400310}
   m_Father: {fileID: 400102}
---- !u!4 &400146
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100136}
-  m_LocalRotation: {x: .707096696, y: .00378799858, z: .00378799858, w: .707096696}
-  m_LocalPosition: {x: 1.02154779, y: 17.7636719, z: -7.12936544}
-  m_LocalScale: {x: .00424500043, y: .00424499856, z: .0042449981}
-  m_Children:
-  - {fileID: 400126}
-  - {fileID: 400120}
-  - {fileID: 400060}
-  m_Father: {fileID: 400348}
 --- !u!4 &400148
 Transform:
   m_ObjectHideFlags: 1
@@ -5431,8 +5345,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400048}
+  - {fileID: 400060}
   - {fileID: 400392}
-  - {fileID: 400146}
   - {fileID: 400388}
   - {fileID: 400052}
   m_Father: {fileID: 400114}
@@ -5685,7 +5599,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100392}
   m_LocalRotation: {x: .707096696, y: .00378799858, z: .00378799858, w: .707096696}
-  m_LocalPosition: {x: .0534815788, y: 17.7636528, z: -7.12936211}
+  m_LocalPosition: {x: 1.02953577, y: 17.7636719, z: -7.12936544}
   m_LocalScale: {x: .00424500043, y: .00424499856, z: .0042449981}
   m_Children:
   - {fileID: 400394}
@@ -5703,17 +5617,6 @@ Transform:
   m_LocalScale: {x: 210.48674, y: 214.595642, z: 18.5096607}
   m_Children: []
   m_Father: {fileID: 400392}
---- !u!4 &400396
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100396}
-  m_LocalRotation: {x: .707096636, y: .00378799788, z: .00378799788, w: .707096636}
-  m_LocalPosition: {x: -.278271705, y: -.628328741, z: .633804739}
-  m_LocalScale: {x: .520012558, y: .679199994, z: .00424499996}
-  m_Children: []
-  m_Father: {fileID: 400402}
 --- !u!4 &400398
 Transform:
   m_ObjectHideFlags: 1
@@ -5725,17 +5628,6 @@ Transform:
   m_LocalScale: {x: 168.250854, y: 168.250854, z: 6.00895882}
   m_Children: []
   m_Father: {fileID: 400392}
---- !u!4 &400400
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100400}
-  m_LocalRotation: {x: .707096636, y: .00378799788, z: .00378799788, w: .707096636}
-  m_LocalPosition: {x: -.278271705, y: -.628309608, z: .592490613}
-  m_LocalScale: {x: .823338807, y: .631602228, z: 4.7877711e-05}
-  m_Children: []
-  m_Father: {fileID: 400402}
 --- !u!4 &400402
 Transform:
   m_ObjectHideFlags: 1
@@ -5743,11 +5635,9 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100402}
   m_LocalRotation: {x: -.707096636, y: -.00378799811, z: -.00378799811, w: .707096636}
-  m_LocalPosition: {x: 112.506325, y: -50.7982025, z: -158.859802}
+  m_LocalPosition: {x: -628.169983, y: 944.888367, z: 2861.48779}
   m_LocalScale: {x: 235.571243, y: 235.571243, z: 235.571259}
-  m_Children:
-  - {fileID: 400396}
-  - {fileID: 400400}
+  m_Children: []
   m_Father: {fileID: 400392}
 --- !u!20 &2000000
 Camera:
@@ -6007,7 +5897,7 @@ BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100136}
+  m_GameObject: {fileID: 100056}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -7398,51 +7288,25 @@ MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100082}
+  m_GameObject: {fileID: 100402}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8afc99e127de2284697d8908b6b03298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mColor: {r: 1, g: 1, b: 1, a: 1}
-  mPivot: 4
-  mDepth: 7
-  mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: dash.
-  mFillCenter: 1
-  mType: 0
-  mFillDirection: 4
-  mFillAmount: 1
-  mInvert: 0
+  skillIconsView: {fileID: 100004, guid: df69f71b5b212d1429f7344b440c87f4, type: 2}
 --- !u!114 &11400098
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100106}
+  m_GameObject: {fileID: 100082}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
+  m_Script: {fileID: 11500000, guid: 8afc99e127de2284697d8908b6b03298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mColor: {r: 1, g: 1, b: 1, a: 1}
-  mPivot: 4
-  mDepth: 8
-  mFont: {fileID: 11400000, guid: 7a48ea22e80d1ac4b97fdd87f9009546, type: 2}
-  mText: 10
-  mMaxLineWidth: 200
-  mMaxLineHeight: 200
-  mEncoding: 1
-  mMaxLineCount: 0
-  mPassword: 0
-  mShowLastChar: 0
-  mEffectStyle: 1
-  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
-  mSymbols: 1
-  mEffectDistance: {x: 1, y: 1}
-  mShrinkToFit: 0
-  mLineWidth: 0
-  mMultiline: 1
+  skillIconsView: {fileID: 100004, guid: df69f71b5b212d1429f7344b440c87f4, type: 2}
 --- !u!114 &11400100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7838,22 +7702,16 @@ MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100108}
+  m_GameObject: {fileID: 100056}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
+  m_Script: {fileID: 11500000, guid: 5683bc21b0dd8374e9e66860bc70160c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mColor: {r: 1, g: 1, b: 1, a: 1}
-  mPivot: 4
-  mDepth: 7
-  mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: up
-  mFillCenter: 1
-  mType: 0
-  mFillDirection: 4
-  mFillAmount: 1
-  mInvert: 0
+  coolDownTimer: {fileID: 11400160}
+  skillButton: {fileID: 11400158}
+  skillIconsViewFactory: {fileID: 11400098}
+  skillIndex: 0
 --- !u!114 &11400134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8088,12 +7946,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4828f26d0a23da641b928fc21538b3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11400158
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdca5042b1d12a4890ec1bd4f04290d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tweenTarget: {fileID: 100108}
+  hover: {r: .889705896, g: .832407236, b: .0588775985, a: .458823532}
+  pressed: {r: .5, g: .5, b: .5, a: 1}
+  duration: .200000003
+  disabledColor: {r: .5, g: .5, b: .5, a: .247058824}
 --- !u!114 &11400160
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100114}
+  m_GameObject: {fileID: 100106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d0b5f3bbe925a408bd595c79d0bf63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mColor: {r: 1, g: 1, b: 1, a: 1}
+  mPivot: 4
+  mDepth: 8
+  mFont: {fileID: 11400000, guid: 7a48ea22e80d1ac4b97fdd87f9009546, type: 2}
+  mText: 10
+  mMaxLineWidth: 200
+  mMaxLineHeight: 200
+  mEncoding: 1
+  mMaxLineCount: 0
+  mPassword: 0
+  mShowLastChar: 0
+  mEffectStyle: 1
+  mEffectColor: {r: 0, g: 0, b: 0, a: 1}
+  mSymbols: 1
+  mEffectDistance: {x: 1, y: 1}
+  mShrinkToFit: 0
+  mLineWidth: 0
+  mMultiline: 1
+--- !u!114 &11400162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100108}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
@@ -8109,22 +8012,6 @@ MonoBehaviour:
   mFillDirection: 4
   mFillAmount: 1
   mInvert: 0
---- !u!114 &11400162
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fdca5042b1d12a4890ec1bd4f04290d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tweenTarget: {fileID: 100114}
-  hover: {r: .889705896, g: .832407236, b: .0588775985, a: .458823532}
-  pressed: {r: .5, g: .5, b: .5, a: 1}
-  duration: .200000003
-  disabledColor: {r: .5, g: .5, b: .5, a: .247058824}
 --- !u!114 &11400164
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8175,26 +8062,6 @@ MonoBehaviour:
   mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
---- !u!114 &11400168
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5683bc21b0dd8374e9e66860bc70160c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultIcon: {fileID: 11400096}
-  skillIcons:
-  - icon: {fileID: 11400096}
-    skillName: skill_dash
-  - icon: {fileID: 11400132}
-    skillName: skill_jump
-  coolDownTimer: {fileID: 11400098}
-  skillButton: {fileID: 11400162}
-  skillIndex: 1
 --- !u!114 &11400170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11687,15 +11554,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5683bc21b0dd8374e9e66860bc70160c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultIcon: {fileID: 11400548}
-  skillIcons:
-  - icon: {fileID: 11400548}
-    skillName: skill_dash
-  - icon: {fileID: 11400544}
-    skillName: skill_jump
   coolDownTimer: {fileID: 11400546}
   skillButton: {fileID: 11400540}
-  skillIndex: 0
+  skillIconsViewFactory: {fileID: 11400096}
+  skillIndex: 1
 --- !u!114 &11400540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11733,27 +11595,6 @@ MonoBehaviour:
   mFillDirection: 4
   mFillAmount: 1
   mInvert: 0
---- !u!114 &11400544
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mColor: {r: 1, g: 1, b: 1, a: 1}
-  mPivot: 4
-  mDepth: 7
-  mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: up
-  mFillCenter: 1
-  mType: 0
-  mFillDirection: 4
-  mFillAmount: 1
-  mInvert: 0
 --- !u!114 &11400546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11783,27 +11624,6 @@ MonoBehaviour:
   mShrinkToFit: 0
   mLineWidth: 0
   mMultiline: 1
---- !u!114 &11400548
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mColor: {r: 1, g: 1, b: 1, a: 1}
-  mPivot: 4
-  mDepth: 7
-  mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: dash.
-  mFillCenter: 1
-  mType: 0
-  mFillDirection: 4
-  mFillAmount: 1
-  mInvert: 0
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

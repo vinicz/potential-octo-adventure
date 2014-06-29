@@ -8,8 +8,7 @@ public class SkillItem : MonoBehaviour {
     public GameObject buySkillObject;
     public UILabel skillPrice;
     public IAPProduct skillProduct;
-    public UISprite defaultSkillIcon;
-    public List<SkillIcon> skillIcons;
+    public SkillIconsViewFactory skillIconsViewFactory;
 
     private UISprite currentSkillIcon;
 
@@ -20,8 +19,8 @@ public class SkillItem : MonoBehaviour {
         skillPrice.text = skillProduct.price.ToString();
         this.skillProduct = skillProduct;
 
-        currentSkillIcon = SkillIcon.findIconForSkill(skillIcons, skillProduct.item_id, defaultSkillIcon);
-        currentSkillIcon.gameObject.SetActive(true);
+        skillIconsViewFactory.getSkillIconsView().showSkillIcon(skillProduct.item_id);
+        currentSkillIcon = skillIconsViewFactory.getSkillIconsView().getSelectedSkillIcon();
 
         setupLabels();
         GameServiceLayer.serviceLayer.itemService.ItemCountChanged += setupLabels;

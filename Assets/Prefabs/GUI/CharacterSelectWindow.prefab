@@ -48,8 +48,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 400004}
   - 114: {fileID: 11400064}
+  - 114: {fileID: 11400058}
   m_Layer: 0
-  m_Name: SkillIcons
+  m_Name: SkillIconsViewFactory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,22 +78,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &100008
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400008}
-  - 114: {fileID: 11400060}
-  m_Layer: 0
-  m_Name: DashIcon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &100010
 GameObject:
   m_ObjectHideFlags: 1
@@ -234,22 +219,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &100026
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400026}
-  - 114: {fileID: 11400062}
-  m_Layer: 0
-  m_Name: JumpIcon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &100028
 GameObject:
   m_ObjectHideFlags: 1
@@ -274,9 +243,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400030}
-  - 114: {fileID: 11400058}
+  - 114: {fileID: 11400060}
   m_Layer: 0
-  m_Name: SkillIcons
+  m_Name: SkillIconsViewFactory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -298,38 +267,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &100034
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400034}
-  - 114: {fileID: 11400076}
-  m_Layer: 0
-  m_Name: JumpIcon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!1 &100036
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 400036}
-  - 114: {fileID: 11400078}
-  m_Layer: 0
-  m_Name: DashIcon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &100040
 GameObject:
   m_ObjectHideFlags: 1
@@ -411,11 +348,9 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: -.705438137, y: -.0318833813, z: -.033169698, w: .707276702}
-  m_LocalPosition: {x: -244.279633, y: 242.284698, z: 1940.72388}
+  m_LocalPosition: {x: -220.913773, y: 242.290146, z: 1941.67261}
   m_LocalScale: {x: 91.3019867, y: 117.147568, z: 93.6184464}
-  m_Children:
-  - {fileID: 400034}
-  - {fileID: 400008}
+  m_Children: []
   m_Father: {fileID: 400006}
 --- !u!4 &400006
 Transform:
@@ -431,17 +366,6 @@ Transform:
   - {fileID: 400028}
   - {fileID: 400046}
   m_Father: {fileID: 400022}
---- !u!4 &400008
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100008}
-  m_LocalRotation: {x: .70674473, y: .0226259902, z: .0226259902, w: .70674473}
-  m_LocalPosition: {x: 1.03771544, y: 16.0055389, z: -2.73460174}
-  m_LocalScale: {x: .292000026, y: .224000022, z: .000480493793}
-  m_Children: []
-  m_Father: {fileID: 400004}
 --- !u!4 &400010
 Transform:
   m_ObjectHideFlags: 1
@@ -540,17 +464,6 @@ Transform:
   m_LocalScale: {x: 500, y: 500, z: 1}
   m_Children: []
   m_Father: {fileID: 400022}
---- !u!4 &400026
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100026}
-  m_LocalRotation: {x: .70674473, y: .0226259921, z: .0226259921, w: .70674473}
-  m_LocalPosition: {x: 1.03771544, y: 16.005537, z: -2.73460078}
-  m_LocalScale: {x: .235200047, y: .307200044, z: .00120123487}
-  m_Children: []
-  m_Father: {fileID: 400030}
 --- !u!4 &400028
 Transform:
   m_ObjectHideFlags: 1
@@ -569,11 +482,9 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100030}
   m_LocalRotation: {x: -.705438137, y: -.0318833813, z: -.033169698, w: .707276702}
-  m_LocalPosition: {x: -244.279633, y: 242.284698, z: 1940.72388}
+  m_LocalPosition: {x: -206.093155, y: 242.293533, z: 1942.27356}
   m_LocalScale: {x: 91.3019867, y: 117.147568, z: 93.6184464}
-  m_Children:
-  - {fileID: 400026}
-  - {fileID: 400036}
+  m_Children: []
   m_Father: {fileID: 400002}
 --- !u!4 &400032
 Transform:
@@ -586,28 +497,6 @@ Transform:
   m_LocalScale: {x: 23.229229, y: 24.5936317, z: .900000095}
   m_Children: []
   m_Father: {fileID: 400002}
---- !u!4 &400034
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100034}
-  m_LocalRotation: {x: .70674473, y: .0226259921, z: .0226259921, w: .70674473}
-  m_LocalPosition: {x: 1.03771544, y: 16.005537, z: -2.73460078}
-  m_LocalScale: {x: .235200047, y: .307200044, z: .00120123487}
-  m_Children: []
-  m_Father: {fileID: 400004}
---- !u!4 &400036
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100036}
-  m_LocalRotation: {x: .70674473, y: .0226259902, z: .0226259902, w: .70674473}
-  m_LocalPosition: {x: 1.03771544, y: 16.0055389, z: -2.73460174}
-  m_LocalScale: {x: .292000026, y: .224000022, z: .000480493793}
-  m_Children: []
-  m_Father: {fileID: 400030}
 --- !u!4 &400040
 Transform:
   m_ObjectHideFlags: 1
@@ -815,7 +704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillSelectWindow: {fileID: 11400002}
   skillIndex: 1
-  skillIconsView: {fileID: 11400058}
+  skillIconsViewFactory: {fileID: 11400060}
   initialLabel: {fileID: 11400082}
 --- !u!114 &11400016
 MonoBehaviour:
@@ -1180,9 +1069,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillSelectWindow: {fileID: 11400002}
   skillIndex: 0
-  skillIconsView: {fileID: 11400064}
+  skillIconsViewFactory: {fileID: 11400058}
   initialLabel: {fileID: 11400072}
 --- !u!114 &11400058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8afc99e127de2284697d8908b6b03298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillIconsView: {fileID: 100004, guid: df69f71b5b212d1429f7344b440c87f4, type: 2}
+--- !u!114 &11400060
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1190,57 +1091,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100030}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac917c3f7e5394d49bce02bceec0f539, type: 3}
+  m_Script: {fileID: 11500000, guid: 8afc99e127de2284697d8908b6b03298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillIcons:
-  - icon: {fileID: 11400062}
-    skillName: skill_jump
-  - icon: {fileID: 11400078}
-    skillName: skill_dash
-  defaultIcon: {fileID: 11400062}
---- !u!114 &11400060
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mColor: {r: 1, g: 1, b: 1, a: 1}
-  mPivot: 4
-  mDepth: 31
-  mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: dash.
-  mFillCenter: 1
-  mType: 0
-  mFillDirection: 4
-  mFillAmount: 1
-  mInvert: 0
---- !u!114 &11400062
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mColor: {r: 1, g: 1, b: 1, a: 1}
-  mPivot: 4
-  mDepth: 31
-  mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: up
-  mFillCenter: 1
-  mType: 0
-  mFillDirection: 4
-  mFillAmount: 1
-  mInvert: 0
+  skillIconsView: {fileID: 100004, guid: df69f71b5b212d1429f7344b440c87f4, type: 2}
 --- !u!114 &11400064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1253,11 +1107,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillIcons:
-  - icon: {fileID: 11400076}
+  - icon: {fileID: 0}
     skillName: skill_jump
-  - icon: {fileID: 11400060}
+  - icon: {fileID: 0}
     skillName: skill_dash
-  defaultIcon: {fileID: 11400076}
+  defaultIcon: {fileID: 0}
 --- !u!114 &11400066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1348,48 +1202,6 @@ MonoBehaviour:
   mDepth: 0
   mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
   mSpriteName: Dark
-  mFillCenter: 1
-  mType: 0
-  mFillDirection: 4
-  mFillAmount: 1
-  mInvert: 0
---- !u!114 &11400076
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mColor: {r: 1, g: 1, b: 1, a: 1}
-  mPivot: 4
-  mDepth: 31
-  mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: up
-  mFillCenter: 1
-  mType: 0
-  mFillDirection: 4
-  mFillAmount: 1
-  mInvert: 0
---- !u!114 &11400078
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b3dc54f924693f41b5cbecb267e647a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mColor: {r: 1, g: 1, b: 1, a: 1}
-  mPivot: 4
-  mDepth: 31
-  mAtlas: {fileID: 11400000, guid: 2f2473f73b9ca724f9080d6d76009ea2, type: 2}
-  mSpriteName: dash.
   mFillCenter: 1
   mType: 0
   mFillDirection: 4

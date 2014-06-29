@@ -6,13 +6,12 @@ using System.Collections.Generic;
 public abstract class SkillButton : MonoBehaviour
 {
 
-    public UISprite defaultIcon;
-    public List<SkillIcon> skillIcons;
     public UILabel coolDownTimer;
     public UIButton skillButton;
+    public SkillIconsViewFactory  skillIconsViewFactory;
     protected string currentSkillId;
     private UISprite currentIcon;
-
+  
     // Use this for initialization
     void Start()
     {
@@ -20,8 +19,9 @@ public abstract class SkillButton : MonoBehaviour
                     
         if (currentSkillId != null)
         {
+            skillIconsViewFactory.getSkillIconsView().showSkillIcon(currentSkillId);
+            currentIcon = skillIconsViewFactory.getSkillIconsView().getSelectedSkillIcon();
 
-            currentIcon = SkillIcon.findIconForSkill(skillIcons,currentSkillId,defaultIcon);
         } else
         {
             this.gameObject.SetActive(false);
