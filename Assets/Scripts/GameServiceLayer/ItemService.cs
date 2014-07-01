@@ -77,6 +77,11 @@ public class ItemService : MonoBehaviour
         iapService.buyProduct(productId);
     }
 
+    public IAPProduct getIAPProduct(string productId)
+    {
+        return iapService.getProduct(productId);
+    }
+
     public List<IAPProduct> getIAPProducts()
     {
         return iapService.getProducts();

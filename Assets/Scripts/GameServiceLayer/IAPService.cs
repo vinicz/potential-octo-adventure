@@ -12,10 +12,11 @@ public abstract class IAPService : MonoBehaviour
     public event PurchaseFailedHandler PurchaseFailed;
 
     public abstract void buyProduct(string productId);
-
+    public abstract IAPProduct getProduct(string productId);
     public abstract List<IAPProduct> getProducts();
-
 	public abstract IEnumerable<IAPProduct> getProductOfType(IAPProduct.ProductType productype);
+
+
 
     protected virtual void OnPurchaseCompletedSuccesfully()
     {

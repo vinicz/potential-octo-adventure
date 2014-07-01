@@ -22,8 +22,8 @@ public class NetworkPositionUpdater : MonoBehaviour {
     {
         if (networkView.isMine)
         {
-             networkView.RPC("updatePosition", RPCMode.AllBuffered, transform.position);
-			 networkView.RPC("updateRotation", RPCMode.AllBuffered, transform.rotation);
+             //networkView.RPC("updatePosition", RPCMode.AllBuffered, transform.position);
+			 //networkView.RPC("updateRotation", RPCMode.AllBuffered, transform.rotation);
 				
         } else
         {
@@ -41,6 +41,27 @@ public class NetworkPositionUpdater : MonoBehaviour {
         }
         
         
+    }
+
+    void OnSerializeNetworkView(BitStream stream, NetworkMessageInfo info) {
+        if (stream.isWriting) {
+
+            Vector3 messageTargetPosition = targetPosition;
+            Quaternion messageTargetOrientation = targetOrientation;
+
+            stream.Serialize(ref messageTargetPosition);
+            stream.Serialize(ref messageTargetOrientation);
+        } else{
+     
+            Vector3 messageTargetPosition = targetPosition;
+            Quaternion messageTargetOrientation = targetOrientation;
+
+            stream.Serialize(ref messageTargetPosition);
+            stream.Serialize(ref messageTargetOrientation);
+
+            targetPosition = messageTargetPosition;
+            targetOrientation = messageTargetOrientation;
+        }
     }
 
     

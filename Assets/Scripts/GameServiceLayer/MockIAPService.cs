@@ -8,118 +8,140 @@ using System.IO;
 public class MockIAPService : IAPService
 {
 
-        public ItemStorage itemStorage;
-        public List<IAPProduct> productList;
-        private Dictionary<string,IAPProduct> productMap;
-        public string file = "/ballthazar_iap_storage.dat";
-        private string fullFilePath;
+    public ItemStorage itemStorage;
+    public List<IAPProduct> productList;
+    private Dictionary<string,IAPProduct> productMap;
+    public string file = "/ballthazar_iap_storage.dat";
+    private string fullFilePath;
 
-        public void Start ()
-        {
+    public void Start()
+    {
                 
 
-                productMap = new Dictionary<string, IAPProduct> ();
-                foreach (IAPProduct product in productList) {
-                        productMap.Add (product.item_id, product);
-                }
-
-                fullFilePath = Application.persistentDataPath + file;
-                load ();
+        productMap = new Dictionary<string, IAPProduct>();
+        foreach (IAPProduct product in productList)
+        {
+            productMap.Add(product.item_id, product);
         }
 
-        public override void buyProduct (string productId)
+        fullFilePath = Application.persistentDataPath + file;
+        load();
+    }
+
+    public override void buyProduct(string productId)
+    {
+        IAPProduct product = productMap [productId];
+        bool purchaseSuccesfull = false;
+
+        if (product.payingCurrency == IAPProduct.ProductType.MONEY && 
+            product.productItemTye == IAPProduct.ProductType.TOKEN)
         {
-                IAPProduct product = productMap [productId];
-                bool purchaseSuccesfull = false;
+            itemStorage.addTokens(product.amount);
 
-                if (product.payingCurrency == IAPProduct.ProductType.MONEY && 
-                        product.productItemTye == IAPProduct.ProductType.TOKEN) {
-                        itemStorage.addTokens (product.amount);
-
-                        purchaseSuccesfull = true;
-                } else if (product.payingCurrency == IAPProduct.ProductType.TOKEN && 
-                   (product.productItemTye == IAPProduct.ProductType.CHARACTER || 
-                    product.productItemTye == IAPProduct.ProductType.SKILL))  {
-                        purchaseSuccesfull = purchaseWithTokens (product);
-                        if (purchaseSuccesfull) {
-                                product.purchased = true;
-                        }
+            purchaseSuccesfull = true;
+        } else if (product.payingCurrency == IAPProduct.ProductType.TOKEN && 
+            (product.productItemTye == IAPProduct.ProductType.CHARACTER || 
+            product.productItemTye == IAPProduct.ProductType.SKILL))
+        {
+            purchaseSuccesfull = purchaseWithTokens(product);
+            if (purchaseSuccesfull)
+            {
+                product.purchased = true;
+            }
                         
 
-                } else if (product.payingCurrency == IAPProduct.ProductType.TOKEN && 
-                        product.productItemTye == IAPProduct.ProductType.REWARD) {
-                        purchaseSuccesfull = purchaseWithTokens (product);
-
-                        if (purchaseSuccesfull) {
-                                itemStorage.addRewards (product.amount);
-                        }
-                }
-
-                if (purchaseSuccesfull) {
-                        save ();
-                        OnPurchaseCompletedSuccesfully ();
-                } else {
-                        OnPurchaseFailed ();
-                }
-        }
-
-        public override List<IAPProduct> getProducts ()
+        } else if (product.payingCurrency == IAPProduct.ProductType.TOKEN && 
+            product.productItemTye == IAPProduct.ProductType.REWARD)
         {
-                return productList;
-        }
+            purchaseSuccesfull = purchaseWithTokens(product);
 
-        public override IEnumerable<IAPProduct> getProductOfType (IAPProduct.ProductType productype)
+            if (purchaseSuccesfull)
+            {
+                itemStorage.addRewards(product.amount);
+            }
+        } else if (product.payingCurrency == IAPProduct.ProductType.MONEY)
         {
-                return (from product in productList where product.productItemTye == productype select product);
-
+            purchaseSuccesfull = true;
+            product.purchased = true;
         }
+
+        if (purchaseSuccesfull)
+        {
+            save();
+            OnPurchaseCompletedSuccesfully();
+        } else
+        {
+            OnPurchaseFailed();
+        }
+    }
+
+    public override IAPProduct getProduct(string productId)
+    {
+        return productMap [productId];
+    }
+
+    public override List<IAPProduct> getProducts()
+    {
+        return productList;
+    }
+
+    public override IEnumerable<IAPProduct> getProductOfType(IAPProduct.ProductType productype)
+    {
+        return (from product in productList where product.productItemTye == productype select product);
+
+    }
     
-        bool purchaseWithTokens (IAPProduct product)
-        {
-                bool purchaseSuccesfull = false;
+    bool purchaseWithTokens(IAPProduct product)
+    {
+        bool purchaseSuccesfull = false;
 
-                if (product.price <= itemStorage.getTokenCount ()) {
-                        itemStorage.removeTokens ((int)product.price);
-                        purchaseSuccesfull = true;
-                }
-                return purchaseSuccesfull;
+        if (product.price <= itemStorage.getTokenCount())
+        {
+            itemStorage.removeTokens((int)product.price);
+            purchaseSuccesfull = true;
         }
+        return purchaseSuccesfull;
+    }
 
-        private void save ()
-        {
-                BinaryFormatter bf = new BinaryFormatter ();
-                FileStream file = File.OpenWrite (fullFilePath);
+    private void save()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.OpenWrite(fullFilePath);
         
-                bf.Serialize (file, productList);
-                file.Close ();
-        }
+        bf.Serialize(file, productList);
+        file.Close();
+    }
     
-        private void load ()
+    private void load()
+    {
+        if (File.Exists(fullFilePath))
         {
-                if (File.Exists (fullFilePath)) {
             
-                        BinaryFormatter bf = new BinaryFormatter ();
-                        FileStream file = File.Open (fullFilePath, FileMode.Open);
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(fullFilePath, FileMode.Open);
             
-                        List<IAPProduct> persitedData = (List<IAPProduct>)bf.Deserialize (file);
+            List<IAPProduct> persitedData = (List<IAPProduct>)bf.Deserialize(file);
                         
-                        mergePersistedProducts (persitedData);
+            mergePersistedProducts(persitedData);
             
-                        file.Close ();
+            file.Close();
             
-                } else {
-                        save ();
-                } 
-        }
-        
-        void mergePersistedProducts (List<IAPProduct> persitedData)
+        } else
         {
-                foreach (IAPProduct persistedProduct in persitedData) {
-                        if (productMap.ContainsKey (persistedProduct.item_id)) {
-                                IAPProduct product = productMap [persistedProduct.item_id];
-                                product.purchased = persistedProduct.purchased;
-                        }
+            save();
+        } 
+    }
+        
+    void mergePersistedProducts(List<IAPProduct> persitedData)
+    {
+        foreach (IAPProduct persistedProduct in persitedData)
+        {
+            if (productMap.ContainsKey(persistedProduct.item_id))
+            {
+                IAPProduct product = productMap [persistedProduct.item_id];
+                product.purchased = persistedProduct.purchased;
+            }
 
-                }
         }
+    }
 }

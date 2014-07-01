@@ -31,7 +31,10 @@ public class DiamondWindow : MonoBehaviour
 
     void OnDestroy()
     {
-		diamondGameHandler.CollectedDiamondCountChanged -= updateDiamondLabel;
+        if (inited)
+        {
+            diamondGameHandler.CollectedDiamondCountChanged -= updateDiamondLabel;
+        }
     }
 
 

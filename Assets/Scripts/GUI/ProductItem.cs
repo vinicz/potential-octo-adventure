@@ -39,7 +39,7 @@ public class ProductItem : MonoBehaviour
 				case IAPProduct.ProductType.TOKEN:
 						tokenProductSprite.gameObject.SetActive (true);
 						break;
-				case IAPProduct.ProductType.PREMIUM_MEMEBERSHIP:
+				case IAPProduct.ProductType.SERVICE:
 						premiumProductSprite.gameObject.SetActive (true);
 						break;
 				}

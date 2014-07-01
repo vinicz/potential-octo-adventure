@@ -8,7 +8,7 @@ public class IAPProduct
         MONEY,
         REWARD,
         TOKEN,
-        PREMIUM_MEMEBERSHIP,
+        SERVICE,
 		CHARACTER,
         SKILL
     };
