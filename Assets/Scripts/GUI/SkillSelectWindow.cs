@@ -4,10 +4,11 @@ using System.Collections.Generic;
 
 public class SkillSelectWindow : MonoBehaviour {
 
-    public UIGrid skillGrid;
+    public GameObject skillTableParent;
     public GameObject characterItem;
+    public int skillTableRowSize =3;
 
-    private SkillItem centeredSkillItem;
+    private SkillItem selectedSkillItem;
     private UICenterOnChildImproved centeringHandler;
     
     void Start ()
@@ -17,8 +18,7 @@ public class SkillSelectWindow : MonoBehaviour {
             GameServiceLayer.serviceLayer.itemService.getIAPProductsOfType (IAPProduct.ProductType.SKILL);
         List<string> skills = 
             GameServiceLayer.serviceLayer.characterService.getPossibleSkills();
-        centeringHandler = skillGrid.GetComponent<UICenterOnChildImproved> ();
-        centeringHandler.NewItemCentered += onNewItemCentered;
+
         
         
         foreach (string skill in skills) {
@@ -33,8 +33,7 @@ public class SkillSelectWindow : MonoBehaviour {
             }
             
         }
-        
-        skillGrid.Reposition ();
+
         
         
     }
@@ -42,12 +41,12 @@ public class SkillSelectWindow : MonoBehaviour {
     void onNewItemCentered ()
     {
         GameObject skillItemObject = centeringHandler.centeredObject;
-        centeredSkillItem = skillItemObject.GetComponent<SkillItem>();
+        selectedSkillItem = skillItemObject.GetComponent<SkillItem>();
     }
     
     GameObject createSkillItem (IAPProduct skillProduct)
     {
-        GameObject newSkillItemObject = NGUITools.AddChild (skillGrid.gameObject, characterItem);
+        GameObject newSkillItemObject = NGUITools.AddChild (skillTableParent, characterItem);
         newSkillItemObject.transform.localPosition = characterItem.transform.position;
         newSkillItemObject.transform.localRotation = characterItem.transform.rotation;
         newSkillItemObject.transform.localScale = characterItem.transform.localScale;
@@ -59,9 +58,14 @@ public class SkillSelectWindow : MonoBehaviour {
     }
 
 
-    public SkillItem getCenteredSkillItem()
+    public SkillItem getSelectedSkillItem()
     {
-        return centeredSkillItem;
+        return selectedSkillItem;
+    }
+
+    public void getSelectedSkillItem(SkillItem skill)
+    {
+        selectedSkillItem = skill;
     }
     
 }

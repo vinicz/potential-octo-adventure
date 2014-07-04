@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class SkillSlot : MonoBehaviour
@@ -24,7 +24,7 @@ public class SkillSlot : MonoBehaviour
 
     void OnClick()
     {
-        SkillItem centeredSkillItem = skillSelectWindow.getCenteredSkillItem();
+        SkillItem centeredSkillItem = skillSelectWindow.getSelectedSkillItem();
 
         if (!centeredSkillItem.skillProduct.purchased)
         {
@@ -53,7 +53,7 @@ public class SkillSlot : MonoBehaviour
 
     void selectCenteredSkill()
     {
-        SkillItem centeredSkillItem = skillSelectWindow.getCenteredSkillItem();
+        SkillItem centeredSkillItem = skillSelectWindow.getSelectedSkillItem();
         string skillId = centeredSkillItem.skillProduct.item_id;
         GameServiceLayer.serviceLayer.characterService.setSelectedSkill(skillId, skillIndex);
         showSkill(skillId);
