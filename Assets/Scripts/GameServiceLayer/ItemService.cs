@@ -106,6 +106,10 @@ public class ItemService : MonoBehaviour
     {
         refreshItems();
 
+        if (PurchaseFailed != null)
+        {
+            PurchaseFailed();
+        }
 
         throw new NotEnoughTokensException();
     }

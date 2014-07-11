@@ -155,8 +155,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 94.9100037, y: 61.5, z: 0}
-  m_Center: {x: 21.2700005, y: -2.29999995, z: 0}
+  m_Size: {x: 40.4500008, y: 41.5, z: 0}
+  m_Center: {x: 23.2000008, y: -20.6000004, z: 9.81999969}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -194,8 +194,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillDescription: {fileID: 11400008}
-  buySkillObject: {fileID: 0}
-  skillPrice: {fileID: 0}
   skillProduct:
     name: 
     description: 
@@ -207,6 +205,7 @@ MonoBehaviour:
     consumable: 0
     purchased: 0
   skillIconsViewFactory: {fileID: 11400000}
+  skillSelectWindow: {fileID: 0}
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -257,7 +256,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100014}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c041f61e4a9fbf4e830210f5d933ece, type: 3}
   m_Name: 
@@ -285,13 +284,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100014}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4c4ff40739c7904ca26c14ffbdc4176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 100016}
-  functionName: onCharacterSelected
+  functionName: onSkillSelected
   trigger: 0
   includeChildren: 0
 --- !u!114 &11400024
@@ -300,7 +299,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100014}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fdca5042b1d12a4890ec1bd4f04290d, type: 3}
   m_Name: 

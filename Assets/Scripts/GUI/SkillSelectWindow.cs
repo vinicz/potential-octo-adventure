@@ -4,9 +4,10 @@ using System.Collections.Generic;
 
 public class SkillSelectWindow : MonoBehaviour {
 
-    public GameObject skillTableParent;
+    public UIGrid skillTableParent;
     public GameObject characterItem;
-    public int skillTableRowSize =3;
+    public UILabel selectedSkillDescritptionLabel;
+    public UILabel selectedSkillPriceLabel;
 
     private SkillItem selectedSkillItem;
     private UICenterOnChildImproved centeringHandler;
@@ -18,8 +19,6 @@ public class SkillSelectWindow : MonoBehaviour {
             GameServiceLayer.serviceLayer.itemService.getIAPProductsOfType (IAPProduct.ProductType.SKILL);
         List<string> skills = 
             GameServiceLayer.serviceLayer.characterService.getPossibleSkills();
-
-        
         
         foreach (string skill in skills) {
 
@@ -34,6 +33,8 @@ public class SkillSelectWindow : MonoBehaviour {
             
         }
 
+        skillTableParent.Reposition();
+
         
         
     }
@@ -46,13 +47,14 @@ public class SkillSelectWindow : MonoBehaviour {
     
     GameObject createSkillItem (IAPProduct skillProduct)
     {
-        GameObject newSkillItemObject = NGUITools.AddChild (skillTableParent, characterItem);
+        GameObject newSkillItemObject = NGUITools.AddChild (skillTableParent.gameObject, characterItem);
         newSkillItemObject.transform.localPosition = characterItem.transform.position;
         newSkillItemObject.transform.localRotation = characterItem.transform.rotation;
         newSkillItemObject.transform.localScale = characterItem.transform.localScale;
 
         SkillItem newSkillItem = newSkillItemObject.GetComponent<SkillItem> ();
-        newSkillItem.setupSkillItem(skillProduct);
+        newSkillItem.setupSkillItem(skillProduct,this);
+
 
         return newSkillItemObject;
     }
@@ -63,9 +65,12 @@ public class SkillSelectWindow : MonoBehaviour {
         return selectedSkillItem;
     }
 
-    public void getSelectedSkillItem(SkillItem skill)
+    public void setSelectedSkillItem(SkillItem skill)
     {
         selectedSkillItem = skill;
+
+        selectedSkillPriceLabel.text = selectedSkillItem.skillProduct.price.ToString();
+        selectedSkillDescritptionLabel.text = selectedSkillItem.skillProduct.description;
     }
     
 }

@@ -40,7 +40,7 @@ public class SkillSlot : MonoBehaviour
 
     void skillPurchaseCompleted()
     {
-        GameServiceLayer.serviceLayer.itemService.PurchaseCompleted -= skillPurchaseCompleted;
+        unsubscribePurchaseEvents();
 
         selectCenteredSkill();
 
@@ -48,7 +48,7 @@ public class SkillSlot : MonoBehaviour
 
     void skillPurchaseFailed()
     {
-        GameServiceLayer.serviceLayer.itemService.PurchaseFailed -= skillPurchaseFailed;
+        unsubscribePurchaseEvents();
     }
 
     void selectCenteredSkill()
@@ -64,5 +64,11 @@ public class SkillSlot : MonoBehaviour
       
         skillIconsViewFactory.getSkillIconsView().showSkillIcon(skillId);
         initialLabel.gameObject.SetActive(false);
+    }
+
+    void unsubscribePurchaseEvents()
+    {
+        GameServiceLayer.serviceLayer.itemService.PurchaseCompleted -= skillPurchaseCompleted;
+        GameServiceLayer.serviceLayer.itemService.PurchaseFailed -= skillPurchaseFailed;
     }
 }
