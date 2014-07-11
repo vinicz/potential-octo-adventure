@@ -8,6 +8,7 @@ public class SkillSlot : MonoBehaviour
     public int skillIndex;
     public SkillIconsViewFactory skillIconsViewFactory;
     public UILabel initialLabel;
+    public UIButton skillSlotButton;
 
     void Start()
     {
@@ -20,37 +21,21 @@ public class SkillSlot : MonoBehaviour
         {
             initialLabel.gameObject.SetActive(true);
         }
+
+        skillSelectWindow.SelectedSkillChanged += onSelectedSkillChanged;
     }
 
     void OnClick()
     {
         SkillItem centeredSkillItem = skillSelectWindow.getSelectedSkillItem();
-
-        if (!centeredSkillItem.skillProduct.purchased)
-        {
-            GameServiceLayer.serviceLayer.itemService.PurchaseCompleted += skillPurchaseCompleted;
-            GameServiceLayer.serviceLayer.itemService.PurchaseFailed += skillPurchaseFailed;
-            GameServiceLayer.serviceLayer.itemService.buyIAPProduct(centeredSkillItem.skillProduct.item_id);
-        } else
-        {
+		
+        if(centeredSkillItem!=null && centeredSkillItem.skillProduct.purchased)
+		{
             selectCenteredSkill();
         }
 
     }
-
-    void skillPurchaseCompleted()
-    {
-        unsubscribePurchaseEvents();
-
-        selectCenteredSkill();
-
-    }
-
-    void skillPurchaseFailed()
-    {
-        unsubscribePurchaseEvents();
-    }
-
+	
     void selectCenteredSkill()
     {
         SkillItem centeredSkillItem = skillSelectWindow.getSelectedSkillItem();
@@ -65,10 +50,17 @@ public class SkillSlot : MonoBehaviour
         skillIconsViewFactory.getSkillIconsView().showSkillIcon(skillId);
         initialLabel.gameObject.SetActive(false);
     }
-
-    void unsubscribePurchaseEvents()
+	
+    void onSelectedSkillChanged()
     {
-        GameServiceLayer.serviceLayer.itemService.PurchaseCompleted -= skillPurchaseCompleted;
-        GameServiceLayer.serviceLayer.itemService.PurchaseFailed -= skillPurchaseFailed;
+        SkillItem centeredSkillItem = skillSelectWindow.getSelectedSkillItem();
+
+        if (centeredSkillItem.skillProduct.purchased)
+        {
+            skillSlotButton.isEnabled = true;
+        } else
+        {
+            skillSlotButton.isEnabled = false;
+        }
     }
 }
