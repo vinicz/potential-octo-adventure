@@ -7,7 +7,6 @@ public class SkillSlot : MonoBehaviour
     public SkillSelectWindow skillSelectWindow;
     public int skillIndex;
     public SkillIconsViewFactory skillIconsViewFactory;
-    public UILabel initialLabel;
     public UIButton skillSlotButton;
 
     void Start()
@@ -17,10 +16,9 @@ public class SkillSlot : MonoBehaviour
         if (!selectedSkill.Equals(""))
         {
             showSkill(selectedSkill);
-        } else
-        {
-            initialLabel.gameObject.SetActive(true);
         }
+
+        skillSlotButton.isEnabled = false;
 
         skillSelectWindow.SelectedSkillChanged += onSelectedSkillChanged;
     }
@@ -48,7 +46,6 @@ public class SkillSlot : MonoBehaviour
     {
       
         skillIconsViewFactory.getSkillIconsView().showSkillIcon(skillId);
-        initialLabel.gameObject.SetActive(false);
     }
 	
     void onSelectedSkillChanged()
